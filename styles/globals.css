@@ -22,3 +22,15 @@ a {
 * {
   box-sizing: border-box;
 }
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 1.375rem;
+  }    
+}
