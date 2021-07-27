@@ -22,10 +22,14 @@ export default function Home() {
       <Hero />
 
       <main className={styles.main}>
-        <h2 className={styles.accessible}>
-          Skill sharing has never been more accessible —<br />to learners and
-          skillrs alike.
-        </h2>
+        <p className={styles.accessible}>
+          Stop wasting time trying to google it.
+          <br />
+          Connect with a pro who can help you immediately.
+          <br />
+          Real-time connections to skilled professionals around the country,
+          that is Skillr.
+        </p>
         <DownloadApp />
       </main>
 

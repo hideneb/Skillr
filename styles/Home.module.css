@@ -1,16 +1,13 @@
-
 .main {
   padding: 0 24px;
 }
 
 .accessible {
-  max-width: 900px;
   text-align: center;
   margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
-    
 }
 
 .footer {

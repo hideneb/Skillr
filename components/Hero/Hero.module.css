@@ -1,16 +1,17 @@
 .container {
   min-height: 990px;
   width: 100%;
-  background: #0C1F3F;
-  background-image: url('/hero-bg.png');
+  background: #0c1f3f;
+  background-image: url("/hero-bg.png");
   text-align: center;
   padding-top: 5.625rem;
   margin-bottom: 14.125rem;
+  background-position: bottom center;
 }
 
 .title {
-  color: #F2F3F4;
-  max-width: 700px;
+  color: #f2f3f4;
+  max-width: 750px;
   padding: 0 3rem;
   margin: 3.25rem auto;
 }
@@ -25,5 +26,4 @@
   left: 50%;
   /* transform: translateX(-50%, -50%); */
   transform: translateX(-50%);
-
 }
