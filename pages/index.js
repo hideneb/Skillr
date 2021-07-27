@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import DownloadApp from "../components/DownloadApp";
+import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -17,6 +18,8 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Hero />
 
       <main className={styles.main}>
         <h2 className={styles.accessible}>
