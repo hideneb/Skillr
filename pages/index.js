@@ -1,10 +1,15 @@
 import Head from "next/head";
 import Image from "next/image";
+import classNames from "classnames";
 import DownloadApp from "../components/DownloadApp";
 import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
+import discoverImage from "../public/screen-discover.png";
+import connectImage from "../public/screen-connect.png";
+import becomeImage from "../public/screen-become.png";
 
 export default function Home() {
+  const connectClass = classNames(styles.section, styles.sectionConnect);
   return (
     <div>
       <Head>
@@ -32,6 +37,56 @@ export default function Home() {
         </p>
         <DownloadApp />
       </main>
+
+      <div className={styles.section}>
+        <div>
+          <Image src={discoverImage} alt="Discover Skillrs" />
+        </div>
+        <div className={styles.section__left}>
+          <div>
+            <h2>Discover Skillrs</h2>
+            <p>
+              Connect with a professional at a moment&apos;s notice!
+              <br />
+              You now have professionals in your pocket.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={connectClass}>
+        <div className={styles.section__image}>
+          <div>
+            <Image src={connectImage} alt="One-Click Connect" />
+          </div>
+        </div>
+        <div className={styles.section__left}>
+          <div>
+            <h2>One-Click Connect</h2>
+            <p>
+              Get instantly matched to professionals that can help you solve a
+              problem, learn a skill, or just entertain you. Real-time
+              connections, no waiting, no worries.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <div>
+          <Image src={becomeImage} alt="Become a Skillr" />
+        </div>
+        <div className={styles.section__left}>
+          <div>
+            <h2>Become a Skillr</h2>
+            <p>
+              Are you a professional and want to make money from your skills?
+              Apply to become a Skillr. Once approved you can set your own rate
+              and begin monetizing your time while helping others.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <footer className={styles.footer}></footer>
     </div>

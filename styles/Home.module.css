@@ -7,6 +7,41 @@
   margin: auto;
 }
 
+.section {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.section > div {
+  flex: 1;
+}
+
+.section__left > div {
+  text-align: right;
+  max-width: 552px;
+  margin-left: auto;
+}
+
+.sectionConnect {
+  flex-direction: row;
+}
+
+.sectionConnect .section__left > div {
+  text-align: left;
+  margin-right: auto;
+  margin-left: 45px;
+}
+
+.section__image {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.section__image > div {
+  margin-right: -130px;
+}
+
 @media only screen and (max-width: 600px) {
 }
 
