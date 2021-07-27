@@ -2,11 +2,20 @@ import React from "react";
 import Image from "next/image";
 import styles from "./DownloadApp.module.css";
 
+import appstoreImage from "../../public/appstore-coming.png";
+
 const DownloadApp = () => (
   <div className={styles.container}>
-    <a href="#" target="_blank" rel="noopener noreferrer"><Image src="/appstore.png" alt="App Store" width={157} height={52} /></a>
-    <a href="#" target="_blank" rel="noopener noreferrer"><Image src="/googleplay.png" alt="Google Play" width={176} height={52} /></a>
+    <Image src={appstoreImage} alt="App Store Coming Soon" />
+    <p className={styles.description}>
+      Sign up below to receive exclusive invite.
+    </p>
+
+    <div className={styles.inviteContainer}>
+      <input className={styles.input} placeholder="Enter email..." />
+      <button className={styles.button}>Get Invite</button>
+    </div>
   </div>
-)
+);
 
 export default DownloadApp;
