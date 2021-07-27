@@ -22,11 +22,17 @@
   line-height: 1.4;
   letter-spacing: -0.02em;
   padding: 20px 200px 20px 16px;
+  font-family: "SF Pro Text", sans-serif;
+}
+
+.input:focus {
+  border-color: #ff165f;
+  outline: none;
 }
 
 .button {
   background: #ff165f;
-  border-radius: 8px;
+  border-radius: 6px;
   width: 184px;
   font-weight: bold;
   font-size: 16px;
@@ -34,7 +40,11 @@
   color: #ffffff;
   text-align: center;
   position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  border: none;
+  cursor: pointer;
+  /* border: 2px solid #0c1f3f;
+  border-left-color: #ff165f; */
 }

@@ -100,7 +100,7 @@ h2 {
 }
 
 p {
-  font-family: "SF Pro Text";
+  font-family: "SF Pro Text", sans-serif;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
