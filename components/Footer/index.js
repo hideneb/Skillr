@@ -6,6 +6,7 @@ import facebookIcon from "../../public/facebook.png";
 import instagramIcon from "../../public/instagram.png";
 import linkedinIcon from "../../public/linkedin.png";
 import logoIcon from "../../public/logo-sm.png";
+import logoTextBlackIcon from "../../public/logo-black-text.svg";
 
 const Footer = () => (
   <footer className={styles.footer}>
@@ -50,8 +51,13 @@ const Footer = () => (
     </div>
 
     <div className={styles.copyright}>
-      <Image src={logoIcon} alt="Logo" />
-      <span>&copy; 2021 Skillr</span>
+      <div className={styles.desktop}>
+        <Image src={logoIcon} alt="Logo" />
+      </div>
+      <div className={styles.mobile}>
+        <Image src={logoTextBlackIcon} alt="Logo" />
+      </div>
+      <div className={styles.copyrightText}>&copy; 2021 Skillr</div>
     </div>
   </footer>
 );

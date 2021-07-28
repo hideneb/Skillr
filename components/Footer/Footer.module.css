@@ -56,6 +56,38 @@
   align-items: center;
 }
 
-.copyright span {
+@media only screen and (max-width: 600px) {
+  .copyright {
+    display: block;
+    text-align: center;
+  }
+}
+
+.copyrightText {
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .copyrightText {
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+}
+
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
 }
