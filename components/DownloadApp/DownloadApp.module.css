@@ -21,7 +21,9 @@
   font-size: 18px;
   line-height: 1.4;
   letter-spacing: -0.02em;
-  padding: 20px 200px 20px 16px;
+  /* padding: 20px 200px 20px 16px; */
+  padding: 20px 16px;
+  height: 64px;
   font-family: "SF Pro Text", sans-serif;
 }
 
@@ -47,4 +49,18 @@
   cursor: pointer;
   /* border: 2px solid #0c1f3f;
   border-left-color: #ff165f; */
+}
+
+@media only screen and (max-width: 600px) {
+  .button {
+    position: relative;
+    width: 100%;
+    top: unset;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    height: 64px;
+    margin-top: 1rem;
+    border-radius: 8px;
+  }
 }

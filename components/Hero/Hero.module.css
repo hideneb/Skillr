@@ -7,6 +7,13 @@
   padding-top: 5.625rem;
   margin-bottom: 14.125rem;
   background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    min-height: 830px;
+  }
 }
 
 .title {
@@ -17,7 +24,7 @@
 }
 
 .screens {
-  height: 530px;
+  /* height: 530px; */
   position: relative;
 }
 
@@ -26,4 +33,17 @@
   left: 50%;
   /* transform: translateX(-50%, -50%); */
   transform: translateX(-50%);
+}
+
+.screensMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .screensDesktop {
+    display: none;
+  }
+  .screensMobile {
+    display: block;
+  }
 }

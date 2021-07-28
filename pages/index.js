@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 import discoverImage from "../public/screen-discover.png";
 import connectImage from "../public/screen-connect.png";
 import becomeImage from "../public/screen-become.png";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -91,7 +92,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}></footer>
+      <Footer />
     </div>
   );
 }

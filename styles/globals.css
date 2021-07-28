@@ -79,6 +79,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  font-family: "SF Pro Text", sans-serif;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
 }
 
 button {
@@ -100,6 +103,15 @@ h2 {
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 40px;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-family: Inter, sans-serif;
 }
 
 p {
