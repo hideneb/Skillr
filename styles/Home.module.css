@@ -13,8 +13,19 @@
   align-items: center;
 }
 
-.section > div {
+@media only screen and (max-width: 767px) {
+  .section {
+    display: block;
+  }
+}
+
+.section__left {
   flex: 1;
+}
+
+@media only screen and (max-width: 767px) {
+  .section__left {
+  }
 }
 
 .section__left > div {
@@ -23,8 +34,45 @@
   margin-left: auto;
 }
 
+@media only screen and (max-width: 767px) {
+  .section__left > div {
+    text-align: left;
+    margin-right: auto;
+  }
+}
+
 .sectionConnect {
   flex-direction: row;
+  margin-top: -77px;
+}
+
+@media only screen and (max-width: 767px) {
+  .sectionConnect {
+    margin-top: 0;
+  }
+}
+
+.section__right {
+  flex: 1;
+  min-width: 451px;
+}
+
+@media only screen and (max-width: 767px) {
+  .section__right {
+    min-width: unset;
+    height: 590px;
+    text-align: center;
+    position: relative;
+    margin: 4.5rem 0 3rem;
+  }
+
+  .section__right > div {
+    position: absolute;
+    width: 451px;
+    top: 50%;
+    transform: translate(calc(-50% + 43px), calc(-50% + 43px));
+    left: 50%;
+  }
 }
 
 .sectionConnect .section__left > div {
@@ -33,16 +81,27 @@
   margin-left: 45px;
 }
 
-.section__image {
+@media only screen and (max-width: 767px) {
+  .sectionConnect .section__left > div {
+    min-width: unset;
+    margin-left: auto;
+  }
+}
+
+.sectionConnectScreen {
   display: flex;
   justify-content: flex-end;
+  flex: 1;
+  min-width: 451px;
 }
 
-.section__image > div {
-  margin-right: -130px;
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 767px) {
+  .sectionConnectScreen {
+    display: block;
+    min-width: unset;
+    text-align: center;
+    margin: 4.5rem 0 3rem;
+  }
 }
 
 .footer {
