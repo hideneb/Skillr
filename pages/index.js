@@ -90,6 +90,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className={styles.getEarlyAccess}>
+          <h2 className={styles.textCenter}>Get early access</h2>
+          <DownloadApp />
+        </div>
       </main>
 
       <Footer />

@@ -3,9 +3,14 @@ import Image from "next/image";
 import styles from "./DownloadApp.module.css";
 
 import appstoreImage from "../../public/appstore-coming.png";
+import { useRouter } from "next/dist/client/router";
 
 const DownloadApp = () => {
-  const handleSubmit = () => {};
+  const router = useRouter();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push("/success");
+  };
 
   return (
     <div className={styles.container}>
