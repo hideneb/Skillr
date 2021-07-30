@@ -11,8 +11,10 @@ const DownloadApp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.analytics?.identify({email})
-    setEmail('')
+    if (email) {
+      window.analytics?.identify({email});
+      setEmail('');
+    }
     router.push("/success");
   };
 
