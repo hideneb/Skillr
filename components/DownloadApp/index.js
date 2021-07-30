@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./DownloadApp.module.css";
 
@@ -7,8 +7,12 @@ import { useRouter } from "next/dist/client/router";
 
 const DownloadApp = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    window.analytics?.identify({email})
+    setEmail('')
     router.push("/success");
   };
 
@@ -24,6 +28,7 @@ const DownloadApp = () => {
           type="email"
           className={styles.input}
           placeholder="Enter email..."
+          onChange={(e) => {setEmail(e.target.value)}}
           required
         />
         <button className={styles.button}>Get Invite</button>
