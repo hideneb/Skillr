@@ -4,7 +4,7 @@ on:
   push:
     branches:
     - staging
-    # - production
+    - production
 
 jobs:
   deploy:
@@ -18,9 +18,22 @@ jobs:
       id: vars
       run: |
         # Current branch name
-        echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
-        # echo ::set-output name=api_url::${case "${GITHUB_REF#refs/*/}" in production) echo "${GITHUB_REF#refs/*/}" ;; *) ;; esac }.skillr.com
+        branch=${GITHUB_REF#refs/*/}
+        echo "::set-output name=branch::${branch}"
 
+        # S3 bucket name         
+        if [${branch} == 'production']
+        then
+            echo "::set-output name=bucket_name::skillr.com"
+        else
+            echo "::set-output name=bucket_name::${branch}.skillr.com"
+        fi
+      
+    - name: Set up .env file
+      run: |
+        branch = ${{ steps.vars.outputs.branch }}
+        echo "ANALYTICS_WRITE_KEY_${branch^^}" > .env
+      
     - name: Build
       run: yarn && yarn build && yarn export
 
@@ -32,4 +45,4 @@ jobs:
         aws-region: us-east-1
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./out/ s3://${{ steps.vars.outputs.short_ref }}.skillr.com --delete
+      run: aws s3 sync ./out/ s3://${{ steps.vars.outputs.bucket_name }} --delete
