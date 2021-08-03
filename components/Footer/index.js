@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 
 import facebookIcon from "../../public/facebook.png";
 import instagramIcon from "../../public/instagram.png";
-import linkedinIcon from "../../public/linkedin.png";
+import linkedinIcon from "../../public/linkedIn.png";
 import logoIcon from "../../public/logo-sm.png";
 import logoTextBlackIcon from "../../public/logo-black-text.svg";
 
