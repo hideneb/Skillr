@@ -31,8 +31,8 @@ jobs:
       
     - name: Set up .env file
       run: |
-        branch = ${{ steps.vars.outputs.branch }}
-        echo "ANALYTICS_WRITE_KEY_${branch}" > .env
+        branch = "${{ steps.vars.outputs.branch }}"
+        echo "ANALYTICS_WRITE_KEY_${branch^^}" > .env
       
     - name: Build
       run: yarn && yarn build && yarn export
