@@ -21,13 +21,13 @@ jobs:
         branch=${GITHUB_REF#refs/*/}
         echo "::set-output name=branch::${branch}"
 
-        # # S3 bucket name         
-        # if [${branch} == 'production']
-        # then
-        #     echo "::set-output name=bucket_name::skillr.com"
-        # else
-        #     echo "::set-output name=bucket_name::${branch}.skillr.com"
-        # fi
+        # S3 bucket name         
+        if [$branch == 'production']
+        then
+            echo "::set-output name=bucket_name::skillr.com"
+        else
+            echo "::set-output name=bucket_name::${branch}.skillr.com"
+        fi
       
     - name: Set up .env file
       run: |
