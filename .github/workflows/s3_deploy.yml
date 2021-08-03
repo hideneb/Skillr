@@ -22,7 +22,7 @@ jobs:
         # echo ::set-output name=api_url::${case "${GITHUB_REF#refs/*/}" in production) echo "${GITHUB_REF#refs/*/}" ;; *) ;; esac }.skillr.com
 
     - name: Build
-      run: yarn && yarn build
+      run: yarn && yarn build && yarn export
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -32,4 +32,4 @@ jobs:
         aws-region: us-east-1
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./.next/ s3://${{ steps.vars.outputs.short_ref }}.skillr.com --delete
+      run: aws s3 sync ./out/ s3://${{ steps.vars.outputs.short_ref }}.skillr.com --delete
