@@ -31,7 +31,7 @@ jobs:
       
     - name: Set up .env file
       run: |
-        branch = "${{ steps.vars.outputs.branch }}"
+        branch = ${GITHUB_REF#refs/*/}
         echo "ANALYTICS_WRITE_KEY_${branch^^}" > .env
       
     - name: Build
