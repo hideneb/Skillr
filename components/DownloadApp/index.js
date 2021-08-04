@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import styles from "./DownloadApp.module.css";
 
 import appstoreImage from "../../public/appstore-coming.png";
@@ -20,7 +19,7 @@ const DownloadApp = () => {
 
   return (
     <div className={styles.container}>
-      <Image src={appstoreImage} alt="App Store Coming Soon" />
+      <img src={appstoreImage.src} alt="App Store Coming Soon" />
       <p className={styles.description}>
         Sign up below to receive exclusive invite.
       </p>

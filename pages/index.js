@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import classNames from "classnames";
 import DownloadApp from "../components/DownloadApp";
 import Hero from "../components/Hero";
@@ -40,7 +39,7 @@ export default function Home() {
         <div className={styles.section}>
           <div className={styles.section__right}>
             <div>
-              <Image src={discoverImage} alt="Discover Skillrs" />
+              <img src={discoverImage.src} alt="Discover Skillrs" />
             </div>
           </div>
           <div className={styles.section__left}>
@@ -58,7 +57,7 @@ export default function Home() {
         <div className={classNames(styles.section, styles.sectionConnect)}>
           <div className={styles.sectionConnectScreen}>
             <div>
-              <Image src={connectImage} alt="One-Click Connect" />
+              <img src={connectImage.src} alt="One-Click Connect" />
             </div>
           </div>
           <div className={styles.section__left}>
@@ -76,7 +75,7 @@ export default function Home() {
         <div className={styles.section}>
           <div className={styles.section__right}>
             <div>
-              <Image src={becomeImage} alt="Become a Skillr" />
+              <img src={becomeImage.src} alt="Become a Skillr" />
             </div>
           </div>
           <div className={styles.section__left}>

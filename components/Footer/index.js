@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import styles from "./Footer.module.css";
 
 import facebookIcon from "../../public/facebook.png";
@@ -25,37 +24,37 @@ const Footer = () => (
       <div className={styles.socials}>
         <h4>Resources</h4>
         <a href="#">
-          <Image src={instagramIcon} alt="Instagram" />
+          <img src={instagramIcon.src} alt="Instagram" />
           <span>Instagram</span>
         </a>
         <a href="#">
-          <Image src={facebookIcon} alt="Facebook" />
+          <img src={facebookIcon.src} alt="Facebook" />
           <span>Facebook</span>
         </a>
         <a href="#">
-          <Image src={linkedinIcon} alt="LinkedIn" />
+          <img src={linkedinIcon.src} alt="LinkedIn" />
           <span>LinkedIn</span>
         </a>
       </div>
     </div>
     <div className={styles.socialsMobile}>
       <a href="#">
-        <Image src={instagramIcon} alt="Instagram" />
+        <img src={instagramIcon.src} alt="Instagram" />
       </a>
       <a href="#">
-        <Image src={facebookIcon} alt="Facebook" />
+        <img src={facebookIcon.src} alt="Facebook" />
       </a>
       <a href="#">
-        <Image src={linkedinIcon} alt="LinkedIn" />
+        <img src={linkedinIcon.src} alt="LinkedIn" />
       </a>
     </div>
 
     <div className={styles.copyright}>
       <div className={styles.desktop}>
-        <Image src={logoIcon} alt="Logo" />
+        <img src={logoIcon.src} alt="Logo" />
       </div>
       <div className={styles.mobile}>
-        <Image src={logoTextBlackIcon} alt="Logo" />
+        <img src={logoTextBlackIcon.src} alt="Logo" />
       </div>
       <div className={styles.copyrightText}>&copy; 2021 Skillr</div>
     </div>
