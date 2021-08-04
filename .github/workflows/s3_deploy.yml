@@ -22,7 +22,7 @@ jobs:
         echo "::set-output name=branch::${branch}"
 
         # S3 bucket name         
-        if ["$branch" = "production"]
+        if [ "$branch" = "production" ]
         then
             echo "::set-output name=bucket_name::skillr.com"
         else
