@@ -32,7 +32,7 @@ jobs:
     - name: Set up .env file
       run: |
         branch=${GITHUB_REF#refs/*/}
-        echo "ANALYTICS_WRITE_KEY_${branch^^}" > .env
+        echo "ANALYTICS_WRITE_KEY=ANALYTICS_WRITE_KEY_${branch^^}" > .env
       
     - name: Build
       run: yarn && yarn build && yarn export
