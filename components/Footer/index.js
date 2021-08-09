@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Footer.module.css";
 
-import facebookIcon from "../../public/facebook.png";
-import instagramIcon from "../../public/instagram.png";
-import linkedinIcon from "../../public/linkedIn.png";
-import logoIcon from "../../public/logo-sm.png";
+import facebookIcon from "../../public/social-facebook.svg";
+import instagramIcon from "../../public/social-instagram.svg";
+import linkedinIcon from "../../public/social-linkedin.svg";
+import logoIcon from "../../public/skillr-logomark-sm.svg";
 import logoTextBlackIcon from "../../public/logo-black-text.svg";
 
 const Footer = () => (

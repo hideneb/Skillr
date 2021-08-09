@@ -4,6 +4,10 @@
   padding: 24px;
 }
 
+.footer img {
+  display: block;
+}
+
 .links {
   display: flex;
 }
@@ -89,5 +93,9 @@
 
   .mobile {
     display: block;
+  }
+
+  .mobile img {
+    display: inline-block;
   }
 }
