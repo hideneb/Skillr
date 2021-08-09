@@ -10,17 +10,30 @@
   background-repeat: no-repeat;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .container {
-    min-height: 830px;
+    min-height: 760px;
+  }
+}
+
+@media only screen and (max-width: 389px) {
+  .container {
+    min-height: 820px;
   }
 }
 
 .title {
   color: #f2f3f4;
-  max-width: 750px;
-  padding: 0 3rem;
+  max-width: 700px;
+  padding: 0 24px;
   margin: 3.25rem auto;
+}
+
+@media only screen and (max-width: 700px) {
+  .title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
 }
 
 .screens {
@@ -39,7 +52,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .screensDesktop {
     display: none;
   }
