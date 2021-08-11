@@ -3,9 +3,9 @@ import classNames from "classnames";
 import DownloadApp from "../components/DownloadApp";
 import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
-import discoverImage from "../public/screen-discover.png";
-import connectImage from "../public/screen-connect.png";
-import becomeImage from "../public/screen-become.png";
+import discoverImage from "../public/screenshot-1.jpg";
+import connectImage from "../public/screenshot-2.jpg";
+import becomeImage from "../public/screenshot-3.jpg";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -55,7 +55,7 @@ export default function Home() {
         </div>
 
         <div className={classNames(styles.section, styles.sectionConnect)}>
-          <div className={styles.sectionConnectScreen}>
+          <div className={styles.section__right}>
             <div>
               <img src={connectImage.src} alt="One-Click Connect" />
             </div>
