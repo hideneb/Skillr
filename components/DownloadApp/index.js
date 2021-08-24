@@ -10,8 +10,22 @@ const DownloadApp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const {
+      utm_source,
+      utm_campaign,
+      utm_term,
+      utm_content,
+      utm_medium
+    } = router.query;
     if (email) {
-      window.analytics?.identify({ email, ...router.query });
+      window.analytics?.identify({
+        email,
+        utmsrc: utm_source,
+        utmcpn: utm_campaign,
+        utmterm: utm_term,
+        utmcntn: utm_content,
+        utmmed: utm_medium
+      });
       setEmail("");
     }
     router.push("/success");
