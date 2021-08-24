@@ -28,11 +28,15 @@ jobs:
         else
             echo "::set-output name=bucket_name::${branch}.skillr.com"
         fi
-      
-    - name: Set up .env file
+
+    - name: Set up env variables for next steps
       run: |
         branch=${GITHUB_REF#refs/*/}
-        echo "ANALYTICS_WRITE_KEY=ANALYTICS_WRITE_KEY_${branch^^}" > .env
+        echo "ANALYTICS_WRITE_KEY_SECRET_NAME=ANALYTICS_WRITE_KEY_${branch^^}" >> $GITHUB_ENV
+
+    - name: Set up .env file
+      run: |
+        echo "ANALYTICS_WRITE_KEY=${{secrets[env.ANALYTICS_WRITE_KEY_SECRET_NAME]}}" > .env
       
     - name: Build
       run: yarn && yarn build && yarn export
