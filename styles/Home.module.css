@@ -4,7 +4,8 @@
 
 .accessible {
   text-align: center;
-  margin: auto;
+  margin: 0 auto 25px;
+  max-width: 1100px;
 }
 
 .section {
@@ -24,13 +25,16 @@
   flex: 1;
 }
 
+.section__left p {
+  line-height: 1.6;
+}
+
 @media only screen and (max-width: 767px) {
   .section__left {
   }
 }
 
 .section__left > div {
-  text-align: right;
   max-width: 552px;
   margin-left: auto;
 }
@@ -109,4 +113,23 @@
   .getEarlyAccess {
     margin-top: 120px;
   }
+}
+
+.getInvite {
+  width: 211px;
+  border: 0.5px solid #c4cad0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 64px;
+  background: transparent;
+  color: #ff165f;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.more {
+  color: #ff165f;
 }
