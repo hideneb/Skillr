@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./Footer.module.css";
 
-import facebookIcon from "../../public/social-facebook.svg";
-import instagramIcon from "../../public/social-instagram.svg";
-import linkedinIcon from "../../public/social-linkedin.svg";
+// import facebookIcon from "../../public/social-facebook.svg";
+// import instagramIcon from "../../public/social-instagram.svg";
+// import linkedinIcon from "../../public/social-linkedin.svg";
 import logoIcon from "../../public/skillr-logomark-sm.svg";
 import logoTextBlackIcon from "../../public/logo-black-text.svg";
 
 const Footer = () => (
   <footer className={styles.footer}>
-    <div className={styles.links}>
+    {/* <div className={styles.links}>
       <div>
         <h4>Resources</h4>
         <a href="#">How it Works</a>
@@ -47,7 +47,7 @@ const Footer = () => (
       <a href="#">
         <img src={linkedinIcon.src} alt="LinkedIn" />
       </a>
-    </div>
+    </div> */}
 
     <div className={styles.copyright}>
       <div className={styles.desktop}>

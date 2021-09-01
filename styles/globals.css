@@ -127,11 +127,25 @@ p {
   }
 
   h2 {
-    font-size: 1.375rem;
+    font-size: 2rem;
     margin-bottom: 24px;
   }
 
   p {
     font-size: 1.25rem;
+  }
+}
+
+.tablet {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
   }
 }
