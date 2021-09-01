@@ -57,6 +57,6 @@ jobs:
           python3 -c '
         import json,sys;obj=json.load(sys.stdin);
         for element in (obj["DistributionList"]["Items"]):
-          if(element["DefaultCacheBehavior"]["TargetOriginId"] == ${{ steps.vars.outputs.bucket_name }}): print(element["Id"])')
+          if(element["DefaultCacheBehavior"]["TargetOriginId"] == "${{ steps.vars.outputs.bucket_name }}"): print(element["Id"])')
         aws cloudfront create-invalidation --distribution-id $distributionId \
         --paths "/*"
