@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import styles from "./DownloadApp.module.css";
 
 import appstoreImage from "../../public/button-appstore.svg";
 import { useRouter } from "next/dist/client/router";
 
-const DownloadApp = ({ description }) => {
+const DownloadApp = forwardRef(({ description }, ref) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
 
@@ -31,7 +31,11 @@ const DownloadApp = ({ description }) => {
       <img src={appstoreImage.src} alt="App Store Coming Soon" />
       <p className={styles.description}>{description}</p>
 
-      <form className={styles.inviteContainer} onSubmit={handleSubmit}>
+      <form
+        className={styles.inviteContainer}
+        onSubmit={handleSubmit}
+        ref={ref}
+      >
         <input
           type="email"
           className={styles.input}
@@ -45,6 +49,8 @@ const DownloadApp = ({ description }) => {
       </form>
     </div>
   );
-};
+});
+
+DownloadApp.displayName = "DownloadApp";
 
 export default DownloadApp;

@@ -24,6 +24,12 @@
   }
 }
 
+@media only screen and (max-width: 323px) {
+  .container {
+    min-height: 950px;
+  }
+}
+
 .title {
   color: #f2f3f4;
   max-width: 1100px;

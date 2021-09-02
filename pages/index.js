@@ -1,3 +1,4 @@
+import { useCallback, useRef } from "react";
 import Head from "next/head";
 import classNames from "classnames";
 import DownloadApp from "../components/DownloadApp";
@@ -10,6 +11,12 @@ import Footer from "../components/Footer";
 import Section from "../components/Section/Section";
 
 export default function Home() {
+  const inviteRef = useRef(null);
+
+  const handleGetInviteClicked = useCallback(() => {
+    inviteRef.current.scrollIntoView();
+  }, []);
+
   return (
     <div>
       <Head>
@@ -27,15 +34,18 @@ export default function Home() {
       <Hero />
 
       <main className={styles.main}>
-        <p className={styles.accessible}>
+        <h2 className={styles.accessible}>
           Skills on tap Stop wasting time trying to google it.
-        </p>
+        </h2>
         <p className={styles.accessible}>
           Want to tap into the minds of tutors, cooks, musicians and more? From
           sketchers to stretchers, top crafters to tech-heads, there’s a world
           of people ready to share what they know.
         </p>
-        <DownloadApp description="A limited number of exclusive invites are primed and ready to go. Want one?" />
+        <DownloadApp
+          ref={inviteRef}
+          description="A limited number of exclusive invites are primed and ready to go. Want one?"
+        />
 
         <Section
           image={discoverImage.src}
@@ -50,7 +60,10 @@ export default function Home() {
                 talking to a real life pro who&apos;ll take you through it and
                 teach you what you need to know. Yep, actually talking to them.
               </p>
-              <button className={classNames(styles.getInvite, styles.desktop)}>
+              <button
+                className={classNames(styles.getInvite, styles.desktop)}
+                onClick={handleGetInviteClicked}
+              >
                 Get Invite
               </button>
             </>
@@ -67,7 +80,7 @@ export default function Home() {
               in the middle of something and need some inspo, if you&apos;ve
               suddenly been struck by a glaring gap in your knowledge, or
               you&apos;ve just left it super last minute, you can connect to an
-              expert skillr. Like, right there and then. Instantly. With a
+              expert Skillr. Like, right there and then. Instantly. With a
               single tap.
             </p>
           }
@@ -76,8 +89,8 @@ export default function Home() {
 
         <Section
           image={becomeImage.src}
-          altText="Flip reverse it and make money sharing what you know"
-          title="Flip reverse it and make money sharing what you know"
+          altText="Flip it, reverse it and make money sharing what you know"
+          title="Flip it, reverse it and make money sharing what you know"
           description={
             <>
               <p>
@@ -85,7 +98,7 @@ export default function Home() {
                 users wanting to get their hands on you. Grab some cash from
                 your know-how in fitness, sport, beauty, languages, cooking,
                 DIY, tech, and pretty much anything else. Just think how many
-                new skills YOU could learn with all that sweet skillr dough.
+                new skills YOU could learn with all that sweet Skillr dough.
               </p>
               <p>
                 Wait there is <span className={styles.more}>more…</span>
