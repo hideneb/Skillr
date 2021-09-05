@@ -6,7 +6,7 @@ import screensMobileImage from "../../public/hero-mobile.png";
 const Hero = () => (
   <div className={styles.container}>
     <div>
-      <img src="/logo.svg" width={73} height={102} alt="Skillr Logo" />
+      <img src="/logo.svg" alt="Skillr Logo" />
       <h1 className={styles.title}>
         Whatever You Want to Learn, Whenever You Want to Learn It
       </h1>

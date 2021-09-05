@@ -1,13 +1,16 @@
 .container {
   text-align: center;
-  margin: 25px 0;
+}
+
+.container > img {
+  display: block;
+  margin: auto;
 }
 
 .description {
   font-size: 18px;
-  margin: 25px 0;
   max-width: 1100px;
-  margin: 25px auto;
+  margin: 21px auto;
 }
 
 .inviteContainer {

@@ -1,57 +1,87 @@
 .container {
-  min-height: 990px;
+  min-height: 1033px;
   width: 100%;
   background: #0c1f3f;
   background-image: url("/hero-bg.png");
   text-align: center;
-  padding: 2.5rem 10px 0;
-  margin-bottom: 14.125rem;
+  padding: 30px 10px 0;
+  margin-bottom: 199px;
   background-position: bottom center;
   background-repeat: no-repeat;
   margin-right: 10px;
 }
 
+@media only screen and (max-width: 804px) {
+  .container {
+    min-height: 1090px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    min-height: 1011px;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .container {
-    padding-top: 30px;
-    min-height: 850px;
+    min-height: 845px;
   }
 }
 
-@media only screen and (max-width: 429px) {
+@media only screen and (max-width: 658px) {
   .container {
-    min-height: 900px;
+    min-height: 891px;
   }
 }
 
-@media only screen and (max-width: 323px) {
+@media only screen and (max-width: 600px) {
   .container {
-    min-height: 950px;
+    min-height: 881px;
+  }
+}
+
+@media only screen and (max-width: 447px) {
+  .container {
+    min-height: 927px;
+  }
+}
+
+@media only screen and (max-width: 407px) {
+  .container {
+    min-height: 955px;
+  }
+}
+
+@media only screen and (max-width: 364px) {
+  .container {
+    min-height: 1001px;
   }
 }
 
 .title {
   color: #f2f3f4;
-  max-width: 1100px;
+  max-width: 850px;
   padding: 0 14px;
-  margin: 2.5rem auto;
+  margin: 47px auto 46px;
 }
-
+/*
 @media only screen and (max-width: 1120px) {
   .title {
     font-size: 3.5rem;
   }
 }
-
+*/
+/*
 @media only screen and (max-width: 900px) {
   .title {
     font-size: 3rem;
   }
 }
-
+*/
 @media only screen and (max-width: 768px) {
   .title {
-    font-size: 2.5rem;
+    font-size: 42px;
   }
 }
 
@@ -59,21 +89,24 @@
   color: #f2f3f4;
   letter-spacing: normal;
   max-width: 520px;
-  margin: 2.5rem auto;
+  margin: 0 auto 73px;
   padding: 0 14px;
   box-sizing: content-box;
 }
-
+/*
 @media only screen and (max-width: 700px) {
   .title {
     font-size: 2.5rem;
     line-height: 1.2;
   }
 }
-
+*/
 .screens {
-  /* height: 530px; */
   position: relative;
+}
+
+.screens img {
+  display: block;
 }
 
 .screens > div {

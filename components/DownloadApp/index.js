@@ -31,12 +31,9 @@ const DownloadApp = forwardRef(({ description }, ref) => {
       <img src={appstoreImage.src} alt="App Store Coming Soon" />
       <p className={styles.description}>{description}</p>
 
-      <form
-        className={styles.inviteContainer}
-        onSubmit={handleSubmit}
-        ref={ref}
-      >
+      <form className={styles.inviteContainer} onSubmit={handleSubmit}>
         <input
+          ref={ref}
           type="email"
           className={styles.input}
           placeholder="Give us your email…"

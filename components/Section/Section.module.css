@@ -1,39 +1,47 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 131px 0;
+}
+
 .section {
   display: flex;
   align-items: center;
-  margin: 5rem 0;
+}
+
+.title {
+  margin-bottom: 48px;
 }
 
 @media only screen and (max-width: 768px) {
+  .wrapper {
+    margin: 34px 0;
+  }
+
   .section {
     display: block;
-    margin: 38px 0;
     text-align: center;
+  }
+
+  .title {
+    margin-bottom: 40px;
   }
 }
 
 .section__left {
-  flex: 1;
-}
-
-.section__left p {
-  line-height: 1.6;
-}
-
-@media only screen and (max-width: 768px) {
-  .section__left {
-  }
-}
-
-.section__left > div {
   max-width: 552px;
   margin-left: auto;
 }
 
 @media only screen and (max-width: 768px) {
-  .section__left > div {
+  .section__left {
     margin-right: auto;
   }
+}
+
+.section__left {
+  line-height: 1.6;
 }
 
 .flip {
@@ -44,11 +52,6 @@
   .flip {
     margin-top: 0;
   }
-}
-
-.section__right {
-  flex: 1;
-  min-width: 451px;
 }
 
 .mobileFrame {
@@ -65,22 +68,18 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .section__right {
-    min-width: unset;
-  }
-
   .mobileFrame {
     margin: 0 auto 2.75rem;
   }
 }
 
-.flip .section__left > div {
+.flip .section__left {
   margin-right: auto;
   margin-left: 45px;
 }
 
 @media only screen and (max-width: 768px) {
-  .flip .section__left > div {
+  .flip .section__left {
     min-width: unset;
     margin-left: auto;
   }

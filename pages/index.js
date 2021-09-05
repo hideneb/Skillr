@@ -15,6 +15,7 @@ export default function Home() {
 
   const handleGetInviteClicked = useCallback(() => {
     inviteRef.current.scrollIntoView();
+    inviteRef.current.focus();
   }, []);
 
   return (
@@ -34,9 +35,7 @@ export default function Home() {
       <Hero />
 
       <main className={styles.main}>
-        <h2 className={styles.accessible}>
-          Skills on tap Stop wasting time trying to google it.
-        </h2>
+        <h2 className={styles.skillsOnTap}>Skills on tap</h2>
         <p className={styles.accessible}>
           Want to tap into the minds of tutors, cooks, musicians and more? From
           sketchers to stretchers, top crafters to tech-heads, there’s a world
@@ -93,14 +92,14 @@ export default function Home() {
           title="Flip it, reverse it and make money sharing what you know"
           description={
             <>
-              <p>
+              <p className={styles.noMargin}>
                 Got your own skills? Well we&apos;ve got a whole app-load of
                 users wanting to get their hands on you. Grab some cash from
                 your know-how in fitness, sport, beauty, languages, cooking,
                 DIY, tech, and pretty much anything else. Just think how many
                 new skills YOU could learn with all that sweet Skillr dough.
               </p>
-              <p>
+              <p className={styles.waitMore}>
                 Wait there is <span className={styles.more}>more…</span>
               </p>
             </>
@@ -108,9 +107,14 @@ export default function Home() {
         />
 
         <div className={styles.getEarlyAccess}>
-          <h2 className={styles.textCenter}>
+          <h3
+            className={classNames(
+              styles.textCenter,
+              styles.bottomDownloadDescription
+            )}
+          >
             Be the first to skill up with early access
-          </h2>
+          </h3>
           <DownloadApp description="That's right, you could get to use Skillr before anyone else. What outrageous favours must you do for us to get a super exclusive early access invite?! Just drop your email in and we'll send you one. Yeah, that's all." />
         </div>
       </main>
