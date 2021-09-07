@@ -56,7 +56,7 @@ const Footer = () => (
       <div className={styles.mobile}>
         <img src={logoTextBlackIcon.src} alt="Logo" />
       </div>
-      <div className={styles.copyrightText}>&copy; 2021 Skillr</div>
+      <div className={styles.copyrightText}>&copy; 2021 Skillr, Inc.</div>
     </div>
   </footer>
 );
