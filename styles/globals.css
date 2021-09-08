@@ -162,3 +162,14 @@ p {
     display: block;
   }
 }
+
+.mobileFrame {
+  border-radius: 20px;
+  box-shadow: 42.4708px 42.4708px 84.9415px rgba(12, 31, 63, 0.1);
+  overflow: hidden;
+}
+
+.mobileFrame > img {
+  width: 100%;
+  display: block;
+}

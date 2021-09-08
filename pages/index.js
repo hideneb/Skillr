@@ -115,7 +115,7 @@ export default function Home() {
           >
             Be the first to skill up with early access
           </h3>
-          <DownloadApp description="That's right, you could get to use Skillr before anyone else. What outrageous favours must you do for us to get a super exclusive early access invite?! Just drop your email in and we'll send you one. Yeah, that's all." />
+          <DownloadApp description="That's right, you could get to use Skillr before anyone else. What outrageous favors must you do for us to get a super exclusive early access invite?! Just drop your email in and we'll send you one. Yeah, that's all." />
         </div>
       </main>
 

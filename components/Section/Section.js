@@ -12,7 +12,7 @@ export default function Section({ image, altText, title, description, flip }) {
           <div className="desktop">{description}</div>
         </div>
         <div className={styles.section__right}>
-          <div className={styles.mobileFrame}>
+          <div className={classNames("mobileFrame", styles.frame)}>
             <img src={image} alt={altText} />
           </div>
           <div className="tablet">{description}</div>

@@ -1,0 +1,13 @@
+.textCenter {
+  text-align: center;
+}
+
+.getEarlyAccess {
+  margin: 120px 0;
+}
+
+@media (max-width: 768px) {
+  .getEarlyAccess {
+    margin: 2rem 0;
+  }
+}

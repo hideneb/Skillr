@@ -4,7 +4,7 @@ import styles from "./DownloadApp.module.css";
 import appstoreImage from "../../public/button-appstore.svg";
 import { useRouter } from "next/dist/client/router";
 
-const DownloadApp = forwardRef(({ description }, ref) => {
+const DownloadApp = forwardRef(({ description, imgHidden }, ref) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
 
@@ -28,7 +28,11 @@ const DownloadApp = forwardRef(({ description }, ref) => {
 
   return (
     <div className={styles.container}>
-      <img src={appstoreImage.src} alt="App Store Coming Soon" />
+      <img
+        src={appstoreImage.src}
+        className={`${!imgHidden ? "" : "desktop"}`}
+        alt="App Store Coming Soon"
+      />
       <p className={styles.description}>{description}</p>
 
       <form className={styles.inviteContainer} onSubmit={handleSubmit}>

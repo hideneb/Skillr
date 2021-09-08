@@ -3,7 +3,7 @@
 }
 
 .container > img {
-  display: block;
+  /* display: block; */
   margin: auto;
 }
 
@@ -11,6 +11,7 @@
   font-size: 18px;
   max-width: 1100px;
   margin: 21px auto;
+  max-width: 880px;
 }
 
 .inviteContainer {
