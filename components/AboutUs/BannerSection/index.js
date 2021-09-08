@@ -3,14 +3,6 @@ import classNames from "classnames";
 
 import styles from "./Banner.module.css";
 
-import hatIcon from "../../../public/icons/icon-hat.svg";
-import speechIcon from "../../../public/icons/icon-speach-bubble.svg";
-import bikeIcon from "../../../public/icons/icon-bike.svg";
-import appleIcon from "../../../public/icons/icon-apple.svg";
-import dramaIcon from "../../../public/icons/icon-drama.svg";
-import muscleIcon from "../../../public/icons/icon-muscle.svg";
-import yogaIcon from "../../../public/icons/icon-yoga.svg";
-
 export default function BannerSection() {
   return (
     <>
@@ -30,28 +22,48 @@ export default function BannerSection() {
 
         <div className={styles.iconContainer}>
           <div className={styles.iconWrapper}>
-            <img src={hatIcon.src} alt="hat" className={styles.iconItem} />
             <img
-              src={speechIcon.src}
+              src="/icons/icon-hat.svg"
+              alt="hat"
+              className={styles.iconItem}
+            />
+            <img
+              src="/icons/icon-speach-bubble.svg"
               alt="speech"
               className={styles.iconItem}
             />
-            <img src={bikeIcon.src} alt="bike" className={styles.iconItem} />
-            <img src={appleIcon.src} alt="apple" className={styles.iconItem} />
-            <img src={dramaIcon.src} alt="drama" className={styles.iconItem} />
             <img
-              src={muscleIcon.src}
+              src="/icons/icon-bike.svg"
+              alt="bike"
+              className={styles.iconItem}
+            />
+            <img
+              src="/icons/icon-apple.svg"
+              alt="apple"
+              className={styles.iconItem}
+            />
+            <img
+              src="/icons/icon-drama.svg"
+              alt="drama"
+              className={styles.iconItem}
+            />
+            <img
+              src="/icons/icon-muscle.svg"
               alt="muscle"
               className={styles.iconItem}
             />
-            <img src={yogaIcon.src} alt="yoga" className={styles.iconItem} />
+            <img
+              src="/icons/icon-yoga.svg"
+              alt="yoga"
+              className={styles.iconItem}
+            />
           </div>
         </div>
       </div>
 
       <div className={classNames("tablet", styles.textCenter)}>
         <div className={styles.pocketItem}>
-          <img src={yogaIcon.src} alt="" />
+          <img src="/icons/icon-yoga.svg" alt="yoga" />
           <div className={styles.pocketDescription}>
             <p>
               Help you stay healthy, learn the latest TikTok dance, fix a
@@ -62,7 +74,7 @@ export default function BannerSection() {
         </div>
 
         <div className={styles.pocketItem}>
-          <img src={hatIcon.src} alt="" />
+          <img src="/icons/icon-hat.svg" alt="hat" />
           <div className={styles.pocketDescription}>
             <p>
               In just one click, you can get face time with someone who’s
@@ -72,7 +84,7 @@ export default function BannerSection() {
         </div>
 
         <div className={styles.pocketItem}>
-          <img src={appleIcon.src} alt="" />
+          <img src="/icons/icon-apple.svg" alt="apple" />
           <div className={styles.pocketDescription}>
             <p>
               Skillrs are vetted and approved, so you can learn from the best.{" "}
