@@ -28,11 +28,13 @@
 }
 
 .navbar {
-  max-width: 500px;
-  margin: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+}
+
+.navbar .link:nth-child(2) {
+  margin: 0 40px 0 73px;
 }
 
 @media (max-width: 768px) {
@@ -40,6 +42,10 @@
     flex-direction: column;
   }
   .navbar .link {
+    margin: 6px 0;
+  }
+
+  .navbar .link:nth-child(2) {
     margin: 6px 0;
   }
 }

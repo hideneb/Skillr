@@ -2,13 +2,16 @@ import React from "react";
 import classNames from "classnames";
 import screenImage from "../../../public/about-us-screen1.png";
 import styles from "./Hero.module.css";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.left}>
-          <img src="/logo.svg" alt="Skillr Logo" />
+          <Link href="/" passHref>
+            <img src="/logo.svg" alt="Skillr Logo" />
+          </Link>
           <h1>Meet Skillr</h1>
           <p className={styles.fontBold}>
             One-to-one skill sharing anytime, anywhere (cause you got things to
@@ -19,7 +22,10 @@ export default function Hero() {
             A kickass community to help you learn, problem-solve or be
             entertained. Yeah, we are all that.
           </p>
-          <p className={classNames("desktop", styles.fontBold)} style={{ marginTop: "33px" }}>
+          <p
+            className={classNames("desktop", styles.fontBold)}
+            style={{ marginTop: "33px" }}
+          >
             Skillr is the easiest way to connect and learn from professionals on
             your own schedule.
           </p>
@@ -30,9 +36,8 @@ export default function Hero() {
           </div>
           <p className={classNames("tablet", styles.fontBold)}>
             A kickass community to help you learn, problem-solve or be
-            entertained. Yeah, we are all that.
-            Skillr is the easiest way to connect and learn from professionals on
-            your own schedule.
+            entertained. Yeah, we are all that. Skillr is the easiest way to
+            connect and learn from professionals on your own schedule.
           </p>
         </div>
       </div>

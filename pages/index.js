@@ -9,6 +9,7 @@ import connectImage from "../public/screenshot-2.jpg";
 import becomeImage from "../public/screenshot-3.jpg";
 import Footer from "../components/Footer";
 import Section from "../components/Section/Section";
+import Link from "next/link";
 
 export default function Home() {
   const inviteRef = useRef(null);
@@ -100,7 +101,10 @@ export default function Home() {
                 new skills YOU could learn with all that sweet Skillr dough.
               </p>
               <p className={styles.waitMore}>
-                Wait there is <span className={styles.more}>more…</span>
+                Wait there is{" "}
+                <Link href="/become-skillr" passHref>
+                  <span className={styles.more}>more…</span>
+                </Link>
               </p>
             </>
           }

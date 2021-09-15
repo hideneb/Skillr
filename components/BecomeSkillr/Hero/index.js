@@ -4,11 +4,14 @@ import becomeSkillr from "../../../public/become-skillr-screens.png";
 import becomeSkillrMobile from "../../../public/become-skillr-mobile.png";
 import styles from "./Hero.module.css";
 import classNames from "classnames";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <div className={styles.container}>
-      <img src="/logo.svg" alt="Skillr Logo" />
+      <Link href="/" passHref>
+        <img src="/logo.svg" alt="Skillr Logo" />
+      </Link>
       <div className={styles.contentWrapper}>
         <div className={classNames("desktop", styles.screens)}>
           <div className={styles.screensDesktop}>
