@@ -12,7 +12,7 @@
 }
 
 .modal {
-  background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  background: linear-gradient(0deg, #ffffff, #ffffff);
   opacity: 0.95;
   backdrop-filter: blur(15px);
   border-radius: 20px;
@@ -29,6 +29,8 @@
   position: absolute;
   top: 26px;
   right: 27px;
+  background-color: transparent;
+  border: none;
 }
 
 .listTitle {
