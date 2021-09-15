@@ -3,10 +3,12 @@ import styles from "./DownloadApp.module.css";
 
 import appstoreImage from "../../public/button-appstore.svg";
 import { useRouter } from "next/dist/client/router";
+import SuccessModal from "../SuccessModal";
 
 const DownloadApp = forwardRef(({ description, imgHidden }, ref) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
+  const [showModal, setShowModal] = useState(false); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +24,8 @@ const DownloadApp = forwardRef(({ description, imgHidden }, ref) => {
         utmmed: utm_medium,
       });
       setEmail("");
+      setShowModal(true)
     }
-    router.push("/success");
   };
 
   return (
@@ -48,6 +50,10 @@ const DownloadApp = forwardRef(({ description, imgHidden }, ref) => {
         />
         <button className={styles.button}>Get Invite</button>
       </form>
+      <SuccessModal
+        onClose={() => setShowModal(false)}
+        show={showModal}
+      />
     </div>
   );
 });

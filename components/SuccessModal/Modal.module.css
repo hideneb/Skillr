@@ -1,0 +1,98 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal {
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  opacity: 0.95;
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  max-width: 1197px;
+  margin-left: 123px;
+  margin-right: 123px;
+  width: 100%;
+  height: 300px;
+  padding: 15px 100px;
+  position: relative;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 26px;
+  right: 27px;
+}
+
+.listTitle {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 70px;
+  color: rgba(12, 31, 63, 1);
+  margin-bottom: 20px;
+}
+
+.listDescription {
+  font-size: 33px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 0em;
+}
+
+.modalContent {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+@media (max-width: 1200px) {
+  .listTitle {
+    font-size: 42px;
+    line-height: 58px;
+  }
+  .listDescription {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .modal {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+.modalContent div:not(.contentBox) {
+  margin: 0 !important;
+}
+
+.contentBox {
+  margin-left: 40px;
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    display: block;
+    text-align: center;
+  }
+  .modal {
+    height: 550px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  .modalContent div:not(.contentBox) {
+    margin: 0 auto !important;
+  }
+  .contentBox {
+    margin-left: 0;
+  }
+}
