@@ -11,8 +11,10 @@ const Hero = () => (
         Whatever You Want to Learn, Whenever You Want to Learn It
       </h1>
       <p className={styles.description}>
-        Speak to real people, real quick with one-to-one video call
-        skill-sharing sessions.
+        Speak to real people, real quick with{" "}
+        <span className={styles.block}>
+          one-to-one video call skill-sharing sessions.
+        </span>
       </p>
       <div className={styles.screens}>
         <div className={styles.screensDesktop}>
