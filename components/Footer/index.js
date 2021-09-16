@@ -18,15 +18,19 @@ const Footer = () => {
         <div className={styles.navbarBox}>
           <div className={styles.navbar}>
             <div className={styles.link}>
-              <Link href={{ pathname: "/", query }}>Home</Link>
+              <Link href={{ pathname: "/", query }} scroll={false}>
+                Home
+              </Link>
             </div>
             <div className={styles.link}>
-              <Link href={{ pathname: "/become-skillr", query }}>
+              <Link href={{ pathname: "/become-skillr", query }} scroll={false}>
                 Become a Skillr
               </Link>
             </div>
             <div className={styles.link}>
-              <Link href={{ pathname: "/about-us", query }}>About Us</Link>
+              <Link href={{ pathname: "/about-us", query }} scroll={false}>
+                About Us
+              </Link>
             </div>
           </div>
         </div>
