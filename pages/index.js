@@ -6,7 +6,7 @@ import Hero from "../components/Hero";
 import styles from "../styles/Home.module.css";
 import discoverImage from "../public/screenshot-1.jpg";
 import connectImage from "../public/screenshot-2.jpg";
-import becomeImage from "../public/screenshot-3.png";
+import becomeImage from "../public/screenshot-3.jpg";
 import Footer from "../components/Footer";
 import Section from "../components/Section/Section";
 import Link from "next/link";
