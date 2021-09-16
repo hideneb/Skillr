@@ -37,7 +37,11 @@ jobs:
     - name: Set up .env file
       run: |
         echo "ANALYTICS_WRITE_KEY=${{secrets[env.ANALYTICS_WRITE_KEY_SECRET_NAME]}}" > .env
-        echo "ENVIRONMENT=${{ steps.vars.outputs.branch }}" >> .env
+        echo "NEXT_PUBLIC_ENVIRONMENT=${{ steps.vars.outputs.branch }}" >> .env
+        echo "NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
+        echo ".env file:"
+        cat .env
+        echo "[auth]\ntoken=${{ secrets.SENTRY_AUTH_TOKEN }}" > .sentryclirc
       
     - name: Build
       run: yarn && yarn build && yarn export
