@@ -5,11 +5,13 @@ import becomeSkillrMobile from "../../../public/become-skillr-mobile.png";
 import styles from "./Hero.module.css";
 import classNames from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Hero() {
+  const { query } = useRouter();
   return (
     <div className={styles.container}>
-      <Link href="/" passHref>
+      <Link href={{ pathname: "/", query }} passHref>
         <img src="/logo.svg" alt="Skillr Logo" />
       </Link>
       <div className={styles.contentWrapper}>

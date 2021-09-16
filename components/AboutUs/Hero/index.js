@@ -3,13 +3,15 @@ import classNames from "classnames";
 import screenImage from "../../../public/about-us-screen1.png";
 import styles from "./Hero.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Hero() {
+  const { query } = useRouter();
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.left}>
-          <Link href="/" passHref>
+          <Link href={{ pathname: "/", query }} passHref>
             <img src="/logo.svg" alt="Skillr Logo" />
           </Link>
           <h1>Meet Skillr</h1>
