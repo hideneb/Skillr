@@ -10,9 +10,11 @@ import becomeImage from "../public/screenshot-3.jpg";
 import Footer from "../components/Footer";
 import Section from "../components/Section/Section";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const inviteRef = useRef(null);
+  const { query } = useRouter();
 
   const handleGetInviteClicked = useCallback(() => {
     inviteRef.current.scrollIntoView();
@@ -102,7 +104,7 @@ export default function Home() {
               </p>
               <p className={styles.waitMore}>
                 Wait there is{" "}
-                <Link href="/become-skillr" passHref>
+                <Link href={{ pathname: "/become-skillr", query }} passHref>
                   <span className={styles.more}>more…</span>
                 </Link>
               </p>
