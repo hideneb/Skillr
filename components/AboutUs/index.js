@@ -5,7 +5,7 @@ import Section from "../Section/Section";
 import BottomSection from "./BottomSection";
 import Footer from "../Footer";
 import BannerSection from "./BannerSection";
-import fingerImage from "../../public/screenshot-4.png";
+import fingerImage from "../../public/screenshot-4.jpg";
 
 export default function AboutUs() {
   return (
