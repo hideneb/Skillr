@@ -17,7 +17,7 @@ export default function Home() {
   const { query } = useRouter();
 
   const handleGetInviteClicked = useCallback(() => {
-    inviteRef.current.scrollIntoView();
+    inviteRef.current.scrollIntoView({ behavior: 'smooth' });
     inviteRef.current.focus();
   }, []);
 
