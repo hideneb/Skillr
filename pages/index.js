@@ -17,14 +17,14 @@ export default function Home() {
   const { query } = useRouter();
 
   const handleGetInviteClicked = useCallback(() => {
-    inviteRef.current.scrollIntoView({ behavior: 'smooth' });
+    inviteRef.current.scrollIntoView({ behavior: "smooth" });
     inviteRef.current.focus();
   }, []);
 
   return (
     <div>
       <Head>
-        <title>Skillr</title>
+        <title>Skills on tap</title>
         <meta name="description" content="Skillr" />
         <link
           rel="preload"
