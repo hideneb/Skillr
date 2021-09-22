@@ -51,9 +51,9 @@ export default function AboutUs() {
                 help, writing songs that can climb the charts.
               </p>
               <p className={styles.ndBlockMarginTop}>
-                Hit Instant Connect, and go (ba da bing, you’re on your way to
-                new skills in no time). Chat with the pros, put away your phone,
-                and pat yourself on the back for learning something new today.
+                Hit Instant Match, and go (ba da bing, you’re on your way to new
+                skills in no time). Chat with the pros, put away your phone, and
+                pat yourself on the back for learning something new today.
                 Welcome to the Skillr fam, babe.
               </p>
             </>
