@@ -3,9 +3,16 @@ import classNames from "classnames";
 
 import styles from "./Section.module.css";
 
-export default function Section({ image, altText, title, description, flip }) {
+export default function Section({
+  image,
+  altText,
+  title,
+  description,
+  flip,
+  style,
+}) {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} style={style}>
       <div className={classNames(styles.section, { [styles.flip]: flip })}>
         <div className={styles.section__left}>
           <h2 className={styles.title}>{title}</h2>
