@@ -38,9 +38,16 @@
   margin-right: 8rem;
 }
 
+@media (max-width: 992px) {
+  .left {
+    margin-right: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .left {
-    margin-right: 0;
+    margin-right: auto;
+    margin-left: auto;
   }
   .right {
     margin-top: 2rem;

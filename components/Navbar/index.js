@@ -1,0 +1,79 @@
+import React, { useEffect, useState } from "react";
+import styles from "./Navbar.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+import logoNavbar from "../../public/logo-navbar.svg";
+import classNames from "classnames";
+
+export default function Navbar() {
+  const { query } = useRouter();
+  const [open, setOpen] = useState(false);
+
+  let autoResize = () => {
+    if (window.innerWidth < 768) {
+      setOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", autoResize);
+    autoResize();
+  }, []);
+
+  return (
+    <div
+      className={!open ? styles.navbar : classNames(styles.open, styles.navbar)}
+    >
+      <div className={styles.navbarContainer}>
+        <div className={styles.navbarMain}>
+          <Link href="/" passHref>
+            <img src={logoNavbar.src} className={styles.mobileLogo} alt="" />
+          </Link>
+          <div className={classNames("tablet")}>
+            <div
+              className={styles.hamburgerIcon}
+              onClick={() => setOpen(!open)}
+            >
+              <span></span>
+            </div>
+          </div>
+          <div className={classNames("desktop")}>
+            <div className={styles.navbarLink}>
+              <div className={styles.link}>
+                <Link
+                  href={{ pathname: "/become-skillr", query }}
+                  scroll={false}
+                >
+                  Become a Skillr
+                </Link>
+              </div>
+              <div className={styles.link}>
+                <Link href={{ pathname: "/about-us", query }} scroll={false}>
+                  About Us
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className={classNames("tablet", styles.mobileMenu)}>
+            <div className={styles.mobileLink}>
+              <div className={styles.link}>
+                <Link
+                  href={{ pathname: "/become-skillr", query }}
+                  scroll={false}
+                >
+                  Become a Skillr
+                </Link>
+              </div>
+              <div className={styles.link}>
+                <Link href={{ pathname: "/about-us", query }} scroll={false}>
+                  About Us
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

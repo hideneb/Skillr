@@ -1,0 +1,135 @@
+.navbarContainer {
+  max-width: 1440px;
+  margin: auto;
+  padding: 19px 44px 21px;
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .navbarContainer {
+    padding: 35px 18px 35px 39px;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+
+    transition: all 0.1s ease;
+  }
+  .open .navbarContainer {
+    background-color: rgba(12, 31, 63, 1);
+  }
+  .mobileLogo {
+    height: 0;
+    transition: height 0.3s ease;
+  }
+}
+
+.open .mobileLogo {
+  height: 28px;
+}
+
+.navbar {
+  background: rgba(12, 31, 63, 1);
+  margin-bottom: -3px;
+  position: relative;
+}
+
+.navbarMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.navbarLink {
+  display: flex;
+}
+
+.navbarLink .link:not(:last-child) {
+  margin-right: 30px;
+}
+
+.navbarLink .link a {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: -0.02em;
+  color: white;
+  text-align: center;
+}
+
+.hamburgerIcon span {
+  display: block;
+  width: 36px;
+  height: 4px;
+
+  background: #ffffff;
+  border-radius: 60px;
+  position: relative;
+  transition: all 0.3 ease-in-out;
+}
+
+.hamburgerIcon {
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.hamburgerIcon span::after,
+.hamburgerIcon span::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 4px;
+  background: #ffffff;
+  border-radius: 60px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburgerIcon span::after {
+  top: 11px;
+}
+
+.hamburgerIcon span::before {
+  bottom: 11px;
+}
+.open .hamburgerIcon span {
+  background-color: transparent;
+}
+.open .hamburgerIcon span::after {
+  transform: translateY(-11px) rotate(45deg);
+  width: 36px;
+}
+
+.open .hamburgerIcon span::before {
+  transform: translateY(11px) rotate(-45deg);
+  width: 36px;
+}
+
+.mobileMenu {
+  width: 100%;
+  height: 0;
+  background-color: rgba(12, 31, 63, 1);
+  transition: height 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.mobileLink .link a {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 45px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: white;
+}
+
+.mobileLink .link:not(:last-child) {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.open .mobileMenu {
+  height: 240px;
+}
