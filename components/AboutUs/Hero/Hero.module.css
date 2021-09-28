@@ -61,3 +61,7 @@
     margin: 0 auto 2.75rem;
   }
 }
+
+.fontItalic {
+  font-style: italic;
+}

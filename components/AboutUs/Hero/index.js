@@ -16,20 +16,23 @@ export default function Hero() {
           </Link>
           <h1>Meet Skillr</h1>
           <p className={styles.fontBold}>
-            One-to-one skill sharing anytime, anywhere (cause you got things to
-            do). An app where makers, masters, scholars and students of life
-            rendezvous.
+            We&apos;re your connect for one-on-one live video chatting with
+            experts anytime for whatever life throws at you. An app where
+            you&apos;re getting coached, get answers, or be entertained{" "}
+            <span className={styles.fontItalic}>
+              right now, one-on-one, and by the minute.
+            </span>
           </p>
           <p className={classNames("desktop", styles.fontBold)}>
-            A kickass community to help you learn, problem-solve or be
-            entertained. Yeah, we are all that.
+            That&apos;s right, we&apos;re your one-stop shop with SKILL ON TAP
+            so you can KNOW HOW RIGHT NOW .
           </p>
           <p
             className={classNames("desktop", styles.fontBold)}
             style={{ marginTop: "33px" }}
           >
-            Skillr is the easiest way to connect and learn from professionals on
-            your own schedule.
+            Yup, Skillr just got you video chatting with a pro as easy as
+            getting a cab. You&apos;re welcome. Welcome.
           </p>
         </div>
         <div className={styles.right}>
@@ -37,9 +40,15 @@ export default function Hero() {
             <img src={screenImage.src} alt="Screen" />
           </div>
           <p className={classNames("tablet", styles.fontBold)}>
-            A kickass community to help you learn, problem-solve or be
-            entertained. Yeah, we are all that. Skillr is the easiest way to
-            connect and learn from professionals on your own schedule.
+            That&apos;s right, we&apos;re your one-stop shop with SKILL ON TAP
+            so you can KNOW HOW RIGHT NOW .
+          </p>
+          <p
+            className={classNames("tablet", styles.fontBold)}
+            style={{ marginTop: "33px" }}
+          >
+            Yup, Skillr just got you video chatting with a pro as easy as
+            getting a cab. You&apos;re welcome. Welcome.
           </p>
         </div>
       </div>
