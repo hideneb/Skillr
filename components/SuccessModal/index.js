@@ -21,7 +21,11 @@ export default function SuccessModal({ show, onClose }) {
     <div className={styles.modalWrapper}>
       <div className={styles.modal}>
         <button onClick={onClose} className={styles.closeIcon}>
-          <img src={IconClose.src} alt="Modal Close" />
+          <img
+            src={IconClose.src}
+            alt="Modal Close"
+            className={styles.cursorPointer}
+          />
         </button>
         <div className={styles.modalContent}>
           <Lottie options={defaultOptions} width={240} height={270} />
