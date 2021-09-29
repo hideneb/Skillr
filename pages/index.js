@@ -39,7 +39,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h2 className={styles.skillsOnTap}>
-          Skills on tap<sup className={classNames("tm")}>TM</sup>
+          Skills on tap<sup className="tm">TM</sup>
         </h2>
         <p className={styles.accessible}>
           Want to tap into the minds of tutors, cooks, musicians and more? From

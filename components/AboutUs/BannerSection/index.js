@@ -15,7 +15,7 @@ export default function BannerSection() {
   return (
     <>
       <h2 className={styles.prosPocket}>
-        Pros in your pocket<sup className={classNames("tm")}>TM</sup>
+        Pros in your pocket<sup className="tm">TM</sup>
       </h2>
 
       <div className={classNames("desktop")}>

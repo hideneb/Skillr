@@ -21,7 +21,7 @@ export default function AboutUs() {
           title={
             <>
               Experts at your fingertips
-              <sup className={classNames("tm")}>TM</sup>
+              <sup className="tm">TM</sup>
               <p className={styles.stBlockMarginTop}>
                 Personalized, on-demand coaching used to be a privilege, but we
                 say to hell with that. Everybody deserves access to a network of
@@ -48,7 +48,7 @@ export default function AboutUs() {
           title={
             <>
               You&apos;ll be saying, &#34;I got a guy
-              <sup className={classNames("tm")}>TM</sup>&#34; for everything
+              <sup className="tm">TM</sup>&#34; for everything
               <p className={styles.ndBlockMarginTop}>
                 Download the app (we’ll wait). Search for a skill, yoga, tech
                 help, writing songs that can climb the charts.
