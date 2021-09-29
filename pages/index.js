@@ -38,7 +38,9 @@ export default function Home() {
       <Hero />
 
       <main className={styles.main}>
-        <h2 className={styles.skillsOnTap}>Skills on tap</h2>
+        <h2 className={styles.skillsOnTap}>
+          Skills on tap<sup className="tm">TM</sup>
+        </h2>
         <p className={styles.accessible}>
           Want to tap into the minds of tutors, cooks, musicians and more? From
           sketchers to stretchers, top crafters to tech-heads, there’s a world
