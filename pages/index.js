@@ -93,6 +93,7 @@ export default function Home() {
 
         <Section
           image={becomeImage.src}
+          imageBorder
           altText="Flip it, reverse it and make money sharing what you know"
           title="Flip it, reverse it and make money sharing what you know"
           description={
