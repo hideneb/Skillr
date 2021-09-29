@@ -25,7 +25,9 @@ export default function Hero() {
           </p>
           <p className={classNames("desktop", styles.fontBold)}>
             That&apos;s right, we&apos;re your one-stop shop with SKILL ON TAP
-            so you can KNOW HOW RIGHT NOW .
+            <sup className={classNames("tm")}>TM</sup>
+            so you can KNOW HOW RIGHT NOW
+            <sup className={classNames("tm")}>TM</sup>.
           </p>
           <p
             className={classNames("desktop", styles.fontBold)}
@@ -41,7 +43,9 @@ export default function Hero() {
           </div>
           <p className={classNames("tablet", styles.fontBold)}>
             That&apos;s right, we&apos;re your one-stop shop with SKILL ON TAP
-            so you can KNOW HOW RIGHT NOW .
+            <sup className={classNames("tm")}>TM</sup>
+            so you can KNOW HOW RIGHT NOW
+            <sup className={classNames("tm")}>TM</sup>.
           </p>
           <p
             className={classNames("tablet", styles.fontBold)}

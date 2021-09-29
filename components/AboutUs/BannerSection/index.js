@@ -14,7 +14,9 @@ import yogaIcon from "../../../public/icons/icon-yoga.svg";
 export default function BannerSection() {
   return (
     <>
-      <h2 className={styles.prosPocket}>Pros in your pocket</h2>
+      <h2 className={styles.prosPocket}>
+        Pros in your pocket<sup className={classNames("tm")}>TM</sup>
+      </h2>
 
       <div className={classNames("desktop")}>
         <p className={styles.textCenter}>
