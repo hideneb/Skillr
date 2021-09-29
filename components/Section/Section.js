@@ -10,6 +10,7 @@ export default function Section({
   description,
   flip,
   style,
+  imageBorder,
 }) {
   return (
     <div className={styles.wrapper} style={style}>
@@ -19,7 +20,10 @@ export default function Section({
           <div className="desktop">{description}</div>
         </div>
         <div className={styles.section__right}>
-          <div className={classNames("mobileFrame", styles.frame)}>
+          <div
+            className={classNames("mobileFrame", styles.frame)}
+            style={{ border: imageBorder ? "1px solid #e5e8e9" : "" }}
+          >
             <img src={image} alt={altText} />
           </div>
           <div className="tablet">{description}</div>
