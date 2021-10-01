@@ -89,6 +89,10 @@
   .navTab {
     flex-direction: column;
   }
+  .navTab .tabLink {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 .bioWrapper {
