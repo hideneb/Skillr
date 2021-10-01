@@ -23,6 +23,10 @@
   }
 }
 
+.mobileLogo {
+  cursor: pointer;
+}
+
 .open .mobileLogo {
   height: 28px;
 }

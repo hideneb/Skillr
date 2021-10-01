@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <div className={styles.container}>
       <Link href={{ pathname: "/", query }} passHref>
-        <img src="/logo.svg" alt="Skillr Logo" />
+        <img src="/logo.svg" alt="Skillr Logo" className={styles.curPointer} />
       </Link>
       <div className={styles.contentWrapper}>
         <div className={classNames("desktop", styles.screens)}>
