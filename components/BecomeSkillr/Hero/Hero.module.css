@@ -121,7 +121,8 @@
   .screensMobile {
     display: block;
   }
-  .screens img {
-    /* top: 70px; */
-  }
+}
+
+.curPointer {
+  cursor: pointer;
 }

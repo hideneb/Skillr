@@ -71,20 +71,7 @@
   padding: 0 14px;
   margin: 47px auto 46px;
 }
-/*
-@media only screen and (max-width: 1120px) {
-  .title {
-    font-size: 3.5rem;
-  }
-}
-*/
-/*
-@media only screen and (max-width: 900px) {
-  .title {
-    font-size: 3rem;
-  }
-}
-*/
+
 @media only screen and (max-width: 768px) {
   .title {
     font-size: 42px;
@@ -100,14 +87,7 @@
   box-sizing: content-box;
   font-weight: bold;
 }
-/*
-@media only screen and (max-width: 700px) {
-  .title {
-    font-size: 2.5rem;
-    line-height: 1.2;
-  }
-}
-*/
+
 .screens {
   position: relative;
 }
@@ -119,7 +99,6 @@
 .screens > div {
   position: absolute;
   left: 50%;
-  /* transform: translateX(-50%, -50%); */
   transform: translateX(-50%);
 }
 
@@ -144,4 +123,8 @@
   .block {
     display: inline;
   }
+}
+
+.curPointer {
+  cursor: pointer;
 }
