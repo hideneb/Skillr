@@ -88,6 +88,7 @@
 @media (max-width: 768px) {
   .navTab {
     flex-direction: column;
+    margin-top: 2.4rem;
   }
   .navTab .tabLink {
     margin-top: 10px;

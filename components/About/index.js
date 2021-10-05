@@ -273,7 +273,7 @@ export default function About() {
           />
         </div>
 
-        <div className={styles.aboutTeam}>
+        <div className={classNames(styles.aboutTeam, "desktop")}>
           <img src={aboutTeam.src} alt="About Team" />
         </div>
 
