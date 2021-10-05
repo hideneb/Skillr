@@ -15,6 +15,9 @@ import Bio from "../Bio";
 import CasselShapiro from "../../public/bio/CasselShapiro.png";
 import WebsterRoss from "../../public/bio/WebsterRoss.png";
 import StevenMiller from "../../public/bio/StevenMiller.png";
+import CasselShapiroHover from "../../public/bio/CasselShapiro-hover.png";
+import WebsterRossHover from "../../public/bio/WebsterRoss-hover.png";
+import StevenMillerHover from "../../public/bio/StevenMiller-hover.png";
 
 import TonyBuckner from "../../public/bio/TonyBuckner.png";
 import BrandonBaptiste from "../../public/bio/BrandonBaptiste.png";
@@ -273,7 +276,7 @@ export default function About() {
           />
         </div>
 
-        <div className={styles.aboutTeam}>
+        <div className={classNames(styles.aboutTeam, "desktop")}>
           <img src={aboutTeam.src} alt="About Team" />
         </div>
 
@@ -286,7 +289,7 @@ export default function About() {
               )}
               onClick={() => setActive(1)}
             >
-              <Link href="#meet-crew">Meet the Crew</Link>
+              <span href="#meet-crew">Meet the Crew</span>
             </div>
             <div
               className={classNames(
@@ -295,7 +298,7 @@ export default function About() {
               )}
               onClick={() => setActive(2)}
             >
-              <Link href="#board-director">Board of Directors</Link>
+              <span href="#board-director">Board of Directors</span>
             </div>
             <div
               className={classNames(
@@ -304,89 +307,104 @@ export default function About() {
               )}
               onClick={() => setActive(3)}
             >
-              <Link href="#board-advisor">Board of Advisors</Link>
+              <span href="#board-advisor">Board of Advisors</span>
             </div>
           </div>
 
-          <div className={styles.bioWrapper} id="meet-crew">
-            <Bio
-              size="big"
-              img={CasselShapiro.src}
-              name="Cassel Shapiro"
-              skill="Chief Executive and Board Leader"
-              body="Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  "
-            />
-            <Bio
-              size="big"
-              img={WebsterRoss.src}
-              name="Webster Ross III"
-              skill="Chief Technology"
-              body="Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  "
-            />
-            <Bio
-              size="big"
-              img={StevenMiller.src}
-              name="Steven Miller"
-              skill="Chief Marketing"
-              body="Former AVP Marketing of Kenzie Academy, Head of Biz Dev at Shapr. With a focus on rational yet innovative ways to drive user acquisition and revenue growth, my ability to recognize and act on opportunities that lower cost and increase performance drive the success I deliver for organizations. Growing teams that are nimble and determined is my specialty"
-            />
-          </div>
-
-          <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
-            <div className={styles.flexContainer}>
-              {dt_crew.map((crew, index) => (
-                <Bio
-                  size={crew.size}
-                  isHover={crew.isHover}
-                  img={crew.img}
-                  name={crew.name}
-                  skill={crew.skill}
-                  body={crew.body}
-                  key={index}
-                />
-              ))}
-            </div>
-          </div>
-
-          <h3 className={styles.textCenter} id="board-director">
-            Board of Directors
-          </h3>
-          <div className={styles.bioWrapper}>
-            <Bio
-              size="big"
-              img={DavidIshag.src}
-              name="David Ishag"
-              skill="Board Member "
-              body="Mr. Ishag is a current director of Zoomcar Holdings. He has leadership roles within Karhoo, Virgin Hyperloop One, Idealab, Capella Films"
-            />
-            <Bio
-              size="big"
-              img={CasselShapiro.src}
-              name="Cassel Shapiro"
-              skill="Chief Executive and Board Leader"
-              body="Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  "
-            />
-          </div>
-
-          <h3
-            className={classNames(styles.textCenter, styles.ctMargin)}
-            id="board-advisor"
+          <div
+            id="meet-crew"
+            style={{ display: isActive == 1 ? "block" : "none" }}
           >
-            Board of Advisors
-          </h3>
-          <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
-            <div className={styles.flexContainer}>
-              {dt_advisors.map((advisor, index) => (
-                <Bio
-                  size={advisor.size}
-                  isHover={advisor.isHover}
-                  img={advisor.img}
-                  name={advisor.name}
-                  skill={advisor.skill}
-                  body={advisor.body}
-                  key={index}
-                />
-              ))}
+            <div className={styles.bioWrapper}>
+              <Bio
+                size="big"
+                img={CasselShapiro.src}
+                hoverImg={CasselShapiroHover.src}
+                name="Cassel Shapiro"
+                skill="Chief Executive and Board Leader"
+                body="Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  "
+              />
+              <Bio
+                size="big"
+                img={WebsterRoss.src}
+                hoverImg={WebsterRossHover.src}
+                name="Webster Ross III"
+                skill="Chief Technology"
+                body="Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  "
+              />
+              <Bio
+                size="big"
+                img={StevenMiller.src}
+                hoverImg={StevenMillerHover.src}
+                name="Steven Miller"
+                skill="Chief Marketing"
+                body="Former AVP Marketing of Kenzie Academy, Head of Biz Dev at Shapr. With a focus on rational yet innovative ways to drive user acquisition and revenue growth, my ability to recognize and act on opportunities that lower cost and increase performance drive the success I deliver for organizations. Growing teams that are nimble and determined is my specialty"
+              />
+            </div>
+
+            <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
+              <div className={styles.flexContainer}>
+                {dt_crew.map((crew, index) => (
+                  <Bio
+                    size={crew.size}
+                    isHover={crew.isHover}
+                    img={crew.img}
+                    name={crew.name}
+                    skill={crew.skill}
+                    body={crew.body}
+                    key={index}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div
+            id="board-director"
+            style={{ display: isActive == 2 ? "block" : "none" }}
+          >
+            {/* <h3 className={classNames(styles.textCenter, styles.ctMargin)}>
+              Board of Directors
+            </h3> */}
+            <div className={styles.bioWrapper}>
+              <Bio
+                size="big"
+                img={DavidIshag.src}
+                name="David Ishag"
+                skill="Board Member "
+                body="Mr. Ishag is a current director of Zoomcar Holdings. He has leadership roles within Karhoo, Virgin Hyperloop One, Idealab, Capella Films"
+              />
+              <Bio
+                size="big"
+                img={CasselShapiro.src}
+                name="Cassel Shapiro"
+                skill="Chief Executive and Board Leader"
+                body="Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  "
+              />
+            </div>
+          </div>
+
+          <div
+            id="board-advisor"
+            style={{ display: isActive == 3 ? "block" : "none" }}
+          >
+            {/* <h3 className={classNames(styles.textCenter, styles.ctMargin)}>
+              Board of Advisors
+            </h3> */}
+            <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
+              <div className={styles.flexContainer}>
+                {dt_advisors.map((advisor, index) => (
+                  <Bio
+                    size={advisor.size}
+                    isHover={advisor.isHover}
+                    img={advisor.img}
+                    name={advisor.name}
+                    skill={advisor.skill}
+                    body={advisor.body}
+                    key={index}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

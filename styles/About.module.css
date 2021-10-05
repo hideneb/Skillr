@@ -67,6 +67,7 @@
   letter-spacing: -0.02em;
   color: rgba(12, 31, 63, 1);
   width: fit-content;
+  cursor: pointer;
 }
 
 .tabLink.active {
@@ -88,6 +89,7 @@
 @media (max-width: 768px) {
   .navTab {
     flex-direction: column;
+    margin-top: 2.4rem;
   }
   .navTab .tabLink {
     margin-top: 10px;
@@ -115,12 +117,12 @@
 }
 
 .ctMargin {
-  margin-top: 6rem;
+  margin-top: 4.5rem;
 }
 
 @media (max-width: 768px) {
   .bioWrapper.ctMargin {
-    margin-top: 4rem;
+    margin-top: 2.5rem;
   }
 }
 

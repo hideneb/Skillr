@@ -6,12 +6,13 @@
 .absolute {
   position: absolute;
 }
-
 .bigBio.bioContainer {
+  margin-top: 4.5rem;
+}
+
+.bigBio.bioContainer > div {
   display: flex;
   align-items: center;
-
-  margin-top: 4.5rem;
 }
 
 @media (max-width: 768px) {
@@ -21,7 +22,7 @@
 }
 
 @media (max-width: 576px) {
-  .bigBio.bioContainer {
+  .bigBio.bioContainer > div {
     flex-direction: column;
   }
 }
@@ -31,7 +32,7 @@
   width: 197px;
 }
 
-.isHover.bioContainer {
+.isHover.bioContainer > div {
   position: relative;
 }
 
@@ -52,6 +53,8 @@
 .bioImg img {
   width: 100%;
   border-radius: 6.85542px;
+  display: block;
+  max-height: 323px;
 }
 
 .bioDetail {
@@ -82,10 +85,15 @@
   margin-left: 7rem;
 }
 
-.isHover:hover .bioContent {
+.isHover .bioContent {
+  top: 0;
+  display: none;
+}
+
+.isHover > div:hover .bioContent {
   height: 100%;
   width: 100%;
-  top: 0;
+  display: block;
   border-radius: 6.85542px;
   background: linear-gradient(0deg, #0c1f3f 0%, rgba(12, 31, 63, 0) 176.48%);
 }
@@ -133,6 +141,12 @@
 }
 
 .isHover .bioContent .bioBody {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: -0.02em;
+  text-align: center;
   color: white;
 }
 
@@ -140,4 +154,16 @@
   .smallBio .bioContent .bioBody {
     margin-top: 1rem;
   }
+}
+
+.bioImg .hoverImg {
+  display: none;
+}
+
+.bigBioHover .bioImg:hover .originImg {
+  display: none;
+}
+
+.bigBioHover .bioImg:hover .hoverImg {
+  display: block;
 }
