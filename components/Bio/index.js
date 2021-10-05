@@ -11,7 +11,6 @@ export default function Bio({
   skill,
   body,
 }) {
-  console.log(hoverImg !== undefined);
   return (
     <div
       className={classNames(
