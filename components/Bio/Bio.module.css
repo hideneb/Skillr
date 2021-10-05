@@ -22,7 +22,7 @@
 }
 
 @media (max-width: 576px) {
-  .bigBio.bioContainer {
+  .bigBio.bioContainer > div {
     flex-direction: column;
   }
 }
