@@ -1,8 +1,8 @@
 import React from "react";
-import AboutUs from "../../components/AboutUs";
+import About from "../../components/About";
 import Head from "next/head";
 
-export default function AboutUsPage() {
+export default function AboutPage() {
   return (
     <div>
       <Head>
@@ -16,7 +16,7 @@ export default function AboutUsPage() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AboutUs />
+      <About />
     </div>
   );
 }
