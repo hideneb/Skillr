@@ -19,6 +19,7 @@ import BillGlaser from "../../../public/bio/BillGlaser.png";
 import BrettModel from "../../../public/bio/BrettModel.png";
 import JasonGanfer from "../../../public/bio/JasonGanfer.png";
 import RyanMcHenry from "../../../public/bio/RyanMcHenry.png";
+import JacobMillstein from "../../../public/bio/JacobMillstein.png";
 
 import CasselShapiro from "../../../public/bio/CasselShapiro.png";
 import WebsterRoss from "../../../public/bio/WebsterRoss.png";
@@ -60,20 +61,23 @@ export const dt_crew = [
 export const dt_crew2 = [
   {
     size: "small",
+    isHover: true,
     img: TonyBuckner.src,
     name: "Tony Buckner",
-    skill: "Brand and Influencer Partnerships",
+    skill: "Senior Front-End Developer",
     body: "Former First Data iOS Production Engineer, Giaia Wearables iOS Developer",
   },
   {
     size: "small",
+    isHover: true,
     img: BrandonBaptiste.src,
     name: "Brandon Baptiste",
-    skill: "Senior Front-End Developer",
+    skill: "Brand and Influencer Partnerships",
     body: "15 years executing global corporate branding partnerships and experiential marketing projects",
   },
   {
     size: "small",
+    isHover: true,
     img: MaxSannikov.src,
     name: "Max Sannikov",
     skill: "Senior Back-End Developer",
@@ -81,10 +85,11 @@ export const dt_crew2 = [
   },
   {
     size: "small",
+    isHover: true,
     img: BlakeKeng.src,
     name: "Blake Keng",
     skill: "Director of UI/UX Design",
-    body: "UX Designer with extensive experience in web and mobile product development, focused on creating intuitive and visually engaging interface solutions. Passionate about innovation and quality.",
+    body: "UX Designer with extensive experience in web and mobile product development, focused on creating intuitive and visually engaging interface solutions. Passionate about innovation and quality. Senior Product and UX roles at Conde Nast Epicurious, LinkedIn Learning, Blue Bottle Coffee, and Stitch Fix.",
   },
   {
     size: "small",
@@ -131,7 +136,7 @@ export const dt_crew2 = [
     isHover: true,
     img: SushaUshakova.src,
     name: "Susha Ushakova",
-    skill: "Fitness and Wellness Coordinator",
+    skill: "Fitness and Wellness Expert",
     body: "Highly skilled and committed fitness enthusiast with 8 years and 3000+ classes of experience.",
   },
   {
@@ -165,14 +170,14 @@ export const dt_directors = [
     img:DavidIshag.src,
     name:"David Ishag",
     skill:"Board Member ",
-    body:"David Ishag recently joined the Board of Zoomcar and Indian Mobility company with plans to expand throughout Asia and South America. Mr. Ishag has significant experience in the mobility space having served as Chairman of Karhoo, a ride-hailing and comparison app company which had ~250K cars on its platform, from 2014 to 2016. From December 2016 to February 2018, Mr. Ishag was also Special Advisor to Virgin Hyperloop One, a paradigm-shifting mobility company developing a super speed ground-level transportation system conceived by Elon Musk. Mr. Ishag also previously served as COO Europe for the leading internet incubator, Idealab, incubating companies such as Overture.com (sold to Yahoo for $1+B) and was involved in raising ~$1B in capital. Prior to that, he was COO and CFO of Capella Films, which produced films such Carlito’s Way. David has a Law Degree from the London School of Economics and an MBA from Harvard.",
+    body:"David Ishag is current board member of Zoomcar.com, former Chairman of Karhoo, former Special Advisor to Virgin Hyperloop One, former COO Europe for the leading internet incubator, Idealab, incubating companies such as Overture.com (sold to Yahoo for $1+B), former COO and CFO of Capella Films, which produced films such Carlito’s Way. David has a Law Degree from the London School of Economics and an MBA from Harvard.",
   },
   {
     size:"big",
     img:VictorAnthony.src,
     name:"Victor Anthony",
     skill:"Board Member ",
-    body:"Media and Tech Investment Manager, Epoch Investment Partners Inc. Noted tech pundit on CNBC, Bloomberg, Wall Street Journal, Barron’s, NYTimes.",
+    body:"Victor is currently an Investment Analyst focused on TMT and Consumer investments at Epoch Investment Partners. His previous experience includes over 15 years as an Equity Analyst focused on Internet, Media, Technology and Telecom stocks at firms such as Bear Stearns, Lazard, and Aegis Capital. Victor was highly sought after by CNBC, Bloomberg, The Wall Street Journal, Barron’s, The New York Times, and other TV, print, and radio mediums for commentary on individual stocks and sector trends. He holds Bachelors in Actuarial Science from Temple University and an MBA with a concentration in Finance and Accounting from The University of Rochester.",
   }
 ]
 
@@ -208,6 +213,14 @@ export const dt_advisors = [
     name: "JC Pagan",
     skill: "Advisor",
     body: "Founding Partner & Executive Creative Director at Sunday Afternoon. Former Deutsch, Creative Director",
+  },
+  {
+    size: "small",
+    isHover: true,
+    img: JacobMillstein.src,
+    name: "Jacob Millstein",
+    skill: "Digital Advertising Advisor",
+    body: "Senior Publisher Roles at AOL, Yelp, Rocket Fuel and Taboola",
   },
   {
     size: "small",

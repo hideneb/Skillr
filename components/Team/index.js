@@ -7,11 +7,36 @@ import classNames from "classnames";
 import Bio from "../Bio";
 import Link from "next/link";
 
+import arrowNext from "../../public/icons/arrow-right.svg"
+import arrowPrev from "../../public/icons/arrow-left.svg"
+
 import Carousel from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 import { dt_crew2, dt_advisors, dt_directors, dt_crew } from "./BioData";
+
+const NextArrow = ({ className, onClick, currentSlide, ctStyle, slideCount }) => {
+  return (
+    <img 
+      src={arrowNext.src}
+      className={classNames(className, styles.arrowNextStyle)}
+      style={{ ...ctStyle, display: currentSlide === ( slideCount - 1 ) ? 'none' : 'block' }}
+      alt="Next Arrow" onClick={onClick} 
+    />
+  )
+}
+
+const PrevArrow = ({ className, onClick, currentSlide, ctStyle }) => {
+  return (
+    <img 
+      src={arrowPrev.src} 
+      className={classNames(className, styles.arrowPrevStyle)} 
+      style={{ ...ctStyle, display: currentSlide === 0 ? 'none' : 'block' }} 
+      alt="Prev Arrow" onClick={onClick} 
+    />
+  )
+}
 
 export default function Teams() {
   const [isActive, setActive] = useState(1);
@@ -22,7 +47,10 @@ export default function Teams() {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false
+    autoplay: false,
+    nextArrow: <NextArrow ctStyle={{ width: '20px', height: '40px' }} />,
+    prevArrow: <PrevArrow ctStyle={{ width: '20px', height: '40px' }} />
+
   }
 
   return (
@@ -98,10 +126,20 @@ export default function Teams() {
                     />
                   ) )
                 }
+                {dt_crew2.map((crew, index) => (
+                  <Bio
+                    size="big"
+                    img={crew.img}
+                    name={crew.name}
+                    skill={crew.skill}
+                    body={crew.body}
+                    key={index}
+                  />
+                ))}
               </Carousel>
             </div>
 
-            <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
+            <div className={classNames(styles.bioWrapper, styles.ctMargin, "desktop")}>
               <div className={styles.flexContainer}>
                 {dt_crew2.map((crew, index) => (
                   <Bio
@@ -122,7 +160,7 @@ export default function Teams() {
             id="board-director"
             // style={{ display: isActive == 2 ? "block" : "none" }}
           >
-            <h3 className={classNames(styles.textCenter)}>
+            <h3 className={classNames(styles.textCenter, styles.ctMargin)}>
               Board of Directors
             </h3>
             <div className={classNames(styles.bioWrapper, "desktop")}>
@@ -164,7 +202,7 @@ export default function Teams() {
             <h3 className={classNames(styles.textCenter, styles.ctMargin)}>
               Board of Advisors
             </h3>
-            <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
+            <div className={classNames(styles.advisorWrapper, styles.ctMargin, "desktop")}>
               <div className={styles.flexContainer}>
                 {dt_advisors.map((advisor, index) => (
                   <Bio
@@ -179,7 +217,25 @@ export default function Teams() {
                 ))}
               </div>
             </div>
+            <div className={classNames(styles.advisorWrapper, styles.ctMargin, "tablet")}>
+                <Carousel {...settings}>
+                  {dt_advisors.map((advisor, index) => (
+                    <Bio
+                      size="big"
+                      img={advisor.img}
+                      name={advisor.name}
+                      skill={advisor.skill}
+                      body={advisor.body}
+                      key={index}
+                    />
+                  ))}
+                </Carousel>
+            </div>
           </div>
+
+        </div>
+
+        <div className={styles.container}>
 
           <div className={styles.getEarlyAccess}>
             <h3

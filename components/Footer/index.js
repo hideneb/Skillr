@@ -32,6 +32,11 @@ const Footer = () => {
                 About Us
               </Link>
             </div>
+            <div className={styles.link}>
+              <Link href={{ pathname: "/team", query }} scroll={false}>
+                Team
+              </Link>
+            </div>
           </div>
         </div>
       </div>

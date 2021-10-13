@@ -25,7 +25,7 @@ export default function Navbar({ page }) {
     <div
       className={!open ? styles.navbar : classNames(styles.open, styles.navbar)}
     >
-      <div className={page === 'teams' ? classNames(styles.navbarContainer, styles.teams) : styles.navbarContainer}>
+      <div className={page === 'team' ? classNames(styles.navbarContainer, styles.team) : styles.navbarContainer}>
         <div className={styles.navbarMain}>
           <Link href="/" passHref>
             <img src={logoNavbar.src} className={styles.mobileLogo} alt="" />
@@ -54,8 +54,8 @@ export default function Navbar({ page }) {
                 </Link>
               </div>
               <div className={styles.link}>
-                <Link href={{ pathname: "/teams", query }} scroll={false}>
-                  Teams
+                <Link href={{ pathname: "/team", query }} scroll={false}>
+                  Team
                 </Link>
               </div>
             </div>
@@ -76,8 +76,8 @@ export default function Navbar({ page }) {
                 </Link>
               </div>
               <div className={styles.link}>
-                <Link href={{ pathname: "/teams", query }} scroll={false}>
-                  Teams
+                <Link href={{ pathname: "/team", query }} scroll={false}>
+                  Team
                 </Link>
               </div>
             </div>
