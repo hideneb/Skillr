@@ -32,6 +32,12 @@
   width: 197px;
 }
 
+@media (max-width: 576px) {
+  .smallBio.bioContainer {
+    width: 170px;
+  }
+}
+
 .isHover.bioContainer > div {
   position: relative;
 }
@@ -50,11 +56,24 @@
   max-width: 216px;
 }
 
+@media (max-width: 576px) {
+  .bigBio .bioImg {
+    min-width: 170px;
+    max-width: 170px;
+  }
+}
+
 .bioImg img {
   width: 100%;
   border-radius: 6.85542px;
   display: block;
   max-height: 323px;
+}
+
+@media (max-width: 576px) {
+  .bioImg img {
+    max-height: 254px;
+  }
 }
 
 .bioDetail {
@@ -79,6 +98,18 @@
   line-height: 16px;
   letter-spacing: -0.02em;
   color: white;
+  opacity: .75;
+}
+
+@media (max-width: 576px) {
+  .bioDetail .bioName {
+    font-size: 14px;
+    line-height: 19.57px;
+  }
+  .bioDetail .bioSkill {
+    font-size: 10px;
+    line-height: 12.83px;
+  }
 }
 
 .bigBio .bioContent {
@@ -123,6 +154,8 @@
 @media (max-width: 576px) {
   .bigBio .bioContent .bioBody {
     text-align: center;
+    font-size: 13px;
+    line-height: 18.85px;
   }
 }
 
@@ -153,6 +186,13 @@
 @media (max-width: 768px) {
   .smallBio .bioContent .bioBody {
     margin-top: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .isHover .bioContent .bioBody {
+    font-size: 10px;
+    line-height: 13px;
   }
 }
 
