@@ -1,0 +1,109 @@
+.container {
+  max-width: 1443px;
+  margin: auto;
+  padding: 0 143px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 22px;
+  }
+}
+
+.aboutTeam {
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .aboutTeam {
+    margin-top: 2.5rem;
+  }
+}
+
+.aboutTeam img {
+  width: 100%;
+}
+
+.getEarlyAccess {
+  margin: 40px 0 100px;
+}
+
+.navTab {
+  max-width: 1113px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tabLink {
+  font-size: 33px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 43px;
+  letter-spacing: -0.02em;
+  color: rgba(12, 31, 63, 1);
+  width: fit-content;
+  cursor: pointer;
+}
+
+.tabLink.active {
+  color: white;
+  padding: 8px 28px;
+  background-color: #0c1f3f;
+  border-radius: 100px;
+}
+
+@media (max-width: 1200px) {
+  .tabLink {
+    font-size: 24px;
+  }
+  .tabLink.active {
+    padding: 4px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navTab {
+    flex-direction: column;
+    padding-top: 8rem;
+  }
+  .navTab .tabLink {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.bioWrapper {
+  max-width: 980px;
+  margin: auto;
+}
+
+.bioWrapper .flexContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .bioWrapper .flexContainer {
+    justify-content: center;
+  }
+}
+
+.ctMargin {
+  margin-top: 4.5rem;
+}
+
+@media (max-width: 768px) {
+  .bioWrapper.ctMargin {
+    margin-top: 2.5rem;
+  }
+}
+
+.textCenter {
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Hero from "./Hero";
 import styles from "../../styles/About.module.css";
 import Section from "../Section/Section";
@@ -6,15 +6,8 @@ import BottomSection from "./BottomSection";
 import Footer from "../Footer";
 import BannerSection from "./BannerSection";
 import fingerImage from "../../public/screenshot-4.jpeg";
-import aboutTeam from "../../public/about-team.png";
-import DownloadApp from "../DownloadApp";
-import classNames from "classnames";
-import Bio from "../Bio";
-
-import { dt_crew2, dt_advisors, dt_directors, dt_crew } from "./BioData";
 
 export default function About() {
-  const [isActive, setActive] = useState(1);
 
   return (
     <div>
@@ -82,146 +75,6 @@ export default function About() {
               </>
             }
           />
-        </div>
-
-        <div className={classNames(styles.aboutTeam, "desktop")}>
-          <img src={aboutTeam.src} alt="About Team" />
-        </div>
-
-        <div className={styles.container}>
-          <div className={styles.navTab}>
-            <div
-              className={classNames(
-                styles.tabLink,
-                isActive == 1 && styles.active
-              )}
-              onClick={() => setActive(1)}
-            >
-              <span href="#meet-crew">Meet the Crew</span>
-            </div>
-            <div
-              className={classNames(
-                styles.tabLink,
-                isActive == 2 && styles.active
-              )}
-              onClick={() => setActive(2)}
-            >
-              <span href="#board-director">Board of Directors</span>
-            </div>
-            <div
-              className={classNames(
-                styles.tabLink,
-                isActive == 3 && styles.active
-              )}
-              onClick={() => setActive(3)}
-            >
-              <span href="#board-advisor">Board of Advisors</span>
-            </div>
-          </div>
-
-          <div
-            id="meet-crew"
-            style={{ display: isActive == 1 ? "block" : "none" }}
-          >
-            <div className={styles.bioWrapper}>
-              {
-                dt_crew.map( crew => (
-                  <Bio
-                    size={crew.size}
-                    img={crew.img}
-                    hoverImg={crew.hoverImg}
-                    name={crew.name}
-                    skill={crew.skill}
-                    body={crew.body}
-                  />
-                ) )
-              }
-            </div>
-
-            <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
-              <div className={styles.flexContainer}>
-                {dt_crew2.map((crew, index) => (
-                  <Bio
-                    size={crew.size}
-                    isHover={crew.isHover}
-                    img={crew.img}
-                    name={crew.name}
-                    skill={crew.skill}
-                    body={crew.body}
-                    key={index}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div
-            id="board-director"
-            style={{ display: isActive == 2 ? "block" : "none" }}
-          >
-            {/* <h3 className={classNames(styles.textCenter, styles.ctMargin)}>
-              Board of Directors
-            </h3> */}
-            <div className={styles.bioWrapper}>
-              {
-                dt_directors.map( director => (
-                  <Bio
-                    size={director.size}
-                    img={director.img}
-                    name={director.name}
-                    skill={director.skill}
-                    body={director.body}
-                  />
-                ))
-              }
-            </div>
-          </div>
-
-          <div
-            id="board-advisor"
-            style={{ display: isActive == 3 ? "block" : "none" }}
-          >
-            {/* <h3 className={classNames(styles.textCenter, styles.ctMargin)}>
-              Board of Advisors
-            </h3> */}
-            <div className={classNames(styles.bioWrapper, styles.ctMargin)}>
-              <div className={styles.flexContainer}>
-                {dt_advisors.map((advisor, index) => (
-                  <Bio
-                    size={advisor.size}
-                    isHover={advisor.isHover}
-                    img={advisor.img}
-                    name={advisor.name}
-                    skill={advisor.skill}
-                    body={advisor.body}
-                    key={index}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.getEarlyAccess}>
-            <h3
-              className={classNames(
-                "desktop",
-                styles.textCenter,
-                styles.bottomDownloadDescription
-              )}
-            >
-              Get early access
-            </h3>
-            <DownloadApp
-              description={
-                <>
-                  <span className="desktop">
-                    Sign up below to receive exclusive invite.
-                  </span>
-                </>
-              }
-              imgHidden
-            />
-          </div>
         </div>
       </main>
 

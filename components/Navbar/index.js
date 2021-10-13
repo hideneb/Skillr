@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import logoNavbar from "../../public/logo-navbar.svg";
 import classNames from "classnames";
 
-export default function Navbar() {
+export default function Navbar({ page }) {
   const { query } = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -25,7 +25,7 @@ export default function Navbar() {
     <div
       className={!open ? styles.navbar : classNames(styles.open, styles.navbar)}
     >
-      <div className={styles.navbarContainer}>
+      <div className={page === 'teams' ? classNames(styles.navbarContainer, styles.teams) : styles.navbarContainer}>
         <div className={styles.navbarMain}>
           <Link href="/" passHref>
             <img src={logoNavbar.src} className={styles.mobileLogo} alt="" />
@@ -53,6 +53,11 @@ export default function Navbar() {
                   About Us
                 </Link>
               </div>
+              <div className={styles.link}>
+                <Link href={{ pathname: "/teams", query }} scroll={false}>
+                  Teams
+                </Link>
+              </div>
             </div>
           </div>
           <div className={classNames("tablet", styles.mobileMenu)}>
@@ -68,6 +73,11 @@ export default function Navbar() {
               <div className={styles.link}>
                 <Link href={{ pathname: "/about-us", query }} scroll={false}>
                   About Us
+                </Link>
+              </div>
+              <div className={styles.link}>
+                <Link href={{ pathname: "/teams", query }} scroll={false}>
+                  Teams
                 </Link>
               </div>
             </div>

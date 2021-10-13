@@ -189,6 +189,13 @@
   }
 }
 
+@media (max-width: 576px) {
+  .isHover .bioContent .bioBody {
+    font-size: 10px;
+    line-height: 13px;
+  }
+}
+
 .bioImg .hoverImg {
   display: none;
 }
