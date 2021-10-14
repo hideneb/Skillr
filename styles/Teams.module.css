@@ -93,6 +93,10 @@
   flex-wrap: wrap;
 }
 
+.flexContainer.justifyEvenly {
+  justify-content: space-evenly;
+}
+
 @media (max-width: 768px) {
   .bioWrapper .flexContainer, .advisorWrapper .flexContainer {
     justify-content: center;

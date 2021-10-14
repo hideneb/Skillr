@@ -34,7 +34,11 @@
 }
 
 .navbar .link:nth-child(2) {
-  margin: 0 40px 0 73px;
+  margin: 0 40px 0 53px;
+}
+
+.navbar .link:nth-child(3) {
+  margin: 0 40px 0 13px;
 }
 
 @media (max-width: 768px) {
@@ -46,6 +50,10 @@
   }
 
   .navbar .link:nth-child(2) {
+    margin: 6px 0;
+  }
+
+  .navbar .link:nth-child(3) {
     margin: 6px 0;
   }
 }
