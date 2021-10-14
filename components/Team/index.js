@@ -203,7 +203,7 @@ export default function Teams() {
               Board of Advisors
             </h3>
             <div className={classNames(styles.advisorWrapper, styles.ctMargin, "desktop")}>
-              <div className={styles.flexContainer}>
+              <div className={classNames(styles.flexContainer, styles.justifyEvenly)}>
                 {dt_advisors.map((advisor, index) => (
                   <Bio
                     size={advisor.size}

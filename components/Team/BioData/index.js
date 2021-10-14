@@ -163,7 +163,7 @@ export const dt_directors = [
     img:CasselShapiro.src,
     name:"Cassel Shapiro",
     skill:"Chief Executive and Board Leader",
-    body:"Senior Managing Director of SternAegis Ventures, Founder of Aegis Special Funds, Agritech Partners, Tech Insight Partners and Spring Targeted Opportunity Funds. Current Director DermaSensor, Inc.  and Outstanding Foods. Advisor to DarioHealth (NASDAQ: DRIO). Certified Developer in C#.Net, FINRA Principal, Investment Banking, Research Supervisor and Equities Market Making. I am devoted to executing our mission by assembling and leading a nimble organization. I love venture strategy and bringing big ideas to fruition.  ",
+    body:"See Above",
   },
   {
     size:"big",
