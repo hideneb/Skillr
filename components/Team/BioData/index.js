@@ -103,7 +103,7 @@ export const dt_crew2 = [
     size: "small",
     isHover: true,
     img: DemitriyLevy.src,
-    name: "Demitriy Levy",
+    name: "Dmitriy Levy",
     skill: "Back-End Developer",
     body: "Current Backend Engineer for Skillr. Creator of gRPC Framework for Node and an Entrepreneur for Lead-Generation in Car and Real-Estate Business",
   },
