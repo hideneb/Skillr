@@ -65,7 +65,7 @@ export const dt_crew2 = [
     img: TonyBuckner.src,
     name: "Tony Buckner",
     skill: "Senior Front-End Developer",
-    body: "Former First Data iOS Production Engineer, Giaia Wearables iOS Developer",
+    body: "Former iOS Engineer at Gaia Wearables. Former Lead Mobile Engineer at Algorythmic Studios",
   },
   {
     size: "small",
