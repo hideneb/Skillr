@@ -30,6 +30,8 @@ import StevenMillerHover from "../../../public/bio/StevenMiller-hover.png";
 
 import DavidIshag from "../../../public/bio/DavidIshag.png";
 import VictorAnthony from "../../../public/bio/VictorAnthony.png";
+import PeterFBorish from "../../../public/bio/PeterFBorish.png";
+
 
 export const dt_crew = [
   {
@@ -178,6 +180,13 @@ export const dt_directors = [
     name:"Victor Anthony",
     skill:"Board Member ",
     body:"Victor is currently an Investment Analyst focused on TMT and Consumer investments at Epoch Investment Partners. His previous experience includes over 15 years as an Equity Analyst focused on Internet, Media, Technology and Telecom stocks at firms such as Bear Stearns, Lazard, and Aegis Capital. Victor was highly sought after by CNBC, Bloomberg, The Wall Street Journal, Barron’s, The New York Times, and other TV, print, and radio mediums for commentary on individual stocks and sector trends. He holds Bachelors in Actuarial Science from Temple University and an MBA with a concentration in Finance and Accounting from The University of Rochester.",
+  },
+  {
+    size:"big",
+    img:PeterFBorish.src,
+    name:"Peter F. Borish",
+    skill:"Board Member ",
+    body:"Peter F. Borish is Chairman and CEO of Computer Trading Corporation (CTC), an investment and advisory firm whose largest consulting client is CIBC. He also advises Martin Fund Management and Norbury Partners, a recently launched minority-owned discretionary global macro hedge fund. Previously, through CTC, Borish was chief strategist of Quad Group and its affiliated companies. He a current investor and advisor to ValueStream Ventures. He was also a founding investor in Charitybuzz. Borish formerly worked at the Federal Reserve Bank of New York, was founding partner and second-in-command at Tudor Investment Corporation, was Chairman of OneChicago, LLC, and was Chairman of the non-profits Foundation for the Study of Cycles and The Institute for Financial Markets. He is also a founding board member of both the Robin Hood Foundation and Math for America.",
   }
 ]
 
