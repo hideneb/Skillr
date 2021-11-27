@@ -58,6 +58,16 @@ export default function Navbar({ page }) {
                   Team
                 </Link>
               </div>
+              <div className={styles.link}>
+                <Link href= "https://skillrhelp.zendesk.com/hc/en-us" scroll={false}>
+                  Help
+                </Link>
+              </div>
+              <div className={styles.link}>
+                <Link href= "https://skillr.applytojob.com/apply" scroll={false}>
+                  Jobs
+                </Link>
+              </div>
             </div>
           </div>
           <div className={classNames("tablet", styles.mobileMenu)}>
@@ -78,6 +88,16 @@ export default function Navbar({ page }) {
               <div className={styles.link}>
                 <Link href={{ pathname: "/team", query }} scroll={false}>
                   Team
+                </Link>
+              </div>
+              <div className={styles.link}>
+                <Link href= "https://skillrhelp.zendesk.com/hc/en-us" scroll={false}>
+                  Help
+                </Link>
+              </div>
+              <div className={styles.link}>
+                <Link href= "https://skillr.applytojob.com/apply" scroll={false}>
+                  Jobs
                 </Link>
               </div>
             </div>

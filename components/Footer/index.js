@@ -37,6 +37,16 @@ const Footer = () => {
                 Team
               </Link>
             </div>
+            <div className={styles.link}>
+                <Link href= "https://skillrhelp.zendesk.com/hc/en-us" scroll={false}>
+                  Help
+                </Link>
+            </div>
+            <div className={styles.link}>
+              <Link href= "https://skillr.applytojob.com/apply" scroll={false}>
+                Jobs
+              </Link>
+            </div>
           </div>
         </div>
       </div>

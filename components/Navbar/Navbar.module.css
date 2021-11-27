@@ -136,6 +136,6 @@
 }
 
 .open .mobileMenu {
-  height: 240px;
+  height: auto;
   margin-top: 80px;
 }
