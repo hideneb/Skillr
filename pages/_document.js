@@ -30,6 +30,7 @@ class MyDocument extends Document {
         <Head>
           {/* Inject the Segment snippet into the <head> of the document  */}
           <script dangerouslySetInnerHTML={{ __html: this.renderSnippet() }} />
+          <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=f367139b-5b83-46c5-91ad-95306b7da40b"> </script>
         </Head>
         <body>
           <Main />
