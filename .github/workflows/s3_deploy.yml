@@ -24,9 +24,9 @@ jobs:
         # S3 bucket name         
         if [ "$branch" = "production" ]
         then
-            echo "::set-output name=bucket_name::skillr.com"
+            echo "::set-output name=bucket_name::app.skillr.com"
         else
-            echo "::set-output name=bucket_name::${branch}.skillr.com"
+            echo "::set-output name=bucket_name::app-${branch}.skillr.com"
         fi
 
     - name: Set up env variables for next steps
