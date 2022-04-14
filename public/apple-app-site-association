@@ -1,0 +1,25 @@
+{
+    "applinks":
+    {
+        "apps":[],
+        "details":
+        [
+            {
+                "appID":"22X2279YMN.com.skillr.app",
+                "paths":["*"]
+            },
+            {
+                "appID":"22X2279YMN.com.skillr.staging.app",
+                "paths":["*"]
+            },
+            {
+                "appID":"22X2279YMN.com.skillr.private.app",
+                "paths":["*"]
+            },
+            {
+                "appID":"22X2279YMN.com.skillr.app",
+                "paths":["*"]
+            }
+        ]
+    }
+}
