@@ -8,7 +8,7 @@ type AvailabilityProps = {
 	availability: SkillrLocalAvailabilityDto;
 };
 
-const formatTime = (t) => moment(t, "h:mm:ss a").format("h:mm a");
+const formatTime = (t: moment.MomentInput) => moment(t, "h:mm:ss a").format("h:mm a");
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
