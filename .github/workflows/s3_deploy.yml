@@ -45,7 +45,7 @@ jobs:
           echo "[auth]\ntoken=${{ secrets.SENTRY_AUTH_TOKEN }}" > .sentryclirc
 
       - name: Build
-        run: yarn && yarn build && yarn export
+        run: yarn install --frozen-lockfile && yarn build && yarn export
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
