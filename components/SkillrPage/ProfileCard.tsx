@@ -1,5 +1,4 @@
 import styles from "./styles/components/ProfileCard.module.css";
-import PinkStar from "../../public/PinkStar.svg";
 import Image from "next/image";
 import cx from "classnames";
 import React, { useState } from "react";
