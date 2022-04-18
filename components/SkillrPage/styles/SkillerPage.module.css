@@ -1,0 +1,87 @@
+@value md-up from "../../../styles/Breakpoints.module.css";
+
+.header {
+	width: 100%;
+	height: 325px;
+	background-image: url(/stock-bg.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@media md-up {
+	.header {
+		height: 300px;
+	}
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: 1440px;
+	margin: auto;
+	padding: 0 24px;
+	border-radius: 25px 25px 0 0;
+}
+
+@media md-up {
+	.container {
+		padding: 0 44px;
+		flex-wrap: nowrap;
+		position: relative;
+		top: -25px;
+	}
+}
+
+.colLeft {
+	width: 100%;
+	flex-shrink: 0;
+}
+
+@media md-up {
+	.colLeft {
+		width: 200px;
+	}
+}
+
+.colRight {
+	flex-grow: 1;
+}
+
+@media md-up {
+	.colRight {
+		margin-left: 36px;
+	}
+}
+
+.card {
+	border-radius: 25px;
+}
+
+.mobileAvailability {
+	width: 100%;
+}
+
+@media md-up {
+	.mobileAvailability {
+		display: none;
+	}
+}
+
+.connectNowButton {
+	width: 100%;
+	background: var(--skillr-pink-1);
+	font-family: "Poppins";
+	height: 52px;
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	padding: 8px 22px;
+	outline: 0;
+	border: none;
+	border-radius: 8px;
+	white-space: nowrap;
+	margin-top: 26px;
+	margin-bottom: 26px;
+}

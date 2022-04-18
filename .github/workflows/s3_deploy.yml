@@ -3,65 +3,66 @@ name: "Deploy to S3"
 on:
   push:
     branches:
-    - staging
-    - production
+      - staging
+      - production
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    
-    - name: Set up vars
-      id: vars
-      run: |
-        # Current branch name
-        branch=${GITHUB_REF#refs/*/}
-        echo "::set-output name=branch::${branch}"
+      - name: Checkout
+        uses: actions/checkout@v1
 
-        # S3 bucket name         
-        if [ "$branch" = "production" ]
-        then
-            echo "::set-output name=bucket_name::app.skillr.com"
-        else
-            echo "::set-output name=bucket_name::app-${branch}.skillr.com"
-        fi
+      - name: Set up vars
+        id: vars
+        run: |
+          # Current branch name
+          branch=${GITHUB_REF#refs/*/}
+          echo "::set-output name=branch::${branch}"
 
-    - name: Set up env variables for next steps
-      run: |
-        branch=${GITHUB_REF#refs/*/}
-        echo "ANALYTICS_WRITE_KEY_SECRET_NAME=ANALYTICS_WRITE_KEY_${branch^^}" >> $GITHUB_ENV
+          # S3 bucket name
+          if [ "$branch" = "production" ]
+          then
+              echo "::set-output name=bucket_name::app.skillr.com"
+          else
+              echo "::set-output name=bucket_name::app-${branch}.skillr.com"
+          fi
 
-    - name: Set up .env file
-      run: |
-        echo "ANALYTICS_WRITE_KEY=${{secrets[env.ANALYTICS_WRITE_KEY_SECRET_NAME]}}" > .env
-        echo "NEXT_PUBLIC_ENVIRONMENT=${{ steps.vars.outputs.branch }}" >> .env
-        echo "NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
-        echo ".env file:"
-        cat .env
-        echo "[auth]\ntoken=${{ secrets.SENTRY_AUTH_TOKEN }}" > .sentryclirc
-      
-    - name: Build
-      run: yarn && yarn build && yarn export
+      - name: Set up env variables for next steps
+        run: |
+          branch=${GITHUB_REF#refs/*/}
+          echo "ANALYTICS_WRITE_KEY_SECRET_NAME=ANALYTICS_WRITE_KEY_${branch^^}" >> $GITHUB_ENV
 
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+      - name: Set up .env file
+        run: |
+          echo "ANALYTICS_WRITE_KEY=${{secrets[env.ANALYTICS_WRITE_KEY_SECRET_NAME]}}" > .env
+          echo "NEXT_PUBLIC_ENVIRONMENT=${{ steps.vars.outputs.branch }}" >> .env
+          echo "NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
+          echo "API_HOST=api-${{ steps.vars.outputs.branch }}.skillr.com" >> .env
+          echo ".env file:"
+          cat .env
+          echo "[auth]\ntoken=${{ secrets.SENTRY_AUTH_TOKEN }}" > .sentryclirc
 
-    - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./out/ s3://${{ steps.vars.outputs.bucket_name }} --delete
+      - name: Build
+        run: yarn && yarn build && yarn export
 
-    - name: Set up Cloudfront Cache Invalidation
-      run: |
-        distributionId=$(aws cloudfront list-distributions | \
-          python3 -c '
-        import json,sys;obj=json.load(sys.stdin);
-        for element in (obj["DistributionList"]["Items"]):
-          if(element["DefaultCacheBehavior"]["TargetOriginId"] == "${{ steps.vars.outputs.bucket_name }}"): print(element["Id"])')
-        aws cloudfront create-invalidation --distribution-id $distributionId \
-        --paths "/*"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./out/ s3://${{ steps.vars.outputs.bucket_name }} --delete
+
+      - name: Set up Cloudfront Cache Invalidation
+        run: |
+          distributionId=$(aws cloudfront list-distributions | \
+            python3 -c '
+          import json,sys;obj=json.load(sys.stdin);
+          for element in (obj["DistributionList"]["Items"]):
+            if(element["DefaultCacheBehavior"]["TargetOriginId"] == "${{ steps.vars.outputs.bucket_name }}"): print(element["Id"])')
+          aws cloudfront create-invalidation --distribution-id $distributionId \
+          --paths "/*"

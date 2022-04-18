@@ -1,0 +1,9 @@
+@value xs: (max-width: 599px);
+@value sm: (min-width: 600px) and (max-width: 899px);
+@value md: (min-width: 900px) and (max-width: 1199px);
+@value lg: (min-width: 1200px) and (max-width: 1535px);
+@value xl: (min-width: 1536px);
+
+@value sm-up: (min-width: 600px);
+@value md-up: (min-width: 900px);
+@value lg-up: (min-width: 1200px);

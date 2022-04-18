@@ -6,7 +6,27 @@
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = {
-  reactStrictMode: true,
+  reactStrictMode: true
+//   webpack(config) {
+//   //   config.module.rules.push({
+//   //     test: /\.svg$/,
+//   //     issuer: { and: [/\.(js|ts)x?$/] },
+      
+//   //     use: ['@svgr/webpack', 'url-loader'],
+//   //   });
+
+//   //   return config;
+//   // },
+//   config.module.rules.push({
+//     test: /\.svg$/,
+//     use: ['@svgr/webpack', 'url-loader']
+// });
+
+// return config;
+//   },
+  // webpack5: false,
+
+  
 };
 
 const SentryWebpackPluginOptions = {

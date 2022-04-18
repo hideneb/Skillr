@@ -1,0 +1,67 @@
+@value md-up from "../../../../styles/Breakpoints.module.css";
+
+.socialBar {
+	font-family: "Poppins";
+	margin-bottom: 48px;
+	margin-top: 0;
+}
+
+@media md-up {
+	.socialBar {
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+}
+
+.username {
+	display: none;
+	margin: 12px 0 8px 0;
+	font-size: 26px;
+	color: var(--rich-blue-7);
+	font-weight: 400;
+}
+
+@media md-up {
+	.username {
+		display: flex;
+	}
+}
+
+.iconItem {
+	margin-right: 8px;
+}
+
+.displayName {
+	display: none;
+	white-space: nowrap;
+	margin: 0;
+	font-size: 32px;
+	flex-grow: 1;
+}
+
+@media md-up {
+	.displayName {
+		display: flex;
+	}
+}
+
+.socialLinksContainer {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	color: var(--rich-blue-8);
+	width: 100%;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+@media md-up {
+	.socialLinksContainer {
+		font-size: 14px;
+		flex-basis: 300px;
+	}
+}
+
+.socialLinksContainer:hover {
+	cursor: pointer;
+}

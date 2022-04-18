@@ -12,13 +12,21 @@
   "dependencies": {
     "@segment/snippet": "^4.14.2",
     "@sentry/nextjs": "^6.11.0",
+    "@svgr/webpack": "^6.2.1",
     "@types/node": "^17.0.18",
     "@types/react": "^17.0.39",
     "classnames": "^2.3.1",
+    "file-loader": "^6.2.0",
+    "i": "^0.3.7",
+    "isomorphic-fetch": "^3.0.0",
+    "lottie-react": "^2.2.1",
+    "moment": "^2.29.1",
     "next": "11.0.1",
+    "next-images": "^1.8.4",
+    "npm": "^8.5.3",
+    "postcss-modules-values": "^4.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-lottie": "^1.2.3",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
     "smoothscroll-polyfill": "^0.4.4",
@@ -26,6 +34,7 @@
   },
   "devDependencies": {
     "eslint": "7.31.0",
-    "eslint-config-next": "11.0.1"
+    "eslint-config-next": "11.0.1",
+    "url-loader": "^4.1.1"
   }
 }
