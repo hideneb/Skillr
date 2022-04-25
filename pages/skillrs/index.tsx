@@ -1,8 +1,8 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 
 import React from "react";
-import { getAllSkillrs } from "../../api/v1/skillrs";
+import { getPageOfSkillrs } from "../../api/v1/skillrs";
 import { SkillrDto } from "../../api/v1/types";
 
 type SkillrsProps = {
@@ -20,13 +20,14 @@ const Skillrs: React.FC<SkillrsProps> = ({ skillrs }) => {
   );
 };
 
-export default Skillrs;
-
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const res = await getAllSkillrs();
+export const getStaticProps: GetStaticProps = async () => {
+  const { skillrs } = await getPageOfSkillrs();
   return {
     props: {
-      skillrs: res.skillrs,
+      skillrs,
     },
+    revalidate: 420, // revalidate every 7 minutes
   };
 };
+
+export default Skillrs;

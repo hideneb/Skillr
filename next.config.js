@@ -3,30 +3,28 @@
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-const { withSentryConfig } = require('@sentry/nextjs');
+const { withSentryConfig } = require("@sentry/nextjs");
 
 const moduleExports = {
-  reactStrictMode: true
-//   webpack(config) {
-//   //   config.module.rules.push({
-//   //     test: /\.svg$/,
-//   //     issuer: { and: [/\.(js|ts)x?$/] },
-      
-//   //     use: ['@svgr/webpack', 'url-loader'],
-//   //   });
+  reactStrictMode: true,
+  //   webpack(config) {
+  //   //   config.module.rules.push({
+  //   //     test: /\.svg$/,
+  //   //     issuer: { and: [/\.(js|ts)x?$/] },
 
-//   //   return config;
-//   // },
-//   config.module.rules.push({
-//     test: /\.svg$/,
-//     use: ['@svgr/webpack', 'url-loader']
-// });
+  //   //     use: ['@svgr/webpack', 'url-loader'],
+  //   //   });
 
-// return config;
-//   },
+  //   //   return config;
+  //   // },
+  //   config.module.rules.push({
+  //     test: /\.svg$/,
+  //     use: ['@svgr/webpack', 'url-loader']
+  // });
+
+  // return config;
+  //   },
   // webpack5: false,
-
-  
 };
 
 const SentryWebpackPluginOptions = {
@@ -44,3 +42,4 @@ const SentryWebpackPluginOptions = {
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports = withSentryConfig(moduleExports, SentryWebpackPluginOptions);
+// module.exports = moduleExports; // for local build and export
