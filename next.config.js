@@ -7,24 +7,19 @@
 
 const moduleExports = {
   reactStrictMode: true,
-  //   webpack(config) {
-  //   //   config.module.rules.push({
-  //   //     test: /\.svg$/,
-  //   //     issuer: { and: [/\.(js|ts)x?$/] },
-
-  //   //     use: ['@svgr/webpack', 'url-loader'],
-  //   //   });
-
-  //   //   return config;
-  //   // },
-  //   config.module.rules.push({
-  //     test: /\.svg$/,
-  //     use: ['@svgr/webpack', 'url-loader']
-  // });
-
-  // return config;
-  //  },
-  // webpack5: false,
+  webpack(config) {
+    const fileLoaderRule = config.module.rules.find(
+      (rule) => rule.test && rule.test.test(".svg")
+    );
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/;
+    }
+    config.module.rules.push({
+      test: /\.svg$/,
+      loader: require.resolve("@svgr/webpack"),
+    });
+    return config;
+  },
 };
 
 // const SentryWebpackPluginOptions = {

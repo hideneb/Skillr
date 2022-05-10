@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./styles/components/Availability.module.css";
-import { SkillrLocalAvailabilityDto } from "../../api/v1/types";
+import styles from "./Availability.module.css";
+import { SkillrLocalAvailabilityDto } from "../../../api/v1/types";
 import moment from "moment";
 import classNames from "classnames";
 

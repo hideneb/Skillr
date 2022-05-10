@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./styles/components/BookSessionCard.module.css";
+import styles from "./BookSessionCard.module.css";
 import cx from "classnames";
 import classNames from "classnames";
-import Availability from "./Availability";
-import { SkillrLocalAvailabilityDto } from "../../api/v1/types";
+import Availability from "../Availability";
+import { SkillrLocalAvailabilityDto } from "../../../api/v1/types";
 
 type BookSessionProps = {
   imgSrc: string;

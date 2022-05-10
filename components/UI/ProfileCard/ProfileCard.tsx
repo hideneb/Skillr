@@ -1,4 +1,4 @@
-import styles from "./styles/components/ProfileCard.module.css";
+import styles from "./ProfileCard.module.css";
 import cx from "classnames";
 import React, { useState } from "react";
 
