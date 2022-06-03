@@ -1,7 +1,3 @@
-export type PaginatedResponse<T, PropertyName extends string> = {
-  [P in PropertyName]: T[];
-};
-
 export type SkillrSkillDetailsDto = {
   id: number;
   disabled: boolean;
@@ -18,6 +14,27 @@ export type SkillrSkillDetailsDto = {
   parentId: number;
 };
 
+export type CredentialDto = {
+  id: string;
+  filename: string;
+  url: string;
+  name: string;
+};
+
+export type ShowcaseDto = {
+  id: string;
+  image: string;
+  video?: string;
+  filename?: string;
+  type: number;
+};
+
+export type ShowcaseLinkDto = {
+  id: string;
+  url: string;
+  name: string;
+};
+
 export type SkillrSkillDto = {
   skillrSkillId: string;
   skillId: number;
@@ -29,9 +46,9 @@ export type SkillrSkillDto = {
   brief: string;
   isInstantMatch: boolean;
   skill: SkillrSkillDetailsDto;
-  credentials: any[];
-  showcases: any[];
-  showcaseLinks: any[];
+  credentials: CredentialDto[];
+  showcases: ShowcaseDto[];
+  showcaseLinks: ShowcaseLinkDto[];
 };
 
 export type SkillrAvailabilityDto = {
@@ -70,4 +87,6 @@ export type SkillrDto = {
   availability?: SkillrAvailabilityDto;
   localAvailability?: SkillrLocalAvailabilityDto;
   about: string;
+  isAvailableNow: boolean;
+  isFavourite?: boolean;
 };

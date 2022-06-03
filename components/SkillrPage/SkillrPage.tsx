@@ -3,14 +3,16 @@ import styles from "./SkillerPage.module.css";
 import SocialBar from "../UI/SocialBar";
 import ProfileCard from "../UI/ProfileCard";
 import BookSessionCard from "../UI/BookSessionCard";
-import { SkillrDto } from "../../api/v1/types";
 import Availability from "../UI/Availability";
+import { SkillrDto } from "../../lib/types/skillr";
+import { UserDto } from "../../lib/types/user";
 
 type SkillrProfileProps = {
   skillr: SkillrDto;
+  user: UserDto | null;
 };
 
-const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr }) => {
+const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, user }) => {
   const {
     username,
     displayName,
@@ -52,7 +54,9 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr }) => {
                 name={name}
                 description={description}
                 ratePerMinute={ratePerMinute}
+                skillr={skillr}
                 availability={localAvailability}
+                user={user}
               />
             );
           })}

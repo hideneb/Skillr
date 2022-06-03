@@ -37,3 +37,6 @@ yarn-error.log*
 
 # storybook
 /storybook-static
+
+# TypeScript incremental compilation cache
+*.tsbuildinfo

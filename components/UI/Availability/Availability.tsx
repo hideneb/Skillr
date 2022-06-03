@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Availability.module.css";
-import { SkillrLocalAvailabilityDto } from "../../../api/v1/types";
 import moment from "moment";
 import classNames from "classnames";
+import { SkillrLocalAvailabilityDto } from "../../../lib/types/skillr";
 
 type AvailabilityProps = {
   availability: SkillrLocalAvailabilityDto;

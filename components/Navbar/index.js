@@ -25,7 +25,13 @@ export default function Navbar({ page }) {
     <div
       className={!open ? styles.navbar : classNames(styles.open, styles.navbar)}
     >
-      <div className={page === 'team' ? classNames(styles.navbarContainer, styles.team) : styles.navbarContainer}>
+      <div
+        className={
+          page === "team"
+            ? classNames(styles.navbarContainer, styles.team)
+            : styles.navbarContainer
+        }
+      >
         <div className={styles.navbarMain}>
           <Link href="/" passHref>
             <img src={logoNavbar.src} className={styles.mobileLogo} alt="" />
@@ -59,12 +65,15 @@ export default function Navbar({ page }) {
                 </Link>
               </div>
               <div className={styles.link}>
-                <Link href= "https://skillrhelp.zendesk.com/hc/en-us" scroll={false}>
+                <Link
+                  href="https://skillrhelp.zendesk.com/hc/en-us"
+                  scroll={false}
+                >
                   Help
                 </Link>
               </div>
               <div className={styles.link}>
-                <Link href= "https://skillr.applytojob.com/apply" scroll={false}>
+                <Link href="https://skillr.applytojob.com/apply" scroll={false}>
                   Jobs
                 </Link>
               </div>
@@ -91,12 +100,15 @@ export default function Navbar({ page }) {
                 </Link>
               </div>
               <div className={styles.link}>
-                <Link href= "https://skillrhelp.zendesk.com/hc/en-us" scroll={false}>
+                <Link
+                  href="https://skillrhelp.zendesk.com/hc/en-us"
+                  scroll={false}
+                >
                   Help
                 </Link>
               </div>
               <div className={styles.link}>
-                <Link href= "https://skillr.applytojob.com/apply" scroll={false}>
+                <Link href="https://skillr.applytojob.com/apply" scroll={false}>
                   Jobs
                 </Link>
               </div>

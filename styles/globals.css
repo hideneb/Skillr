@@ -212,3 +212,67 @@ p {
 .flex-row {
   flex-direction: row;
 }
+
+.heart-full {
+  background-color: red;
+  display: inline-block;
+  height: 10px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 10px;
+}
+
+.heart-full:before,
+.heart-full:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.heart-full:before {
+  top: -5px;
+  left: 0;
+}
+
+.heart-full:after {
+  left: 5px;
+  top: 0;
+}
+
+.heart-empty {
+  background-color: gray;
+  border-color: red;
+  display: inline-block;
+  height: 10px;
+  margin: 0 10px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 10px;
+}
+
+.heart-empty:before,
+.heart-empty:after {
+  content: "";
+  background-color: gray;
+  border-color: red;
+  border-radius: 50%;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.heart-empty:before {
+  top: -5px;
+  left: 0;
+}
+
+.heart-empty:after {
+  left: 5px;
+  top: 0;
+}

@@ -2,8 +2,8 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 
 import React from "react";
-import { getPageOfSkillrs } from "../../api/v1/skillrs";
-import { SkillrDto } from "../../api/v1/types";
+import { SkillrDto } from "../../lib/types/skillr";
+import { getPageOfSkillrs } from "../api/skillrs/[skillrId]";
 
 type SkillrsProps = {
   skillrs: SkillrDto[];
@@ -21,7 +21,7 @@ const Skillrs: React.FC<SkillrsProps> = ({ skillrs }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { skillrs } = await getPageOfSkillrs();
+  const { skillrs } = await getPageOfSkillrs({ page: 0, limit: 10 });
   return {
     props: {
       skillrs,

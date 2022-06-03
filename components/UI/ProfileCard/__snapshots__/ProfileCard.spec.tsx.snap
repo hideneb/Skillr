@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displaying a profile card 1`] = `
+<div>
+  <div
+    class="profileCard"
+  >
+    <div
+      class="profileCardContent card"
+    >
+      <div
+        class="profileCardImageContainer"
+      >
+        <img
+          alt=""
+          height="100%"
+          src="https://via.placeholder.com/150"
+          width="100%"
+        />
+      </div>
+      <div
+        class="mobileProfileHeader"
+      >
+        <div>
+          @
+          username
+        </div>
+        <div>
+          Display Name
+        </div>
+      </div>
+      <p
+        class="profileCardAbout"
+      >
+        one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen sevente...
+      </p>
+      <button
+        class="readMoreButton"
+      >
+        Read more
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`displaying a profile card 2`] = `
+<div>
+  <div
+    class="profileCard"
+  >
+    <div
+      class="profileCardContent card"
+    >
+      <div
+        class="profileCardImageContainer"
+      >
+        <img
+          alt=""
+          height="100%"
+          src="https://via.placeholder.com/150"
+          width="100%"
+        />
+      </div>
+      <div
+        class="mobileProfileHeader"
+      >
+        <div>
+          @
+          username
+        </div>
+        <div>
+          Display Name
+        </div>
+      </div>
+      <p
+        class="profileCardAbout"
+      >
+        one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty
+      </p>
+      <button
+        class="readLessButton"
+      >
+        Read less
+      </button>
+    </div>
+  </div>
+</div>
+`;

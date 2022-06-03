@@ -26,6 +26,7 @@ Primary.args = {
     Sed eu tincidunt turpis, sit amet rutrum tortor. Cras ac mauris nulla. Nunc orci orci, aliquam eu diam vel, tempus condimentum purus. Ut interdum nec arcu vel mollis. Nam gravida, augue quis egestas dignissim, elit nibh malesuada lorem, vitae euismod nibh felis a nisi. In at consequat lectus, vitae semper libero. Aliquam mollis ligula ut leo facilisis viverra.`,
     instagram: "",
     linkedin: "",
+    isAvailableNow: true,
     skills: [
       {
         skillrSkillId: "1",

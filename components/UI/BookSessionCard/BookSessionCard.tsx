@@ -1,16 +1,23 @@
 import React from "react";
+import Router from "next/router";
 import styles from "./BookSessionCard.module.css";
 import cx from "classnames";
 import classNames from "classnames";
 import Availability from "../Availability";
-import { SkillrLocalAvailabilityDto } from "../../../api/v1/types";
+import {
+  SkillrDto,
+  SkillrLocalAvailabilityDto,
+} from "../../../lib/types/skillr";
+import { UserDto } from "../../../lib/types/user";
 
 type BookSessionProps = {
   imgSrc: string;
   name: string;
   description: string;
   ratePerMinute: number;
+  skillr: SkillrDto;
   availability?: SkillrLocalAvailabilityDto;
+  user: UserDto | null;
 };
 
 const BookSessionCard: React.FC<BookSessionProps> = ({
@@ -18,7 +25,9 @@ const BookSessionCard: React.FC<BookSessionProps> = ({
   name,
   description,
   ratePerMinute,
+  skillr,
   availability,
+  user,
 }) => {
   return (
     <div className={cx(styles.card, styles.bookSessionContainer)}>
@@ -40,7 +49,30 @@ const BookSessionCard: React.FC<BookSessionProps> = ({
                 ) : (
                   ""
                 )}
-                <button className={styles.connectNowButton}>Connect Now</button>
+                {user ? (
+                  <>
+                    <button
+                      className={styles.connectNowButton}
+                      onClick={() =>
+                        Router.push(
+                          `/skillrs/${skillr.id}/skills/${skillr.skills[0].skillId}`
+                        )
+                      }
+                    >
+                      Connect Now
+                    </button>
+                    <button
+                      className={styles.connectNowButton}
+                      onClick={() => Router.push(`/chats/${skillr.id}`)}
+                    >
+                      Chat
+                    </button>
+                  </>
+                ) : (
+                  <button className={styles.connectNowButton}>
+                    Connect Now
+                  </button>
+                )}
               </div>
               <p
                 className={classNames(
@@ -63,7 +95,22 @@ const BookSessionCard: React.FC<BookSessionProps> = ({
                 ) : (
                   ""
                 )}
-                <button className={styles.connectNowButton}>Connect Now</button>
+                <button
+                  className={styles.connectNowButton}
+                  onClick={() =>
+                    Router.push(
+                      `/skillrs/${skillr.id}/skills/${skillr.skills[0].skillId}`
+                    )
+                  }
+                >
+                  Connect Now
+                </button>
+                <button
+                  className={styles.connectNowButton}
+                  onClick={() => Router.push(`/chats/${skillr.id}`)}
+                >
+                  Chat
+                </button>
               </div>
             </div>
           </div>
