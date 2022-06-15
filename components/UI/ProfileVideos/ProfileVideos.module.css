@@ -1,0 +1,65 @@
+@value md-up, lg-up from "../../../styles/Breakpoints.module.css";
+
+.profileVideos {
+  display: flex;
+  flex-wrap: wrap;  
+}
+
+.result {
+  flex: 1;  
+  width: calc(100% / 3);
+  min-width: calc(100% / 3);
+  max-width: calc(100% / 3);
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.play {  
+  position: absolute;  
+  left: 14px;
+  bottom: 14px;
+  width: 20px;
+  opacity: .7;  
+  transform: none;  
+  transition: opacity 1s;
+}
+
+.result:hover .play {
+  opacity: 1;    
+}
+
+
+.singleVideoLayout .result{
+  width: 100%;
+  max-width: 275px;
+  margin-bottom: 0;
+}
+
+.singleVideoLayout .result .play{ 
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video {
+  width: 100%;
+  display: block;  
+}
+
+@media md-up {
+  .play {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media lg-up {
+  .result {
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
+  }  
+}

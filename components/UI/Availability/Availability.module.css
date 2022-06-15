@@ -7,9 +7,20 @@
   color: var(--rich-blue-8);
 }
 
+.title:not(.mobileTitle) {
+  display: none;
+}
+
 @media md-up {
   .title {
-    font-size: 15px;
+    font-size: 24px;
+  }
+
+  .title.mobileTitle {
+    display: none;
+  }
+  .title:not(.mobileTitle) {
+    display: block;
   }
 }
 
@@ -22,7 +33,7 @@
 
 @media md-up {
   .info {
-    font-size: 10px;
+    font-size: 16px;
     margin-bottom: 20px;
   }
 }
@@ -36,26 +47,31 @@
 
 @media md-up {
   .dayContainer {
-    height: 34px;
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 }
 
 .dayContainer.unavailable .day,
 .dayContainer.unavailable .hours {
-  color: var(--rich-blue-5) !important;
+  color: var(--rich-blue-5) !important;  
+}
+
+.dayContainer.unavailable .hours {
+  font-size: 14px;
 }
 
 .day {
-  width: 72px;
+  width: 100px;
   font-size: 17px;
   font-weight: 600;
-  color: var(--rich-blue-8);
+  color: var(--rich-blue-8);  
 }
 
 @media md-up {
   .day {
-    font-size: 10px;
-    width: 40px;
+    font-size: 16px;
+    width: 66px;
   }
 }
 
@@ -66,6 +82,6 @@
 
 @media md-up {
   .hours {
-    font-size: 10px;
+    font-size: 16px;
   }
 }

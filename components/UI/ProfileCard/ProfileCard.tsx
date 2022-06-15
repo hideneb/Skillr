@@ -1,57 +1,64 @@
+import React from "react";
 import styles from "./ProfileCard.module.css";
 import cx from "classnames";
-import React, { useState } from "react";
+import { SkillrDto } from "../../../lib/types/skillr";
+import { UserDto } from "../../../lib/types/user";
+import ProfileVideos from "../ProfileVideos";
 
-type SkillrProfileCardProps = {
-  username: string;
-  displayName: string;
-  avatar: string;
-  about: string;
+type ProfileCardProps = {
+	imgSrc: string;
+	name: string;
+	description: string;
+	ratePerMinute: number;
+	skillr: SkillrDto;
+	user: UserDto | null;
 };
 
-const Card: React.FC<SkillrProfileCardProps> = ({
-  username,
-  displayName,
-  avatar,
-  about,
+const ProfileCard: React.FC<ProfileCardProps> = ({
+	imgSrc,
+	name,
+	description,
+	ratePerMinute,
+	skillr,
+	user,
 }) => {
-  const [showFullBio, setShowFullBio] = useState(false);
+	const videos = skillr.images.filter((i) => !!i.video);
 
-  const blurb = about?.length > 500 ? `${about.substring(0, 500)}...` : about;
-
-  return (
-    <div className={styles.profileCard}>
-      <div className={cx(styles.profileCardContent, styles.card)}>
-        <div className={styles.profileCardImageContainer}>
-          {avatar ? (
-            <img height={"100%"} width={"100%"} alt="" src={avatar} />
-          ) : null}
-        </div>
-
-        <div className={styles.mobileProfileHeader}>
-          <div>@{username}</div>
-          <div>{displayName}</div>
-        </div>
-        <p className={styles.profileCardAbout}>{showFullBio ? about : blurb}</p>
-        {!showFullBio && (
-          <button
-            className={styles.readMoreButton}
-            onClick={() => setShowFullBio(true)}
-          >
-            Read more
-          </button>
-        )}
-        {showFullBio && (
-          <button
-            className={styles.readLessButton}
-            onClick={() => setShowFullBio(false)}
-          >
-            Read less
-          </button>
-        )}
-      </div>
-    </div>
-  );
+	return (
+		<div className={cx(styles.card, styles.profileCardContainer)}>
+			<div className="d-flex flex-column" style={{ flex: 1, maxWidth: "100%" }}>
+				<p className={styles.profileCardDescription}>
+					{
+						//todo: this is hard-coded until we have description data
+						//description ||
+						"Passionate yoga teacher with over 3+ years of professional experience in designing and leading flow and vinyasa yoga classes. In June 2018, completed an Advanced 300-Hour Yoga Teacher Training in Bali, Indonesia, and acquired an in-depth knowledge about postures, breathing techniques, and spiritual elements of yoga teaching.Indonesia, and acquired an in-depth knowledge about postures, breathing techniques, and spiritual elements of yoga teaching. "
+					}
+				</p>
+				<div className="d-flex">
+					<div className={styles.profileDetialsCardImgContainer}>
+						{imgSrc ? <img height={"100%"} width={"100%"} alt="" src={imgSrc} /> : null}
+					</div>
+					<div className="d-flex" style={{ flexGrow: 1 }}>
+						<div className={styles.profileCardTextContainer}>
+							<div className={styles.title}>{name}</div>
+							<div className={styles.rateContainer}>
+								{ratePerMinute ? (
+									<div className={styles.rate}>${(ratePerMinute / 100).toFixed(2)}/min</div>
+								) : (
+									""
+								)}
+							</div>
+						</div>
+					</div>
+				</div>
+				{videos.length > 0 && (
+					<div className={styles.videos}>
+						<ProfileVideos videos={videos} />
+					</div>
+				)}
+			</div>
+		</div>
+	);
 };
 
-export default Card;
+export default ProfileCard;

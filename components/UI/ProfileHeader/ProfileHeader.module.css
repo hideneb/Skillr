@@ -1,0 +1,110 @@
+@value md-up from "../../../styles/Breakpoints.module.css";
+
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 1px solid var(--rich-blue-3);  
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;  
+}
+
+.profileImageContainer{
+  width: 160px;
+  height: 160px;
+  border: 6px solid var(--white);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileImageContainer img {
+  object-fit: cover;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  margin-bottom: 36px;
+}
+
+.username {
+  font-size: 26px;
+  color: var(--rich-blue-7);
+}
+
+.displayName {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--rich-blue-8);  
+  margin-bottom: 4px;
+}
+
+.socialLinksContainer {
+  display: flex;  
+  align-items: center;
+  color: var(--rich-blue-8);  
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.socialLinksContainer a {
+  display: flex;
+  align-items: center;  
+  margin: 0 13px;
+  cursor: pointer;
+}
+
+@media md-up {
+  .profileHeader{
+    flex-direction: row;    
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+  }
+
+  .colLeft {
+    flex-direction: row;
+    margin-right: 26px;
+    width: 75%;
+  }
+
+  .colRight {
+    width: 25%;
+  }
+
+  .profileImageContainer {
+    width: 120px;
+    height: 120px;
+    margin-right: 24px;
+  }
+
+  .profileInfo {
+    align-items: flex-start;   
+    margin-bottom: 0;
+  }
+
+  .username {
+    font-size: 27px;
+  }
+
+  .displayName {
+    font-size: 34px;
+    margin-bottom: 0;
+  }
+
+  .socialLinksContainer {
+    font-size: 14px;        
+  }
+
+  .socialLinksContainer a {    
+    margin: 0 26px 0 0;
+  }
+}

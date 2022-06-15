@@ -1,4 +1,4 @@
-@value md-up from "../../styles/Breakpoints.module.css";
+@value md-up, lg-up from "../../styles/Breakpoints.module.css";
 
 .header {
   width: 100%;
@@ -6,67 +6,37 @@
   background-image: url(../../public/stock-bg.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
-}
-
-@media md-up {
-  .header {
-    height: 300px;
-  }
+  background-position: center center;  
 }
 
 .container {
   display: flex;
+  flex-direction: column;  
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 1440px;
+  width: 100%;  
   margin: auto;
-  padding: 0 24px;
-  border-radius: 25px 25px 0 0;
+  padding-top: 36px;
+  padding: 36px 24px 0;
+  margin-top: -145px;
 }
 
-@media md-up {
-  .container {
-    padding: 0 44px;
-    flex-wrap: nowrap;
-    position: relative;
-    top: -25px;
-  }
+
+
+.skillContainer{ 
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .colLeft {
-  width: 100%;
-  flex-shrink: 0;
-}
-
-@media md-up {
-  .colLeft {
-    width: 200px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;  
 }
 
 .colRight {
-  flex-grow: 1;
-}
-
-@media md-up {
-  .colRight {
-    margin-left: 36px;
-  }
-}
-
-.card {
-  border-radius: 25px;
-}
-
-.mobileAvailability {
   width: 100%;
-}
-
-@media md-up {
-  .mobileAvailability {
-    display: none;
-  }
 }
 
 .connectNowButton {
@@ -84,4 +54,44 @@
   white-space: nowrap;
   margin-top: 26px;
   margin-bottom: 26px;
+}
+
+@media md-up {
+  .container {    
+    max-width: 850px;
+    flex-direction: row;
+    padding: 36px 0 0;
+    margin-top: 0;
+  }
+
+  .header {
+    height: 300px;
+  }
+
+  .skillContainer {
+    flex-wrap: nowrap;
+  }
+
+  .colLeft {
+    width: 60%;
+    margin-right: 50px;
+  }
+  
+  .colRight {width: 40%;}
+}
+
+
+@media lg-up {
+  .container {
+    max-width: 1000px;
+  }
+
+  .colLeft {
+    width: 75%;
+  }
+
+  .colRight {
+    width: 25%;
+  }
+
 }
