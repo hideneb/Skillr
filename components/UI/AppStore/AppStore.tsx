@@ -5,7 +5,7 @@ const AppStore = () => {
 	return (
 		<div className={styles.appStore}>
 			<div className={styles.text}>Get the full experience on the Skillr app</div>
-			<img className={styles.badge} src="/app-store-badge.png" alt="Download on the App Store" />
+			<img className={styles.badge} src="/app-store-badge.svg" alt="Download on the App Store" />
 		</div>
 	);
 };

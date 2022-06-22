@@ -11,7 +11,7 @@ type ProfileCardProps = {
 	description: string;
 	ratePerMinute: number;
 	skillr: SkillrDto;
-	user: UserDto | null;
+	featureImage: string;
 };
 
 const ProfileCard: React.FC<ProfileCardProps> = ({
@@ -20,7 +20,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	description,
 	ratePerMinute,
 	skillr,
-	user,
+	featureImage,
 }) => {
 	const videos = skillr.images.filter((i) => !!i.video);
 
@@ -53,7 +53,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 				</div>
 				{videos.length > 0 && (
 					<div className={styles.videos}>
-						<ProfileVideos videos={videos} />
+						<ProfileVideos featureImage={featureImage} videos={videos} />
 					</div>
 				)}
 			</div>

@@ -15,8 +15,7 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const Availability: React.FC<AvailabilityProps> = ({ availability }) => {
 	return (
 		<div>
-			<div className={styles.title}>Generally online</div>
-			<div className={classNames(styles.title, styles.mobileTitle)}>Availability</div>
+			<div className={styles.title}>Availability</div>
 			<div className={styles.info}>Showing times in your local timezone.</div>
 			{[0, 1, 2, 3, 4, 5, 6].map((dayIndex) => {
 				const startTime = availability[`day${dayIndex}Begin` as keyof SkillrLocalAvailabilityDto];

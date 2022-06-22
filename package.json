@@ -46,6 +46,7 @@
     "react-instantsearch-hooks-server": "^6.26.0",
     "react-instantsearch-hooks-web": "^6.26.0",
     "react-modal-video": "^1.2.8",
+    "react-responsive": "^9.0.0-beta.10",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
     "smoothscroll-polyfill": "^0.4.4",

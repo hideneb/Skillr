@@ -1,26 +1,16 @@
 @value md-up from "../../../styles/Breakpoints.module.css";
 
 .title {
+  font-family: 'RedHatDisplay';
   font-size: 25px;
   font-weight: 700;
   margin-bottom: 4px;
   color: var(--rich-blue-8);
 }
 
-.title:not(.mobileTitle) {
-  display: none;
-}
-
 @media md-up {
   .title {
     font-size: 24px;
-  }
-
-  .title.mobileTitle {
-    display: none;
-  }
-  .title:not(.mobileTitle) {
-    display: block;
   }
 }
 

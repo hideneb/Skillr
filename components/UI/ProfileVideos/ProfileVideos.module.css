@@ -1,4 +1,4 @@
-@value md-up, lg-up from "../../../styles/Breakpoints.module.css";
+@value sm-up, md-up, lg-up from "../../../styles/Breakpoints.module.css";
 
 .profileVideos {
   display: flex;
@@ -13,6 +13,34 @@
   position: relative;
   cursor: pointer;
   margin-bottom: 6px;
+}
+
+.firstOfSingleRow img {
+  border-radius: 5px 0 0 5px;
+}
+
+.lastOfSingleRow img {
+  border-radius: 0 5px 5px 0;
+}
+
+.firstOfSingleRow.lastOfSingleRow img{
+  border-radius: 5px;
+}
+
+.firstColumnOfFirstRow img {
+  border-radius: 5px 0 0 0;
+}
+
+.lastColumnOfFirstRow img {
+  border-radius: 0 5px;
+}
+
+.firstColumnOfLastRow img {
+  border-radius: 0 0 0 5px;
+}
+
+.lastColumnOfLastRow img {
+  border-radius: 0 0 5px 0;
 }
 
 .play {  
@@ -32,7 +60,7 @@
 
 .singleVideoLayout .result{
   width: 100%;
-  max-width: 275px;
+  max-width: 100%;
   margin-bottom: 0;
 }
 
@@ -48,11 +76,22 @@
   display: block;  
 }
 
+@media sm-up {
+  .singleVideoLayout .result{    
+    max-width: 400px;    
+  }
+}
+
 @media md-up {
-  .play {
+  /* .play {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  } */
+
+  .singleVideoLayout .result{    
+    max-width: 450px;
+    margin-bottom: 0;
   }
 }
 

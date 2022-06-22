@@ -4,11 +4,12 @@ import LinkedinIcon from "../../../public/linkedin.svg";
 import TwitterIcon from "../../../public/twitter.svg";
 import TikTokIcon from "../../../public/tiktok.svg";
 import AppStore from "../AppStore";
+import classNames from "classnames";
 
 type ProfileHeaderProps = {
 	profileImage: string;
 	username: string;
-	displayName?: string;
+	displayName: string;
 	linkedin?: string;
 	instagram?: string;
 	twitter?: string;
@@ -32,7 +33,13 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 				</div>
 				<div className={styles.profileInfo}>
 					<div className={styles.username}>@{username}</div>
-					<div className={styles.displayName}>{displayName} </div>
+					<div
+						className={classNames(styles.displayName, {
+							[styles.displayNameLong]: displayName.length > 25,
+						})}
+					>
+						{displayName}
+					</div>
 					<div className={styles.socialLinksContainer}>
 						<a href={instagram} className="d-flex">
 							<InstagramIcon className={styles.socialIcon} />

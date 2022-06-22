@@ -1,3 +1,5 @@
+/* Poppins */
+
 @font-face {
   font-family: "Poppins";
   src: url(../public/fonts/Poppins/Poppins-Regular.ttf);
@@ -54,6 +56,69 @@
 @font-face {
   font-family: "Poppins";
   src: url(../public/fonts/Poppins/Poppins-BlackItalic.ttf);
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+}
+
+/* RedHatDisplaY */
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Regular.ttf);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Italic.ttf);
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Medium.ttf);
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-MediumItalic.ttf);
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Bold.ttf);
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-BoldItalic.ttf);
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Black.ttf);
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-BlackItalic.ttf);
   font-style: italic;
   font-weight: 900;
   font-display: swap;
