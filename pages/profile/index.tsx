@@ -86,15 +86,31 @@ const Profile: React.FC<ProfileProps> = ({ user, paymentMethod, skillr }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<ProfileProps> = async (
-  context
-) => {
-  const token = await getUnexpiredToken(context.req, context.res);
+export const getServerSideProps: GetServerSideProps<ProfileProps> = async ({
+  query,
+  req,
+  res,
+  resolvedUrl,
+}) => {
+  const { profileID, ...rest } = query;
+  if (profileID) {
+    return {
+      redirect: {
+        permanent: true,
+        destination: `/skillrs/${query.profileID}?${new URLSearchParams(
+          rest as Record<string, string>
+        )}`,
+      },
+      props: {},
+    };
+  }
+
+  const token = await getUnexpiredToken(req, res);
   if (!token) {
     return {
       redirect: {
         permanent: false,
-        destination: `/login?r=${encodeURIComponent(context.resolvedUrl)}`,
+        destination: `/login?r=${encodeURIComponent(resolvedUrl)}`,
       },
       props: {},
     };
