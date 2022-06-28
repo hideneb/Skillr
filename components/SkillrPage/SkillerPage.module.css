@@ -84,13 +84,4 @@
   .container {
     max-width: 1000px;
   }
-
-  .colLeft {
-    width: 75%;
-  }
-
-  .colRight {
-    width: 25%;
-  }
-
 }

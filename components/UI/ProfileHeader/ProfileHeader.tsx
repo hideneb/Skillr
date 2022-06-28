@@ -40,20 +40,30 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 					>
 						{displayName}
 					</div>
-					<div className={styles.socialLinksContainer}>
-						<a href={instagram} className="d-flex">
-							<InstagramIcon className={styles.socialIcon} />
-						</a>
-						<a href={linkedin} className="d-flex">
-							<LinkedinIcon className={styles.socialIcon} />
-						</a>
-						<a href={twitter} className="d-flex">
-							<TwitterIcon className={styles.socialIcon} />
-						</a>
-						<a href={tiktok} className="d-flex">
-							<TikTokIcon className={styles.socialIcon} />
-						</a>
-					</div>
+					{(instagram || linkedin || twitter || tiktok) && (
+						<div className={styles.socialLinksContainer}>
+							{instagram && (
+								<a href={instagram} className="d-flex">
+									<InstagramIcon className={styles.socialIcon} />
+								</a>
+							)}
+							{linkedin && (
+								<a href={linkedin} className="d-flex">
+									<LinkedinIcon className={styles.socialIcon} />
+								</a>
+							)}
+							{twitter && (
+								<a href={twitter} className="d-flex">
+									<TwitterIcon className={styles.socialIcon} />
+								</a>
+							)}
+							{tiktok && (
+								<a href={tiktok} className="d-flex">
+									<TikTokIcon className={styles.socialIcon} />
+								</a>
+							)}
+						</div>
+					)}
 				</div>
 			</div>
 			<div className={styles.colRight}>

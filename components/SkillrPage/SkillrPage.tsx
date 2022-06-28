@@ -6,6 +6,7 @@ import Availability from "../UI/Availability";
 import { SkillrDto } from "../../lib/types/skillr";
 import { UserDto } from "../../lib/types/user";
 import Router from "next/router";
+import Footer from "../Footer";
 
 type SkillrProfileProps = {
 	skillr: SkillrDto;
@@ -135,6 +136,7 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, user }) => {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</div>
 	);
 };
