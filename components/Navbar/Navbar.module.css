@@ -31,13 +31,16 @@
 }
 
 .open .mobileLogo {
-  height: 28px;
+  height: 26px;
 }
 
 .navbar {
-  background: rgba(12, 31, 63, 1);
+  background: transparent;
   margin-bottom: -3px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .navbarMain {
