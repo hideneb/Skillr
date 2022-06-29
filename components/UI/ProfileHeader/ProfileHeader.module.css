@@ -1,117 +1,116 @@
 @value md-up from "../../../styles/Breakpoints.module.css";
 
 .profileHeader {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border-bottom: 1px solid var(--rich-blue-3);  
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid var(--rich-blue-3);
+    padding-bottom: 30px;
+    margin-bottom: 30px;
 }
-
 
 .colLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
-.profileImageContainer{
-  width: 160px;
-  height: 160px;
-  border: 6px solid var(--white);
-  border-radius: 50%;
-  overflow: hidden;
+.profileImageContainer {
+    width: 160px;
+    height: 160px;
+    border: 6px solid var(--white);
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .profileImageContainer img {
-  object-fit: cover;
+    object-fit: cover;
 }
 
 .profileInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  
-  margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 36px;
 }
 
 .username {
-  font-size: 26px;
-  color: var(--rich-blue-7);
+    font-size: 26px;
+    color: var(--rich-blue-7);
 }
 
 .displayName {
-  font-family: 'RedHatDisplay';
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--rich-blue-8);  
-  margin-bottom: 4px;
-  white-space: nowrap;
+    font-family: 'RedHatDisplay';
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--rich-blue-8);
+    margin-bottom: 4px;
+    white-space: nowrap;
 }
 
 .socialLinksContainer {
-  display: flex;  
-  align-items: center;
-  color: var(--rich-blue-8);  
-  font-size: 17px;
-  font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: var(--rich-blue-8);
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .socialLinksContainer a {
-  display: flex;
-  align-items: center;  
-  margin: 0 13px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 0 13px;
+    cursor: pointer;
 }
 
 @media md-up {
-  .profileHeader{
-    flex-direction: row;    
-    padding-bottom: 36px;
-    margin-bottom: 36px;
-  }
+    .profileHeader {
+        flex-direction: row;
+        padding-bottom: 36px;
+        margin-bottom: 36px;
+    }
 
-  .colLeft {
-    flex-direction: row;
-    margin-right: 26px;
-    width: 60%;
-  }
+    .colLeft {
+        flex-direction: row;
+        margin-right: 26px;
+        width: 60%;
+    }
 
-  .colRight {
-    width: 40%;
-    min-width: 200px
-  }
+    .colRight {
+        width: 40%;
+        min-width: 200px;
+    }
 
-  .profileImageContainer {
-    width: 120px;
-    min-width: 120px;
-    height: 120px;
-    margin-right: 24px;
-  }
+    .profileImageContainer {
+        width: 120px;
+        min-width: 120px;
+        height: 120px;
+        margin-right: 24px;
+    }
 
-  .profileInfo {
-    align-items: flex-start;   
-    margin-bottom: 0;
-  }
+    .profileInfo {
+        align-items: flex-start;
+        margin-bottom: 0;
+    }
 
-  .username {
-    font-size: 27px;
-  }
+    .username {
+        font-size: 27px;
+    }
 
-  .displayName {
-    font-size: 34px;    
-  }
+    .displayName {
+        font-size: 34px;
+    }
 
-  .displayNameLong {
-    font-Size: 28px;
-  }
+    .displayNameLong {
+        font-size: 28px;
+    }
 
-  .socialLinksContainer {
-    font-size: 14px;        
-  }
+    .socialLinksContainer {
+        font-size: 14px;
+    }
 
-  .socialLinksContainer a {    
-    margin: 0 26px 0 0;
-  }
+    .socialLinksContainer a {
+        margin: 0 26px 0 0;
+    }
 }

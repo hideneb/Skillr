@@ -6,20 +6,18 @@
 // const { withSentryConfig } = require("@sentry/nextjs");
 
 const moduleExports = {
-  reactStrictMode: true,
-  webpack(config) {
-    const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test && rule.test.test(".svg")
-    );
-    if (fileLoaderRule) {
-      fileLoaderRule.exclude = /\.svg$/;
-    }
-    config.module.rules.push({
-      test: /\.svg$/,
-      loader: require.resolve("@svgr/webpack"),
-    });
-    return config;
-  },
+    reactStrictMode: true,
+    webpack(config) {
+        const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'));
+        if (fileLoaderRule) {
+            fileLoaderRule.exclude = /\.svg$/;
+        }
+        config.module.rules.push({
+            test: /\.svg$/,
+            loader: require.resolve('@svgr/webpack'),
+        });
+        return config;
+    },
 };
 
 // const SentryWebpackPluginOptions = {

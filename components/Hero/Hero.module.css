@@ -1,130 +1,130 @@
 .container {
-  min-height: 1033px;
-  width: 100%;
-  background: #0c1f3f;
-  background-image: url("/hero-bg.png");
-  text-align: center;
-  padding: 30px 10px 0;
-  margin-bottom: 199px;
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  margin-right: 10px;
+    min-height: 1033px;
+    width: 100%;
+    background: #0c1f3f;
+    background-image: url('/hero-bg.png');
+    text-align: center;
+    padding: 30px 10px 0;
+    margin-bottom: 199px;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    margin-right: 10px;
 }
 
 @media only screen and (max-width: 804px) {
-  .container {
-    min-height: 1090px;
-  }
+    .container {
+        min-height: 1090px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-  .container {
-    min-height: 1011px;
-  }
+    .container {
+        min-height: 1011px;
+    }
 }
 
 @media only screen and (max-width: 700px) {
-  .container {
-    min-height: 845px;
-  }
+    .container {
+        min-height: 845px;
+    }
 }
 
 @media only screen and (max-width: 658px) {
-  .container {
-    min-height: 891px;
-  }
+    .container {
+        min-height: 891px;
+    }
 }
 
 @media only screen and (max-width: 600px) {
-  .container {
-    min-height: 881px;
-  }
+    .container {
+        min-height: 881px;
+    }
 }
 
 @media only screen and (max-width: 447px) {
-  .container {
-    min-height: 927px;
-  }
+    .container {
+        min-height: 927px;
+    }
 }
 
 @media only screen and (max-width: 407px) {
-  .container {
-    min-height: 955px;
-  }
+    .container {
+        min-height: 955px;
+    }
 }
 
 @media only screen and (max-width: 364px) {
-  .container {
-    min-height: 1001px;
-  }
+    .container {
+        min-height: 1001px;
+    }
 }
 
 @media only screen and (max-width: 320px) {
-  .container {
-    min-height: 1070px;
-  }
+    .container {
+        min-height: 1070px;
+    }
 }
 
 .title {
-  color: #f2f3f4;
-  max-width: 850px;
-  padding: 0 14px;
-  margin: 47px auto 46px;
+    color: #f2f3f4;
+    max-width: 850px;
+    padding: 0 14px;
+    margin: 47px auto 46px;
 }
 
 @media only screen and (max-width: 768px) {
-  .title {
-    font-size: 42px;
-  }
+    .title {
+        font-size: 42px;
+    }
 }
 
 .description {
-  color: #f2f3f4;
-  letter-spacing: normal;
-  max-width: 520px;
-  margin: 0 auto 73px;
-  padding: 0 14px;
-  box-sizing: content-box;
-  font-weight: bold;
+    color: #f2f3f4;
+    letter-spacing: normal;
+    max-width: 520px;
+    margin: 0 auto 73px;
+    padding: 0 14px;
+    box-sizing: content-box;
+    font-weight: bold;
 }
 
 .screens {
-  position: relative;
+    position: relative;
 }
 
 .screens img {
-  display: block;
+    display: block;
 }
 
 .screens > div {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .screensMobile {
-  display: none;
+    display: none;
 }
 
 @media only screen and (max-width: 700px) {
-  .screensDesktop {
-    display: none;
-  }
-  .screensMobile {
-    display: block;
-  }
+    .screensDesktop {
+        display: none;
+    }
+    .screensMobile {
+        display: block;
+    }
 }
 
 .block {
-  display: block;
+    display: block;
 }
 
 @media (max-width: 576px) {
-  .block {
-    display: inline;
-  }
+    .block {
+        display: inline;
+    }
 }
 
 .curPointer {
-  cursor: pointer;
+    cursor: pointer;
 }

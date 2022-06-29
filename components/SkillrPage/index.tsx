@@ -1,1 +1,1 @@
-export { default } from "./SkillrPage";
+export { default } from './SkillrPage';

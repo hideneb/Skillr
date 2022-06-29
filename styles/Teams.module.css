@@ -1,144 +1,147 @@
 .container {
-  max-width: 1443px;
-  margin: auto;
-  padding: 0 143px;
+    max-width: 1443px;
+    margin: auto;
+    padding: 0 143px;
 }
 
 @media (max-width: 1024px) {
-  .container {
-    padding: 0 22px;
-  }
+    .container {
+        padding: 0 22px;
+    }
 }
 
 .aboutTeam {
-  margin-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 @media (max-width: 768px) {
-  .aboutTeam {
-    margin-top: 2.5rem;
-  }
+    .aboutTeam {
+        margin-top: 2.5rem;
+    }
 }
 
 .aboutTeam img {
-  width: 100%;
+    width: 100%;
 }
 
 .getEarlyAccess {
-  margin: 40px 0 100px;
+    margin: 40px 0 100px;
 }
 
 .navTab {
-  max-width: 1113px;
-  margin: auto;
+    max-width: 1113px;
+    margin: auto;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .tabLink {
-  font-size: 33px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 43px;
-  letter-spacing: -0.02em;
-  color: rgba(12, 31, 63, 1);
-  width: fit-content;
-  cursor: pointer;
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 43px;
+    letter-spacing: -0.02em;
+    color: rgba(12, 31, 63, 1);
+    width: fit-content;
+    cursor: pointer;
 }
 
 .tabLink.active {
-  color: white;
-  padding: 8px 28px;
-  background-color: #0c1f3f;
-  border-radius: 100px;
+    color: white;
+    padding: 8px 28px;
+    background-color: #0c1f3f;
+    border-radius: 100px;
 }
 
 @media (max-width: 1200px) {
-  .tabLink {
-    font-size: 24px;
-  }
-  .tabLink.active {
-    padding: 4px 20px;
-  }
+    .tabLink {
+        font-size: 24px;
+    }
+    .tabLink.active {
+        padding: 4px 20px;
+    }
 }
 
 @media (max-width: 768px) {
-  .navTab {
-    flex-direction: column;
-    padding-top: 8rem;
-  }
-  .navTab .tabLink {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+    .navTab {
+        flex-direction: column;
+        padding-top: 8rem;
+    }
+    .navTab .tabLink {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 .bioWrapper {
-  max-width: 980px;
-  margin: auto;
+    max-width: 980px;
+    margin: auto;
 }
 
 .advisorWrapper {
-  max-width: 1157px;
-  margin: auto;
+    max-width: 1157px;
+    margin: auto;
 }
 
-.bioWrapper .flexContainer, .advisorWrapper .flexContainer {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+.bioWrapper .flexContainer,
+.advisorWrapper .flexContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .flexContainer.justifyEvenly {
-  justify-content: space-evenly;
+    justify-content: space-evenly;
 }
 
 @media (max-width: 768px) {
-  .bioWrapper .flexContainer, .advisorWrapper .flexContainer {
-    justify-content: center;
-  }
+    .bioWrapper .flexContainer,
+    .advisorWrapper .flexContainer {
+        justify-content: center;
+    }
 }
 
 .ctMargin {
-  margin-top: 4.5rem;
+    margin-top: 4.5rem;
 }
 
 @media (max-width: 768px) {
-  .bioWrapper.ctMargin, .advisorWrapper.ctMargin {
-    margin-top: 2.5rem;
-  }
+    .bioWrapper.ctMargin,
+    .advisorWrapper.ctMargin {
+        margin-top: 2.5rem;
+    }
 }
 
 .textCenter {
-  text-align: center;
+    text-align: center;
 }
 
 .arrowPrevStyle {
-  left: calc( 50% - 160px ) !important;
-  top: 200px !important;
-  z-index: 999;
+    left: calc(50% - 160px) !important;
+    top: 200px !important;
+    z-index: 999;
 }
 
 .arrowNextStyle {
-  right: calc( 50% - 160px ) !important;
-  top: 200px !important;
-  z-index: 999;
+    right: calc(50% - 160px) !important;
+    top: 200px !important;
+    z-index: 999;
 }
 
 @media (max-width: 576px) {
-  .arrowPrevStyle {
-    left: calc( 50% - 130px ) !important;
-    top: 165px !important;
-    z-index: 999;
-  }
-  
-  .arrowNextStyle {
-    right: calc( 50% - 130px ) !important;
-    top: 165px !important;
-    z-index: 999;
-  }
+    .arrowPrevStyle {
+        left: calc(50% - 130px) !important;
+        top: 165px !important;
+        z-index: 999;
+    }
+
+    .arrowNextStyle {
+        right: calc(50% - 130px) !important;
+        top: 165px !important;
+        z-index: 999;
+    }
 }

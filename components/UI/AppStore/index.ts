@@ -1,1 +1,1 @@
-export { default } from "./AppStore";
+export { default } from './AppStore';

@@ -1,74 +1,74 @@
 .main {
-  padding: 0 24px;
+    padding: 0 24px;
 }
 
 .accessible {
-  text-align: center;
-  margin: 0 auto 44px;
-  max-width: 1100px;
+    text-align: center;
+    margin: 0 auto 44px;
+    max-width: 1100px;
 }
 
 .textCenter {
-  text-align: center;
+    text-align: center;
 }
 
 .getEarlyAccess {
-  margin: 0 auto 120px;
+    margin: 0 auto 120px;
 }
 
 @media only screen and (max-width: 768px) {
-  .getEarlyAccess {
-    margin-top: 120px;
-  }
+    .getEarlyAccess {
+        margin-top: 120px;
+    }
 }
 
 .getInvite {
-  width: 211px;
-  border: 0.5px solid #c4cad0;
-  box-sizing: border-box;
-  border-radius: 8px;
-  height: 64px;
-  background: transparent;
-  color: #ff165f;
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1.2;
-  margin-top: 59px;
-  cursor: pointer;
+    width: 211px;
+    border: 0.5px solid #c4cad0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 64px;
+    background: transparent;
+    color: #ff165f;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-top: 59px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
-  .getInvite {
-    margin-top: 42px;
-  }
+    .getInvite {
+        margin-top: 42px;
+    }
 }
 
 .more {
-  color: #ff165f;
-  cursor: pointer;
+    color: #ff165f;
+    cursor: pointer;
 }
 
 .waitMore {
-  margin-top: 59px;
-  margin-bottom: 0;
+    margin-top: 59px;
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width: 768px) {
-  .waitMore {
-    margin-top: 42px;
-  }
+    .waitMore {
+        margin-top: 42px;
+    }
 }
 
 .noMargin {
-  margin: 0;
+    margin: 0;
 }
 
 .skillsOnTap {
-  margin-top: 49px;
-  margin-bottom: 46px;
-  text-align: center;
+    margin-top: 49px;
+    margin-bottom: 46px;
+    text-align: center;
 }
 
 .bottomDownloadDescription {
-  margin: 0 0 25px;
+    margin: 0 0 25px;
 }

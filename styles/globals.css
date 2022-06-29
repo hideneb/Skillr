@@ -1,343 +1,343 @@
 /* Poppins */
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-Regular.ttf);
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-Italic.ttf);
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-Italic.ttf);
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-Medium.ttf);
-  font-weight: 500;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-Medium.ttf);
+    font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-MediumItalic.ttf);
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-MediumItalic.ttf);
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-Bold.ttf);
-  font-weight: 700;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-Bold.ttf);
+    font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-BoldItalic.ttf);
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-Black.ttf);
-  font-weight: 900;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-Black.ttf);
+    font-weight: 900;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url(../public/fonts/Poppins/Poppins-BlackItalic.ttf);
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
+    font-family: 'Poppins';
+    src: url(../public/fonts/Poppins/Poppins-BlackItalic.ttf);
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
 }
 
 /* RedHatDisplaY */
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Regular.ttf);
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Italic.ttf);
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Italic.ttf);
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Medium.ttf);
-  font-weight: 500;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Medium.ttf);
+    font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-MediumItalic.ttf);
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-MediumItalic.ttf);
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Bold.ttf);
-  font-weight: 700;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Bold.ttf);
+    font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-BoldItalic.ttf);
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Black.ttf);
-  font-weight: 900;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-Black.ttf);
+    font-weight: 900;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RedHatDisplay";
-  src: url(../public/fonts/RedHatDisplay/RedHatDisplay-BlackItalic.ttf);
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
+    font-family: 'RedHatDisplay';
+    src: url(../public/fonts/RedHatDisplay/RedHatDisplay-BlackItalic.ttf);
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
 }
 
 :root {
-  --rich-blue-3: #c4cad0;
-  --rich-blue-5: #838e9d;
-  --rich-blue-6: #637083;
-  --rich-blue-7: #374761;
-  --rich-blue-8: #0c1f3f;
-  --skillr-pink-1: #ff165f;
-  --white: #ffffff;
-  --card-box-shadow: 0px 1px 12px 4px rgba(0, 0, 0, 0.12);
+    --rich-blue-3: #c4cad0;
+    --rich-blue-5: #838e9d;
+    --rich-blue-6: #637083;
+    --rich-blue-7: #374761;
+    --rich-blue-8: #0c1f3f;
+    --skillr-pink-1: #ff165f;
+    --white: #ffffff;
+    --card-box-shadow: 0px 1px 12px 4px rgba(0, 0, 0, 0.12);
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: Poppins, sans-serif;
-  overflow-x: hidden;
-  color: #0c1f3f;
+    padding: 0;
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    overflow-x: hidden;
+    color: #0c1f3f;
 }
 
 input {
-  font-family: Poppins, sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
+    color: inherit;
+    text-decoration: none;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 button {
-  font-family: Poppins, sans-serif;
-  cursor: pointer;
+    font-family: Poppins, sans-serif;
+    cursor: pointer;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 h1 {
-  font-size: 52px;
-  line-height: 1.1;
+    font-size: 52px;
+    line-height: 1.1;
 }
 
 h2 {
-  font-size: 42px;
-  line-height: 1.2;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 40px;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 40px;
 }
 
 h3 {
-  font-size: 32px;
-  line-height: 1.2;
+    font-size: 32px;
+    line-height: 1.2;
 }
 
 h4 {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin: 0;
-  font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0;
+    font-family: Inter, sans-serif;
 }
 
 p {
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.4;
-  margin: 0;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 42px;
-  }
+    h1 {
+        font-size: 42px;
+    }
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 24px;
-  }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 24px;
+    }
 
-  h3 {
-    font-size: 18px;
-  }
+    h3 {
+        font-size: 18px;
+    }
 
-  p {
-    font-size: 1.25rem;
-  }
+    p {
+        font-size: 1.25rem;
+    }
 }
 
 .tablet {
-  display: none;
+    display: none;
 }
 
 @media only screen and (max-width: 768px) {
-  .desktop {
-    display: none;
-  }
+    .desktop {
+        display: none;
+    }
 
-  .tablet {
-    display: block;
-  }
+    .tablet {
+        display: block;
+    }
 }
 
 .mobileFrame {
-  border-radius: 20px;
-  box-shadow: 42.4708px 42.4708px 84.9415px rgba(12, 31, 63, 0.1);
-  overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 42.4708px 42.4708px 84.9415px rgba(12, 31, 63, 0.1);
+    overflow: hidden;
 }
 
 .mobileFrame > img {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 .tm {
-  font-size: 5px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 10px;
-  letter-spacing: 0em;
-  text-align: center;
-  /* color: rgba(12, 31, 63, 1); */
-  color: inherit;
-  position: relative;
-  top: -10px;
+    font-size: 5px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px;
+    letter-spacing: 0em;
+    text-align: center;
+    /* color: rgba(12, 31, 63, 1); */
+    color: inherit;
+    position: relative;
+    top: -10px;
 }
 
 /* Util Classes */
 
 .d-flex {
-  display: flex;
+    display: flex;
 }
 
 .flex-column {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 .flex-row {
-  flex-direction: row;
+    flex-direction: row;
 }
 
 .heart-full {
-  background-color: red;
-  display: inline-block;
-  height: 10px;
-  margin: 0 10px;
-  position: relative;
-  top: 0;
-  transform: rotate(-45deg);
-  width: 10px;
+    background-color: red;
+    display: inline-block;
+    height: 10px;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 10px;
 }
 
 .heart-full:before,
 .heart-full:after {
-  content: "";
-  background-color: red;
-  border-radius: 50%;
-  height: 10px;
-  position: absolute;
-  width: 10px;
+    content: '';
+    background-color: red;
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
 }
 
 .heart-full:before {
-  top: -5px;
-  left: 0;
+    top: -5px;
+    left: 0;
 }
 
 .heart-full:after {
-  left: 5px;
-  top: 0;
+    left: 5px;
+    top: 0;
 }
 
 .heart-empty {
-  background-color: gray;
-  border-color: red;
-  display: inline-block;
-  height: 10px;
-  margin: 0 10px;
-  position: relative;
-  top: 0;
-  transform: rotate(-45deg);
-  width: 10px;
+    background-color: gray;
+    border-color: red;
+    display: inline-block;
+    height: 10px;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 10px;
 }
 
 .heart-empty:before,
 .heart-empty:after {
-  content: "";
-  background-color: gray;
-  border-color: red;
-  border-radius: 50%;
-  height: 10px;
-  position: absolute;
-  width: 10px;
+    content: '';
+    background-color: gray;
+    border-color: red;
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
 }
 
 .heart-empty:before {
-  top: -5px;
-  left: 0;
+    top: -5px;
+    left: 0;
 }
 
 .heart-empty:after {
-  left: 5px;
-  top: 0;
+    left: 5px;
+    top: 0;
 }

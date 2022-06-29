@@ -1,41 +1,41 @@
 .prosPocket {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
 }
 
 .textCenter {
-  text-align: center;
+    text-align: center;
 }
 
 .iconContainer {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
 .iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .iconItem {
-  margin-left: 1rem;
-  margin-right: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .pocketItem {
-  margin-top: 2.4rem;
+    margin-top: 2.4rem;
 }
 
 .pocketDescription {
-  text-align: center;
-  margin-top: 1rem;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .fontBold {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .inlineBlock {
-  display: inline-block;
+    display: inline-block;
 }

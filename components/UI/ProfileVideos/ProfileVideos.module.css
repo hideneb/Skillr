@@ -1,104 +1,103 @@
 @value sm-up, md-up, lg-up from "../../../styles/Breakpoints.module.css";
 
 .profileVideos {
-  display: flex;
-  flex-wrap: wrap;  
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .result {
-  flex: 1;  
-  width: calc(100% / 3);
-  min-width: calc(100% / 3);
-  max-width: calc(100% / 3);
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 6px;
+    flex: 1;
+    width: calc(100% / 3);
+    min-width: calc(100% / 3);
+    max-width: calc(100% / 3);
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 6px;
 }
 
 .firstOfSingleRow img {
-  border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
 }
 
 .lastOfSingleRow img {
-  border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
 }
 
-.firstOfSingleRow.lastOfSingleRow img{
-  border-radius: 5px;
+.firstOfSingleRow.lastOfSingleRow img {
+    border-radius: 5px;
 }
 
 .firstColumnOfFirstRow img {
-  border-radius: 5px 0 0 0;
+    border-radius: 5px 0 0 0;
 }
 
 .lastColumnOfFirstRow img {
-  border-radius: 0 5px;
+    border-radius: 0 5px;
 }
 
 .firstColumnOfLastRow img {
-  border-radius: 0 0 0 5px;
+    border-radius: 0 0 0 5px;
 }
 
 .lastColumnOfLastRow img {
-  border-radius: 0 0 5px 0;
+    border-radius: 0 0 5px 0;
 }
 
-.play {  
-  position: absolute;  
-  left: 14px;
-  bottom: 14px;
-  width: 20px;
-  opacity: .7;  
-  transform: none;  
-  transition: opacity 1s;
+.play {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    width: 20px;
+    opacity: 0.7;
+    transform: none;
+    transition: opacity 1s;
 }
 
 .result:hover .play {
-  opacity: 1;    
+    opacity: 1;
 }
 
-
-.singleVideoLayout .result{
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 0;
+.singleVideoLayout .result {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
 }
 
-.singleVideoLayout .result .play{ 
-  width: 40px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.singleVideoLayout .result .play {
+    width: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .video {
-  width: 100%;
-  display: block;  
+    width: 100%;
+    display: block;
 }
 
 @media sm-up {
-  .singleVideoLayout .result{    
-    max-width: 400px;    
-  }
+    .singleVideoLayout .result {
+        max-width: 400px;
+    }
 }
 
 @media md-up {
-  /* .play {
+    /* .play {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   } */
 
-  .singleVideoLayout .result{    
-    max-width: 450px;
-    margin-bottom: 0;
-  }
+    .singleVideoLayout .result {
+        max-width: 450px;
+        margin-bottom: 0;
+    }
 }
 
 @media lg-up {
-  .result {
-    width: 20%;
-    min-width: 20%;
-    max-width: 20%;
-  }  
+    .result {
+        width: 20%;
+        min-width: 20%;
+        max-width: 20%;
+    }
 }

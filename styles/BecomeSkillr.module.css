@@ -1,78 +1,78 @@
 .main {
-  max-width: 1443px;
-  padding-left: 143px;
-  padding-right: 143px;
-  margin: auto;
+    max-width: 1443px;
+    padding-left: 143px;
+    padding-right: 143px;
+    margin: auto;
 }
 
 @media (max-width: 991px) {
-  .main {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+    .main {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }
 
 .payTitle {
-  max-width: 785px;
-  text-align: center;
-  margin: 0 auto 2.5rem;
+    max-width: 785px;
+    text-align: center;
+    margin: 0 auto 2.5rem;
 }
 
 .payDescription {
-  text-align: center;
-  margin-bottom: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 @media (max-width: 768px) {
-  .payTitle,
-  .payDescription {
-    margin-bottom: 28px;
-  }
+    .payTitle,
+    .payDescription {
+        margin-bottom: 28px;
+    }
 }
 
 .downloadTitle {
-  text-align: center;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
-  .downloadTitle {
-    font-size: 32px;
-  }
+    .downloadTitle {
+        font-size: 32px;
+    }
 }
 
 .makeMoney {
-  width: 211px;
-  border: 0.5px solid #ff165f;
-  box-sizing: border-box;
-  border-radius: 8px;
-  height: 64px;
-  background: #ff165f;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1.2;
-  cursor: pointer;
+    width: 211px;
+    border: 0.5px solid #ff165f;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 64px;
+    background: #ff165f;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.2;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
-  .makeMoney {
-    margin-top: 0px;
-  }
+    .makeMoney {
+        margin-top: 0px;
+    }
 }
 
 .getEarlyAccess {
-  margin: 0 auto 120px;
+    margin: 0 auto 120px;
 }
 
 @media only screen and (max-width: 768px) {
-  .getEarlyAccess {
-    margin-top: 120px;
-    margin-bottom: 3rem;
-  }
+    .getEarlyAccess {
+        margin-top: 120px;
+        margin-bottom: 3rem;
+    }
 }
 
 .downloadDescription {
-  max-width: 864px;
-  margin: 0 auto 3rem;
-  text-align: center;
+    max-width: 864px;
+    margin: 0 auto 3rem;
+    text-align: center;
 }

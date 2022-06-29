@@ -1,46 +1,42 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
-import { SkillrDto } from "../../lib/types/skillr";
-import { getSkillrById } from "../api/skillrs/[skillrId]";
-import SkillrPage from "../../components/SkillrPage";
-import { getUnexpiredToken } from "../../lib/api-helpers";
-import { getUserById } from "../api/users/me";
-import { UserDto } from "../../lib/types/user";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import React from 'react';
+import { SkillrDto } from '../../lib/types/skillr';
+import { getSkillrById } from '../api/skillrs/[skillrId]';
+import SkillrPage from '../../components/SkillrPage';
+import { getUnexpiredToken } from '../../lib/api-helpers';
+import { getUserById } from '../api/users/me';
+import { UserDto } from '../../lib/types/user';
 
 type SkillrProps = {
-  skillr: SkillrDto;
-  user: UserDto | null;
+    skillr: SkillrDto;
+    user: UserDto | null;
 };
 
 const Skillr: React.FC<SkillrProps> = (props) => {
-  return <SkillrPage {...props} />;
+    return <SkillrPage {...props} />;
 };
 
-export const getServerSideProps: GetServerSideProps<SkillrProps> = async (
-  ctx
-) => {
-  const skillrId = Array.isArray(ctx.params?.skillrId)
-    ? ctx.params?.skillrId[0]
-    : ctx.params?.skillrId;
-  if (!skillrId) {
-    return { notFound: true };
-  }
+export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) => {
+    const skillrId = Array.isArray(ctx.params?.skillrId) ? ctx.params?.skillrId[0] : ctx.params?.skillrId;
+    if (!skillrId) {
+        return { notFound: true };
+    }
 
-  const token = await getUnexpiredToken(ctx.req, ctx.res);
+    const token = await getUnexpiredToken(ctx.req, ctx.res);
 
-  const user = token ? await getUserById(token.jwt, token.id) : null;
+    const user = token ? await getUserById(token.jwt, token.id) : null;
 
-  const skillr = await getSkillrById(skillrId);
-  if (!skillr || !skillr.id) {
-    return { notFound: true };
-  }
+    const skillr = await getSkillrById(skillrId);
+    if (!skillr || !skillr.id) {
+        return { notFound: true };
+    }
 
-  return {
-    props: {
-      skillr,
-      user,
-    },
-  };
+    return {
+        props: {
+            skillr,
+            user,
+        },
+    };
 };
 
 export default Skillr;

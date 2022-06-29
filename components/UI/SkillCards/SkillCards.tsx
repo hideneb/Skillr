@@ -1,21 +1,21 @@
-import React from "react";
-import { SkillDto } from "../../../pages/api/skills";
-import SkillCard from "../SkillCard/SkillCard";
+import React from 'react';
+import { SkillDto } from '../../../pages/api/skills';
+import SkillCard from '../SkillCard/SkillCard';
 
 type SkillCardsProps = {
-  skills: SkillDto[];
+    skills: SkillDto[];
 };
 
 const SkillCards: React.FC<SkillCardsProps> = ({ skills }) => {
-  return (
-    <div className="row">
-      {skills.map((skill) => (
-        <div className="col-4 col" key={skill.id}>
-          <SkillCard skill={skill} />
+    return (
+        <div className="row">
+            {skills.map((skill) => (
+                <div className="col-4 col" key={skill.id}>
+                    <SkillCard skill={skill} />
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default SkillCards;

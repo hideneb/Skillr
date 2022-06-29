@@ -1,13 +1,13 @@
 .textCenter {
-  text-align: center;
+    text-align: center;
 }
 
 .getEarlyAccess {
-  margin: 120px 0 4rem;
+    margin: 120px 0 4rem;
 }
 
 @media (max-width: 768px) {
-  .getEarlyAccess {
-    margin: 2rem 0;
-  }
+    .getEarlyAccess {
+        margin: 2rem 0;
+    }
 }
