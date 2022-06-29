@@ -3,10 +3,15 @@ import styles from "./AppStore.module.css";
 
 const AppStore = () => {
 	return (
-		<div className={styles.appStore}>
+		<a
+			href="https://apps.apple.com/us/app/skillr-learn-from-an-expert/id1574736206"
+			target="_blank"
+			rel="noreferrer"
+			className={styles.appStore}
+		>
 			<div className={styles.text}>Get the full experience on the Skillr app</div>
 			<img className={styles.badge} src="/app-store-badge.svg" alt="Download on the App Store" />
-		</div>
+		</a>
 	);
 };
 

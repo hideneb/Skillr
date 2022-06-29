@@ -124,14 +124,20 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, user }) => {
 					<div className={styles.colRight}>
 						<div className={styles.availability}>
 							{localAvailability && <Availability availability={localAvailability} />}
-							<button
-								className={styles.connectNowButton}
-								onClick={() =>
-									Router.push(`/skillrs/${skillr.id}/skills/${skillr.skills[0].skillId}`)
-								}
+							<a
+								href="https://apps.apple.com/us/app/skillr-learn-from-an-expert/id1574736206"
+								target="_blank"
+								rel="noreferrer"
 							>
-								Connect Now
-							</button>
+								<button
+									className={styles.connectNowButton}
+									// onClick={() =>
+									// 	Router.push(`/skillrs/${skillr.id}/skills/${skillr.skills[0].skillId}`)
+									// }
+								>
+									Connect Now
+								</button>
+							</a>
 						</div>
 					</div>
 				</div>

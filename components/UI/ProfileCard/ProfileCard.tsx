@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ProfileCard.module.css";
 import cx from "classnames";
 import { SkillrDto } from "../../../lib/types/skillr";
-import { UserDto } from "../../../lib/types/user";
+// import { UserDto } from "../../../lib/types/user";
 import ProfileVideos from "../ProfileVideos";
 
 type ProfileCardProps = {
@@ -27,13 +27,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	return (
 		<div className={cx(styles.card, styles.profileCardContainer)}>
 			<div className="d-flex flex-column" style={{ flex: 1, maxWidth: "100%" }}>
-				<p className={styles.profileCardDescription}>
-					{
-						//todo: this is hard-coded until we have description data
-						//description ||
-						"Passionate yoga teacher with over 3+ years of professional experience in designing and leading flow and vinyasa yoga classes. In June 2018, completed an Advanced 300-Hour Yoga Teacher Training in Bali, Indonesia, and acquired an in-depth knowledge about postures, breathing techniques, and spiritual elements of yoga teaching.Indonesia, and acquired an in-depth knowledge about postures, breathing techniques, and spiritual elements of yoga teaching. "
-					}
-				</p>
+				<p className={styles.profileCardDescription}>{description}</p>
 				<div className="d-flex">
 					<div className={styles.profileDetialsCardImgContainer}>
 						{imgSrc ? <img height={"100%"} width={"100%"} alt="" src={imgSrc} /> : null}
