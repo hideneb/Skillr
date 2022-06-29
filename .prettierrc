@@ -1,0 +1,6 @@
+{
+    "eslintIntegration": true,
+    "ignorePath": ".prettierignore",
+    "printWidth": 120,
+    "singleQuote": true
+}
