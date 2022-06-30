@@ -5,6 +5,7 @@ import ProfileCard from '../UI/ProfileCard';
 import Availability from '../UI/Availability';
 import { SkillrDto } from '../../lib/types/skillr';
 import { UserDto } from '../../lib/types/user';
+import SimpleFooter from '../../components/Footer/SimpleFooter';
 
 type SkillrProfileProps = {
   skillr: SkillrDto;
@@ -141,6 +142,7 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr }) => {
           </div>
         </div>
       </div>
+      <SimpleFooter />
     </div>
   );
 };
