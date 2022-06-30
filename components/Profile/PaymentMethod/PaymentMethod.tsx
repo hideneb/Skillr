@@ -30,7 +30,7 @@ const PaymentMethod: React.FC = () => {
         const result = await stripe.confirmSetup({
             elements,
             confirmParams: {
-                return_url: 'http://localhost:3000/profile/payment-method/success',
+                return_url: 'http://localhost:3000/account/payment-method/success',
             },
         });
 

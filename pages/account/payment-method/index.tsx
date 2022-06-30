@@ -28,7 +28,7 @@ const PaymentMethod: React.FC<PaymentProps> = ({ paymentMethod }) => {
 
             <button
                 onClick={() => {
-                    Router.push(`/profile/payment-method/add`);
+                    Router.push(`/account/payment-method/add`);
                 }}
             >
                 {paymentMethod ? 'Change payment method' : 'Add payment method'}

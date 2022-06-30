@@ -54,10 +54,10 @@ const SkillrCard: React.FC<SkillrCardProps> = ({ skillr, isLoggedIn }) => {
                 style={{ height: '150px', width: '200px' }}
                 alt={`Profile image for @${skillr.username}`}
             />
-            <Link href="/skillrs/[id]" as={`/skillrs/${skillr.id}`}>
+            <Link href={`/profile?profileID=${skillr.id}`}>
                 <a>@{skillr.username}</a>
             </Link>
-            <sub>{skillr.skills[0].skill.name}</sub>
+            <sub>{skillr.skills[0]?.skill.name}</sub>
         </span>
     );
 };

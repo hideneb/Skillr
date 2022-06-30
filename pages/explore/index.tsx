@@ -55,7 +55,7 @@ const Explore: React.FC<ExploreProps> = ({
                     </small>
                 )}
             </h1>
-            <button onClick={() => Router.push('/profile')}>Profile</button>
+            <button onClick={() => Router.push('/account')}>Profile</button>
             <button onClick={() => Router.push('/favorites')}>Favorites</button>
             <button onClick={() => Router.push('/sessions')}>Sessions</button>
             <button onClick={() => Router.push('/chats')}>Chats</button>
