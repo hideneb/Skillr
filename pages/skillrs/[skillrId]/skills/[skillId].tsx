@@ -11,6 +11,7 @@ import { PostSkillrBook } from '../../../api/skillrBookNow';
 import { getSkillrById } from '../../../api/skillrs/[skillrId]';
 import { SkillDto } from '../../../api/skills';
 import { getSkillById } from '../../../api/skills/[skillId]';
+import { isProd } from '../../../../lib/environment';
 
 type BookNowProps = {
     skillr: SkillrDto;
@@ -128,6 +129,12 @@ const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const skillrId = Array.isArray(params?.skillrId) ? params?.skillrId[0] : params?.skillrId;
     const skillId = Number(Array.isArray(params?.skillId) ? params?.skillId[0] : params?.skillId);
 

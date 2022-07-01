@@ -13,6 +13,7 @@ import Link from 'next/link';
 import { authedFetch } from '../../lib/authed-fetch';
 import { UserDto } from '../../lib/types/user';
 import { getUnexpiredToken } from '../../lib/api-helpers';
+import { isProd } from '../../lib/environment';
 
 type ExploreProps = {
     skills: SkillDto[];
@@ -74,6 +75,12 @@ const Explore: React.FC<ExploreProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps<ExploreProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
 
     const [skills, availableSkillrs, featuredSkillrs, mostPopularSkill, moreSkillrs] = await Promise.all([

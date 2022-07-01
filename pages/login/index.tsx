@@ -1,6 +1,8 @@
 import 'papercss';
 import Router, { useRouter } from 'next/router';
 import React from 'react';
+import { GetServerSideProps } from 'next';
+import { isProd } from '../../lib/environment';
 
 enum LoginState {
     IDLE,
@@ -69,6 +71,16 @@ const Login: React.FC<LoginProps> = () => {
             )}
         </div>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
+    return { props: {} };
 };
 
 export default Login;

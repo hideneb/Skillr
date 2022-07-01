@@ -8,6 +8,7 @@ import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '../../../lib/api-helpers';
 import { getUserById } from '../../api/users/me';
 import { createPaymentMethod } from '../../api/userStripe/create-payment-method';
+import { isProd } from '../../../lib/environment';
 
 type PaymentProps = {
     user: UserDto;
@@ -33,6 +34,12 @@ const AddPaymentMethod: React.FC<PaymentProps> = ({ user, stripePublishableKey, 
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
     if (!token) {
         return {

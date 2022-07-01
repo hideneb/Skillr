@@ -5,6 +5,7 @@ import SkillrCard from '../../components/UI/SkillrCard';
 import { getUnexpiredToken } from '../../lib/api-helpers';
 import { SkillrDto } from '../../lib/types/skillr';
 import { getPageOfSkillrs } from '../api/skillrs/[skillrId]';
+import { isProd } from '../../lib/environment';
 
 type FavoritesProps = {
     skillrs: SkillrDto[];
@@ -24,6 +25,12 @@ const Favorites: React.FC<FavoritesProps> = ({ skillrs }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<FavoritesProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
     if (!token) {
         return {

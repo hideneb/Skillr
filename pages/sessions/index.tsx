@@ -7,6 +7,7 @@ import { getPageOfSkillrBooksForUser, QueryParamsSkillrBookTypes } from '../api/
 import { SkillrBookDto } from '../../lib/types/skillrBook';
 import { getSkillById } from '../api/skills/[skillId]';
 import { SkillDto } from '../api/skills';
+import { isProd } from '../../lib/environment';
 
 type SessionsProps = {
     skillrBooks: SkillrBookDto[];
@@ -46,6 +47,12 @@ const Sessions: React.FC<SessionsProps> = ({ skillrBooks, skills }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<SessionsProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
     if (!token) {
         return {

@@ -4,6 +4,7 @@ import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '../../../lib/api-helpers';
 import Stripe from '@stripe/stripe-js';
 import { getPaymentMethod } from '../../api/userStripe/payment-method';
+import { isProd } from '../../../lib/environment';
 
 type PaymentProps = {
     paymentMethod: Stripe.PaymentMethod;
@@ -24,6 +25,12 @@ const PaymentMethodSuccess: React.FC<PaymentProps> = ({ paymentMethod }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
     if (!token) {
         return {

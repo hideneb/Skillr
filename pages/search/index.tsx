@@ -3,6 +3,7 @@ import algoliasearch from 'algoliasearch';
 import { Hits, InstantSearch, SearchBox } from 'react-instantsearch-hooks-web';
 import { GetStaticProps } from 'next/types';
 import debounce from 'lodash.debounce';
+import { isProd } from '../../lib/environment';
 
 const Search: React.FC<any> = ({ applicationId, searchApiKey }) => {
     const client = algoliasearch(applicationId, searchApiKey);
@@ -23,6 +24,12 @@ const Search: React.FC<any> = ({ applicationId, searchApiKey }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const { ALGOLIA_APPLICATION_ID, ALGOLIA_SEARCH_API_KEY } = process.env;
     return {
         props: {

@@ -5,6 +5,7 @@ import { getUnexpiredToken } from '../../lib/api-helpers';
 import { getMySkillr, SkillrDDto } from '../api/skillrs/me';
 import { authedFetch } from '../../lib/authed-fetch';
 import { findLanguages, LanguageDto } from '../api/languages';
+import { isProd } from '../../lib/environment';
 
 type LanguagesDto = {
     id: number;
@@ -78,6 +79,12 @@ const SkillrLanguages: React.FC<SkillrLanguagesProps> = ({ skillrDDto, languages
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrLanguagesProps> = async (context) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(context.req, context.res);
     if (!token) {
         return {

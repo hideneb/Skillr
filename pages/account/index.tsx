@@ -10,6 +10,7 @@ import { getPaymentMethod } from '../api/userStripe/payment-method';
 import { UserDto } from '../../lib/types/user';
 import { getUserById } from '../api/users/me';
 import { getMySkillr, SkillrDDto } from '../api/skillrs/me';
+import { isProd } from '../../lib/environment';
 
 type AccountProps = {
     user: UserDto;
@@ -83,6 +84,12 @@ const Account: React.FC<AccountProps> = ({ user, paymentMethod, skillr }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<AccountProps> = async ({ query, req, res, resolvedUrl }) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(req, res);
     if (!token) {
         return {

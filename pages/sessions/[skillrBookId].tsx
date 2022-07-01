@@ -8,6 +8,7 @@ import { SkillrBookDto, SkillrBookRateDto } from '../../lib/types/skillrBook';
 import { getSkillrBookById } from '../api/skillrbooks/[skillrBookId]';
 import { getSkillrBookRateById } from '../api/skillrbookrates/[skillrBookId]';
 import { authedFetch } from '../../lib/authed-fetch';
+import { isProd } from '../../lib/environment';
 
 type SessionProps = {
     skillrBook: SkillrBookDto;
@@ -149,6 +150,12 @@ const Session: React.FC<SessionProps> = ({ skill, skillrBook, skillrBookRate }) 
 };
 
 export const getServerSideProps: GetServerSideProps<SessionProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const skillrBookId = Array.isArray(ctx.params?.skillrBookId)
         ? ctx.params?.skillrBookId[0]
         : ctx.params?.skillrBookId;

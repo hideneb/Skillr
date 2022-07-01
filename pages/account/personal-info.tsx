@@ -6,6 +6,7 @@ import { getUnexpiredToken } from '../../lib/api-helpers';
 import { PatchUser } from '../api/users';
 import { UserDto } from '../../lib/types/user';
 import { authedFetch } from '../../lib/authed-fetch';
+import { isProd } from '../../lib/environment';
 
 type PersonalInfoProps = {
     user: UserDto;
@@ -58,6 +59,12 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ user: initial }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(context.req, context.res);
     if (!token) {
         return {

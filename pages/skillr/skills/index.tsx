@@ -7,6 +7,7 @@ import { getSkillrSkills } from '../../api/skillr-skills';
 import { PatchSkillrSkill } from '../../api/skillr-skills/[skillrSkillId]';
 import { authedFetch } from '../../../lib/authed-fetch';
 import Link from 'next/link';
+import { isProd } from '../../../lib/environment';
 
 type SkillrSkillProps = {
     skillrSkills: SkillrSkillDto[];
@@ -33,6 +34,12 @@ const SkillrSkill: React.FC<SkillrSkillProps> = ({ skillrSkills }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrSkillProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
     if (!token) {
         return {

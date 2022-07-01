@@ -9,6 +9,7 @@ import { authedFetch } from '../../../lib/authed-fetch';
 import { AddSkillrCredential, SkillrCredential } from '../../../components/UI/SkillrCredential';
 import { AddSkillrShowcase, SkillrShowcase } from '../../../components/UI/SkillrShowcase';
 import { AddSkillrShowcaseLink, SkillrShowcaseLink } from '../../../components/UI/SkillrShowcaseLink';
+import { isProd } from '../../../lib/environment';
 
 type SkillrSkillProps = {
     skillrSkill: SkillrSkillDto;
@@ -131,6 +132,12 @@ const SkillrSkill: React.FC<SkillrSkillProps> = ({ skillrSkill }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrSkillProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const skillrSkillId = Array.isArray(ctx.params?.skillrSkillId)
         ? ctx.params?.skillrSkillId[0]
         : ctx.params?.skillrSkillId;

@@ -6,6 +6,7 @@ import SkillrPage from '../../components/SkillrPage';
 import { getUnexpiredToken } from '../../lib/api-helpers';
 import { getUserById } from '../api/users/me';
 import { UserDto } from '../../lib/types/user';
+import { isProd } from '../../lib/environment';
 
 type SkillrProps = {
     skillr: SkillrDto;
@@ -17,6 +18,12 @@ const Skillr: React.FC<SkillrProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const skillrId = Array.isArray(ctx.params?.skillrId) ? ctx.params?.skillrId[0] : ctx.params?.skillrId;
     if (!skillrId) {
         return { notFound: true };

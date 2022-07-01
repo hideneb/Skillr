@@ -15,6 +15,7 @@ import {
 } from 'stream-chat-react';
 import { getUnexpiredToken } from '../../lib/api-helpers';
 import { createChatToken } from '../api/chat/token';
+import { isProd } from '../../lib/environment';
 
 type ChatProps = {
     userId: string;
@@ -68,6 +69,12 @@ const ChatPage: React.FC<ChatProps> = ({ userId, userToken, chatApiKey }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<ChatProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(ctx.req, ctx.res);
     if (!token) {
         return {

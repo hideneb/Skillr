@@ -12,6 +12,7 @@ import { createPaymentInfo } from '../../api/skillrStripe/payment-info';
 import { PayoutMethod, StripeAccountStatus, StripeLink } from '../../../lib/types/stripe';
 import { findLanguages, LanguageDto } from '../../api/languages';
 import { ExistingMedia, NewMedia } from '../../../components/UI/Media';
+import { isProd } from '../../../lib/environment';
 
 export type SkillrLanguageDto = {
     languageId: number;
@@ -245,6 +246,12 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async (context) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(context.req, context.res);
     if (!token) {
         return {

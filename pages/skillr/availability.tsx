@@ -5,6 +5,7 @@ import { getUnexpiredToken } from '../../lib/api-helpers';
 import { SkillrLocalAvailabilityDto } from '../../lib/types/skillr';
 import { getMySkillr, SkillrDDto } from '../api/skillrs/me';
 import { authedFetch } from '../../lib/authed-fetch';
+import { isProd } from '../../lib/environment';
 
 type SkillrAvailabilityProps = {
     skillrDDto: SkillrDDto;
@@ -173,6 +174,12 @@ const SkillrAvailabilty: React.FC<SkillrAvailabilityProps> = ({ skillrDDto }) =>
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrAvailabilityProps> = async (context) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const token = await getUnexpiredToken(context.req, context.res);
     if (!token) {
         return {

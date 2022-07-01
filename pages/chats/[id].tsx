@@ -15,6 +15,7 @@ import {
 import { getUnexpiredToken } from '../../lib/api-helpers';
 import { createChatToken } from '../api/chat/token';
 import { syncUser } from '../api/chat/sync-user/[userId]';
+import { isProd } from '../../lib/environment';
 
 type DirectMessageProps = {
     userId: string;
@@ -69,6 +70,12 @@ const DirectMessage: React.FC<DirectMessageProps> = ({ userId, otherId, userToke
 };
 
 export const getServerSideProps: GetServerSideProps<DirectMessageProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const otherId = Array.isArray(ctx.params?.id) ? ctx.params?.id[0] : ctx.params?.id;
     if (!otherId) {
         return {

@@ -9,6 +9,7 @@ import { getSkillById } from '../api/skills/[skillId]';
 import SkillCardSmall from '../../components/UI/SkillCardSmall';
 import SkillrCards from '../../components/UI/SkillrCards';
 import { getUnexpiredToken } from '../../lib/api-helpers';
+import { isProd } from '../../lib/environment';
 
 type SkillProps = {
     skill: SkillDto;
@@ -73,6 +74,12 @@ const Skill: React.FC<SkillProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps<SkillProps> = async (ctx) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
     const skillId = Number(Array.isArray(ctx.params?.skillId) ? ctx.params?.skillId[0] : ctx.params?.skillId);
     if (!skillId) {
         return { notFound: true };
