@@ -59,6 +59,14 @@ const Account: React.FC<AccountProps> = ({ user, paymentMethod, skillr }) => {
                     </ul>
                 </>
             )}
+            {!skillr && (
+                <>
+                    <h2>No Pro Stuff</h2>
+                    <p>
+                        You don&apos;t have any Pro Stuff yet. <Link href="/skillr/create">Create one</Link>
+                    </p>
+                </>
+            )}
             <sub>General Stuff</sub>
             <ul>
                 <li>

@@ -13,9 +13,14 @@ import { PayoutMethod, StripeAccountStatus, StripeLink } from '../../../lib/type
 import { findLanguages, LanguageDto } from '../../api/languages';
 import { ExistingMedia, NewMedia } from '../../../components/UI/Media';
 import { isProd } from '../../../lib/environment';
+import { getSkillrPresence, SkillrPresenceDto } from '../../api/skillrPresence';
 
 export type SkillrLanguageDto = {
     languageId: number;
+};
+
+export type SkillrStep1 = {
+    username: string;
 };
 
 export type SkillrStep2 = {
@@ -37,9 +42,9 @@ type SkillrProfileProps = {
     stripeLoginLink: StripeLink | null;
     payoutMethod: PayoutMethod | null;
     languages: LanguageDto[];
+    presentUntil: string | null;
 };
 const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
-    console.log(props);
     const { skillrDDto, accountLink, stripeLoginLink, payoutMethod, languages } = props;
 
     const [tagline, setTagline] = useState<string>(skillrDDto.tagline);
@@ -47,6 +52,9 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     const [username, setUsername] = useState<string>(skillrDDto.username);
     const [instagram, setInstagram] = useState<string>(skillrDDto.instagram || '');
     const [linkedin, setLinkedin] = useState<string>(skillrDDto.linkedin || '');
+    const [presentUntil, setPresentUntil] = useState<Date | null>(
+        props.presentUntil ? new Date(props.presentUntil) : null
+    );
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -76,9 +84,48 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
 
     const skillrMediaAllowedMimeTypes = ['image/jpeg', 'image/png', 'video/mp4'];
 
+    const activateSkillr = async (active: boolean) => {
+        const skillrPresenceDto: SkillrPresenceDto = {
+            presentUntil: active
+                ? new Date(new Date().getTime() + 1000 * 60 * 130) // 2:10
+                : undefined,
+        };
+        const { presentUntil } = await authedFetch('/api/skillrPresence', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(skillrPresenceDto),
+        }).then((res) => res.json());
+
+        setPresentUntil(presentUntil ? new Date(presentUntil) : null);
+    };
+
     return (
         <>
             <h1>Your Skillr Profile</h1>
+            <p>
+                <Link href="/account">Back to account</Link>
+            </p>
+            <div>
+                <h3>Active?</h3>
+                <p>
+                    {presentUntil ? (
+                        <>
+                            <strong>Yes</strong>
+                            <br />
+                            Until: {presentUntil.toLocaleDateString()} {presentUntil.toLocaleTimeString()}
+                            <button onClick={() => activateSkillr(false)}>Deactivate</button>
+                        </>
+                    ) : (
+                        <>
+                            <strong>No</strong>
+                            <br />
+                            <button onClick={() => activateSkillr(true)}>Activate</button>
+                        </>
+                    )}
+                </p>
+            </div>
             <form onSubmit={handleSubmit}>
                 <h2>Basic info</h2>
                 <div>
@@ -150,50 +197,52 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
             </div>
             <div>
                 <h2>General availability</h2>
-                <ul>
-                    <li>
-                        <strong>Monday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day0Begin} - {skillrDDto.localAvailability.day0End}
-                        </span>
-                    </li>
-                    <li>
-                        <strong>Tuesday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day1Begin} - {skillrDDto.localAvailability.day1End}
-                        </span>
-                    </li>
-                    <li>
-                        <strong>Wednesday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day2Begin} - {skillrDDto.localAvailability.day2End}
-                        </span>
-                    </li>
-                    <li>
-                        <strong>Thursday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day3Begin} - {skillrDDto.localAvailability.day3End}
-                        </span>
-                    </li>
-                    <li>
-                        <strong>Friday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day4Begin} - {skillrDDto.localAvailability.day4End}
-                        </span>
-                    </li>
-                    <li>
-                        <strong>Saturday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day5Begin} - {skillrDDto.localAvailability.day5End}
-                        </span>
-                    </li>
-                    <li>
-                        <strong>Sunday</strong>
-                        <span>
-                            {skillrDDto.localAvailability.day6Begin} - {skillrDDto.localAvailability.day6End}
-                        </span>
-                    </li>
-                </ul>
+                {skillrDDto.localAvailability && (
+                    <ul>
+                        <li>
+                            <strong>Monday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day0Begin} - {skillrDDto.localAvailability.day0End}
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Tuesday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day1Begin} - {skillrDDto.localAvailability.day1End}
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Wednesday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day2Begin} - {skillrDDto.localAvailability.day2End}
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Thursday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day3Begin} - {skillrDDto.localAvailability.day3End}
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Friday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day4Begin} - {skillrDDto.localAvailability.day4End}
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Saturday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day5Begin} - {skillrDDto.localAvailability.day5End}
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Sunday</strong>
+                            <span>
+                                {skillrDDto.localAvailability.day6Begin} - {skillrDDto.localAvailability.day6End}
+                            </span>
+                        </li>
+                    </ul>
+                )}
                 <button type="button" onClick={() => Router.push('/skillr/availability')}>
                     Edit availability
                 </button>
@@ -279,6 +328,10 @@ export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async 
 
     const languages = await findLanguages();
 
+    const presentUntil = await getSkillrPresence(token.jwt).then(
+        ({ presentUntil }) => presentUntil?.toString() || null
+    );
+
     return {
         props: {
             skillrDDto: skillr,
@@ -286,6 +339,7 @@ export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async 
             stripeLoginLink: stripeLoginLink?.url ? stripeLoginLink : null,
             payoutMethod,
             languages,
+            presentUntil,
         },
     };
 };
