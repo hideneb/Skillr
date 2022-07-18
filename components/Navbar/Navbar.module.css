@@ -1,46 +1,65 @@
-.navbarContainer {
-    max-width: 1440px;
-    margin: auto;
-    padding: 19px 44px 21px;
-    z-index: 999;
+@value md-up, lg-up from "../../styles/Breakpoints.module.css";
+
+.desktop {
+    display: none;
 }
 
-@media (max-width: 768px) {
-    .team.navbarContainer {
-        background-color: rgba(12, 31, 63, 1);
+@media md-up {
+    .mobile {
+        display: none;
     }
-    .navbarContainer {
-        padding: 35px 18px 35px 39px;
-        background-color: transparent;
-        position: absolute;
-        width: 100%;
 
-        transition: all 0.1s ease;
+    .desktop {
+        display: block;
     }
-    .open .navbarContainer {
-        background-color: rgba(12, 31, 63, 0.9);
-    }
-    .mobileLogo {
-        height: 0;
-        transition: height 0.3s ease;
-    }
+}
+
+.team.navbarContainer {
+    background-color: rgba(12, 31, 63, 1);
+}
+.navbarContainer {
+    padding: 35px 18px 35px 39px;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+
+    transition: all 0.1s ease;
+}
+
+.open .navbarContainer {
+    background-color: rgba(12, 31, 63, 0.9);
 }
 
 .mobileLogo {
-    cursor: pointer;
+    height: 0;
+    transition: height 0.3s ease;
 }
 
-.open .mobileLogo {
-    height: 26px;
+@media md-up {
+    .navbar:not(.useMobileMenu) .navbarContainer {
+        max-width: 1440px;
+        margin: auto;
+        padding: 19px 44px 21px;
+        z-index: 999;
+    }
+
+    .navbar:not(.useMobileMenu) .mobileLogo {
+        cursor: pointer;
+    }
 }
 
 .navbar {
     background: transparent;
     margin-bottom: -3px;
     position: absolute;
+    z-index: 100;
     top: 0;
     left: 0;
     right: 0;
+}
+
+.open .mobileLogo {
+    height: 26px;
 }
 
 .navbarMain {

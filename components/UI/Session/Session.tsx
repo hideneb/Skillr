@@ -1,3 +1,8 @@
+import styles from './Session.module.css';
+
+import { SkillrDto } from '../../../lib/types/skillr';
+import { SkillDto } from '../../../pages/api/skills';
+
 import { OTPublisher, OTPublisherRef, OTSession, OTStreams, OTSubscriber, OTSubscriberRef } from 'opentok-react';
 import {
     ArchiveEvent,
@@ -18,13 +23,18 @@ import {
     VideoDimensionsChangedEvent,
     VideoElementCreatedEvent,
 } from 'opentok-react/types/opentok';
+require('@opentok/client');
+
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 type SessionProps = {
     apiKey: string;
     sessionId: string;
     token: string;
     onEnd: () => void;
+    skillr: SkillrDto;
+    skill: SkillDto;
 };
 
 enum SessionState {
@@ -54,7 +64,7 @@ enum ArchiveState {
     STOPPED,
 }
 
-const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd }) => {
+const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skillr, skill }) => {
     const [sessionState, setSessionState] = useState<SessionState>(SessionState.IDLE);
     const [connectionState, setConnectionState] = useState<ConnectionState>(ConnectionState.IDLE);
     const [streamState, setStreamState] = useState<StreamState>(StreamState.IDLE);
@@ -63,31 +73,10 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd }) =>
     const [publishVideo, setPublishVideo] = useState(true);
     const [publishAudio, setPublishAudio] = useState(true);
 
+    const [skillrVideoPresent, setSkillrVideoPresent] = useState(false);
+
     const otPublisherRef = React.useRef<OTPublisherRef>(null);
     const otSubscriberRef = React.useRef<OTSubscriberRef>(null);
-
-    const debug = () => {
-        debugger;
-    };
-
-    useEffect(() => {
-        if (!otPublisherRef.current) {
-            return;
-        }
-        if (
-            sessionState !== SessionState.DISCONNECTED && // seekr hangs up
-            connectionState !== ConnectionState.DESTROYED // skillr hangs up
-        ) {
-            return;
-        }
-        const publisher = otPublisherRef.current.getPublisher();
-        publisher.publishAudio(false);
-        publisher.publishVideo(false);
-        publisher.session?.disconnect();
-        publisher.destroy();
-
-        onEnd();
-    }, [connectionState, sessionState, onEnd]);
 
     const hangUp = () => {
         if (!otPublisherRef.current) {
@@ -97,11 +86,26 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd }) =>
     };
 
     return (
-        <>
+        <div
+            className={classNames(styles.session, {
+                [styles.skillrVideoPresent]: skillrVideoPresent,
+            })}
+        >
+            <img src={'/logo-navbar.svg'} className={styles.mobileLogo} alt="" />
+            <div className={styles.skillrInfo}>
+                <div className={styles.username}>@{skillr.username}</div>
+                <div className={styles.title}>{skill.description}</div>
+            </div>
+            <div className={styles.skillrProfileImage}>
+                <img src={skillr.profileImage} alt="" />
+            </div>
             <OTSession
                 apiKey={apiKey}
                 sessionId={sessionId}
                 token={token}
+                onConnect={() => {
+                    console.log('connected');
+                }}
                 onError={(e) => {
                     console.error(e);
                 }}
@@ -154,10 +158,34 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd }) =>
                     },
                 }}
             >
+                <div id="my-video" className={styles.myVideo} />
+                <div
+                    id="skillr-video"
+                    className={classNames(styles.skillrVideo, {
+                        [styles.skillrVideoPresent]: skillrVideoPresent,
+                    })}
+                ></div>
+                <div className={styles.callButtons}>
+                    <button className={styles.endCallButton} onClick={hangUp}>
+                        <img src="/icons/session/phone.svg" alt="" />
+                    </button>
+                    <button onClick={() => setPublishVideo(!publishVideo)}>
+                        {/* {publishVideo ? 'Stop Video' : 'Start Video'} */}
+                        <img src="/icons/session/video.svg" alt="" />
+                    </button>
+                    <button onClick={() => setPublishAudio(!publishAudio)}>
+                        {/* {publishAudio ? 'Stop Audio' : 'Start Audio'} */}
+                        <img src="/icons/session/mic.svg" alt="" />
+                    </button>
+                    <button onClick={() => {}}>
+                        <img src="/icons/session/expand.svg" alt="" />
+                    </button>
+                </div>
                 <OTPublisher
                     properties={{
                         publishVideo,
                         publishAudio,
+                        insertDefaultUI: false,
                     }}
                     ref={otPublisherRef}
                     eventHandlers={{
@@ -193,40 +221,61 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd }) =>
                         },
                         videoElementCreated: (event: VideoElementCreatedEvent) => {
                             console.log('video element created', event);
+                            document.getElementById('my-video')?.appendChild(event.element);
                         },
                     }}
                 />
                 <OTStreams>
-                    <OTSubscriber ref={otSubscriberRef} eventHandlers={{}} />
+                    <OTSubscriber
+                        ref={otSubscriberRef}
+                        properties={{
+                            insertDefaultUI: false,
+                        }}
+                        eventHandlers={{
+                            audioLevelUpdated: (event: AudioLevelUpdatedEvent) => {
+                                // console.log("audio level updated", event);
+                            },
+                            destroyed: (event: Event<'destroyed'>) => {
+                                console.log('SUB: destroyed', event);
+                                setSkillrVideoPresent(false);
+                            },
+                            videoDimensionsChanged: (event: VideoDimensionsChangedEvent) => {
+                                console.log('SUB: video dimensions changed', event);
+                            },
+                            videoDisabled: () => {
+                                setSkillrVideoPresent(false);
+                            },
+                            videoEnabled: () => {
+                                setSkillrVideoPresent(true);
+                            },
+                            videoElementCreated: (event: VideoElementCreatedEvent) => {
+                                console.log('SUB: video element created', event);
+                                document.getElementById('skillr-video')?.appendChild(event.element);
+                                setSkillrVideoPresent(true);
+                            },
+                        }}
+                    />
                 </OTStreams>
             </OTSession>
-            <div>Session: {SessionState[sessionState]}</div>
-            <div>Connection: {ConnectionState[connectionState]}</div>
-            <div>Stream: {StreamState[streamState]}</div>
-            <div>Archive: {ArchiveState[archiveState]}</div>
-            <button onClick={() => setPublishVideo(!publishVideo)}>
-                {publishVideo ? 'Stop Video' : 'Start Video'}
-            </button>
-            <button onClick={() => setPublishAudio(!publishAudio)}>
-                {publishAudio ? 'Stop Audio' : 'Start Audio'}
-            </button>
-            <button onClick={debug}>Debug</button>
-            <button onClick={hangUp}>Hang Up</button>
-            <pre>
-                {JSON.stringify(
-                    {
-                        session: otPublisherRef.current?.getPublisher().session,
-                        // sessionCapabilities:
-                        //   otPublisherRef.current?.getPublisher().session?.capabilities,
-                        // sessionConnection:
-                        //   otPublisherRef.current?.getPublisher().session?.connection,
-                        // stream: otPublisherRef.current?.getPublisher().stream.connection,
-                    },
-                    null,
-                    2
-                )}
-            </pre>
-        </>
+            {/* <div>Session: {SessionState[sessionState]}</div>
+      <div>Connection: {ConnectionState[connectionState]}</div>
+      <div>Stream: {StreamState[streamState]}</div>
+      <div>Archive: {ArchiveState[archiveState]}</div> */}
+            {/* <pre>
+        {JSON.stringify(
+          {
+            session: otPublisherRef.current?.getPublisher().session,
+            // sessionCapabilities:
+            //   otPublisherRef.current?.getPublisher().session?.capabilities,
+            // sessionConnection:
+            //   otPublisherRef.current?.getPublisher().session?.connection,
+            // stream: otPublisherRef.current?.getPublisher().stream.connection,
+          },
+          null,
+          2
+        )}
+      </pre> */}
+        </div>
     );
 };
 

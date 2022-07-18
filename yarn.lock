@@ -1970,6 +1970,11 @@
     node-gyp "^9.0.0"
     read-package-json-fast "^2.0.3"
 
+"@opentok/client@^2.23.1":
+  version "2.23.1"
+  resolved "https://registry.yarnpkg.com/@opentok/client/-/client-2.23.1.tgz#dd10273ca234862074cca5dffbb4e2258ed2b01e"
+  integrity sha512-PJYKIqLF0GnnxufspYKZDCe6jxs1eSdqTrpTdcHpLcwgQDbA+llIs51nSq5/SpPfKXOhdXurZkH/AKFeO3FUsw==
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.1":
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.5.tgz#e77aac783bd079f548daa0a7f080ab5b5a9741ca"

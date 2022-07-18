@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
-import Router from 'next/router';
 
-import { authedFetch } from '../../../../lib/authed-fetch';
 import { SkillrDto } from '../../../../lib/types/skillr';
 import { ConnectNowDto } from '../../../../lib/types/skillrBook';
-import useInterval from '../../../../lib/useInterval';
-import { PostSkillrBook } from '../../../api/skillrBookNow';
 import { getSkillrById } from '../../../api/skillrs/[skillrId]';
 import { SkillDto } from '../../../api/skills';
 import { getSkillById } from '../../../api/skills/[skillId]';
 import { isProd } from '../../../../lib/environment';
+import { authedFetch } from '../../../../lib/authed-fetch';
+import { PostSkillrBook } from '../../../api/skillrBookNow';
+import { useRouter } from 'next/router';
+import useInterval from '../../../../lib/useInterval';
+
+const Session = dynamic(() => import('../../../../components/UI/Session'), {
+    ssr: false,
+});
 
 type BookNowProps = {
     skillr: SkillrDto;
@@ -30,16 +34,25 @@ enum BookNowState {
     ERROR,
 }
 
-const Session = dynamic(() => import('../../../../components/UI/Session'), {
-    ssr: false,
-});
-
 const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
+    const { query } = useRouter();
+
+    const debug = !!query.debug;
+
     const [skillrBook, setSkillrBook] = useState<SkillrDto>();
     const [connectionDetails, setConnectionDetails] = useState<ConnectNowDto>();
     const [state, setState] = useState<BookNowState>(BookNowState.IDLE);
 
+    const debugConnectionDetails: Partial<ConnectNowDto> = {
+        vonageSessionDetails: {
+            sessionId: '1_MX40NzIwNDcyNH5-MTY1NzI5NTA0MDc5NH5NUDNsSDUzSGlHNVNLZzhhWmNMSndZMHR-fg',
+            ApiKey: '47204724',
+            token: 'T1==cGFydG5lcl9pZD00NzIwNDcyNCZzaWc9ZTAzN2Y4ZjM0MjI4ZjJiMGQxZTViNzM0MDcyOWRlMzYyY2E3NzdjNzpzZXNzaW9uX2lkPTFfTVg0ME56SXdORGN5Tkg1LU1UWTFOekk1TlRBME1EYzVOSDVOVUROc1NEVXpTR2xITlZOTFp6aGhXbU5NU25kWk1IUi1mZyZjcmVhdGVfdGltZT0xNjU3Mjk1MDQxJm5vbmNlPTAuMzE2OTU3MzA0OTE3MjM5NiZyb2xlPW1vZGVyYXRvciZleHBpcmVfdGltZT0xNjU5ODg3MDQxJmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9',
+        },
+    };
+
     useEffect(() => {
+        if (debug) return;
         const skillrSkill = skillr.skills.find((s) => s.skillId === skill.id);
         if (!skillrSkill) {
             return;
@@ -59,9 +72,11 @@ const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
             .then((res) => res.json())
             .then((skillrBook) => setSkillrBook(skillrBook))
             .then(() => setState(BookNowState.PENDING));
-    }, [skillr, skill]);
+    }, [debug, skillr, skill]);
 
     useInterval(() => {
+        if (debug) return;
+
         console.log(`Polling for connection details`);
         if (state !== BookNowState.PENDING) {
             console.log(`Not pending, not polling`, { state });
@@ -87,6 +102,8 @@ const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
     }, 5000);
 
     useEffect(() => {
+        if (debug) return;
+
         if (!connectionDetails) {
             return;
         }
@@ -94,41 +111,30 @@ const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
             return;
         }
         setState(BookNowState.CONNECTING);
-    }, [connectionDetails]);
+    }, [connectionDetails, debug]);
+
+    const connectionInfo = (debug ? debugConnectionDetails : connectionDetails) as ConnectNowDto;
 
     return (
-        <>
-            <h1>Book Now with @{skillr.username}</h1>
-            <h2>state: {BookNowState[state]}</h2>
-            <div
-            // style={{
-            //   position: "absolute",
-            //   top: "50%",
-            //   left: "50%",
-            //   transform: "translate(-50%, -50%)",
-            // }}
-            >
-                {connectionDetails && (
-                    <Session
-                        apiKey={vonageApiKey}
-                        sessionId={connectionDetails.vonageSessionDetails.sessionId}
-                        token={connectionDetails.vonageSessionDetails.token}
-                        onEnd={() => {
-                            if (!skillrBook) {
-                                return;
-                            }
-                            Router.push(`/sessions/${skillrBook.id}`);
-                        }}
-                    />
-                )}
-            </div>
-
-            <pre>{JSON.stringify(skillrBook, null, 2)}</pre>
-        </>
+        connectionInfo && (
+            <Session
+                apiKey={debug ? '47204724' : vonageApiKey}
+                sessionId={connectionInfo.vonageSessionDetails!.sessionId}
+                token={connectionInfo.vonageSessionDetails!.token}
+                onEnd={() => {
+                    // if (!skillrBook) {
+                    //     return;
+                    // }
+                    // Router.push(`/sessions/${skillrBook.id}`);
+                }}
+                skillr={skillr}
+                skill={skill}
+            />
+        )
     );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<BookNowProps> = async ({ params }) => {
     if (isProd()) {
         return {
             notFound: true,
@@ -156,7 +162,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             skillr,
             skill,
-            vonageApiKey: process.env.VONAGE_API_KEY,
+            vonageApiKey: process.env.VONAGE_API_KEY!,
+            useMobileMenu: true,
         },
         revalidate: 420, // revalidate every 7 minutes
     };

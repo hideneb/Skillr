@@ -17,6 +17,7 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@opentok/client": "^2.23.1",
     "@segment/snippet": "^4.14.2",
     "@sentry/nextjs": "^6.11.0",
     "@stripe/react-stripe-js": "^1.8.0-0",

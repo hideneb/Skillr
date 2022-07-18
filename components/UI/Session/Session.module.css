@@ -1,0 +1,163 @@
+@value md-up, lg-up from "../../../styles/Breakpoints.module.css";
+
+.mobileLogo {
+  position: absolute;
+  height:26px;
+  top: 22px;
+  left: 45px
+}
+
+.session {  
+  background-color: var(--rich-blue-8);
+  background: linear-gradient(to bottom, var(--rich-blue-8) 0, var(--rich-blue-8) 50vh, #0C1F3F 50vh,#FF165F 150vh);
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.session.skillrVideoPresent{
+  background: none;
+  background-color: var(--rich-blue-8);
+}
+
+.skillrInfo {
+  position: absolute;
+  top: 100px;
+  left: 45px;
+  color: #FFF;
+}
+
+.skillrInfo .username{ 
+  font-family: 'RedHatDisplay';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+.skillrInfo .title{ 
+  font-family: 'Poppins';
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.skillrProfileImage {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.skillrProfileImage img{
+  display: inline;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
+.session.skillrVideoPresent {
+  background-color: #637083; 
+}
+
+.myVideo {
+  position: absolute;
+  top: 90px;
+  right: 16px;
+  width: 150px;
+  height: 245px;  
+  z-index: 3;
+}
+
+@media md-up {
+  .myVideo {
+    top: 90px;
+    right: 40px;
+    width: 160px;
+    height: 262px;  
+  }
+}
+
+@media lg-up {
+  .myVideo {    
+    width: 205px;
+    height: 336px;  
+  }
+}
+
+.myVideo video {
+  width: 100%;  
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.skillrVideo {
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;  
+}
+
+.skillrVideo.skillrVideoPresent {
+  display: block;
+}
+
+
+@media md-up {
+  .skillrVideo {
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 500px;
+    max-width: 50vw;  
+  }
+}
+
+.skillrVideo video {
+  width: 100%;  
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.callButtons{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  bottom: 75px;
+  z-index: 2;  
+  display: flex;
+  justify-content: space-between;  
+}
+
+.callButtons button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(196, 202, 208, 0.4);
+  border: none;
+}
+
+.callButtons button {
+  color: #FFF;
+}
+
+.callButtons img{
+  transform: translateY(2px);
+}
+
+.callButtons .endCallButton {
+  background-color: #FF165F;
+}
+
+.callButtons .endCallButton img{
+  transform: none;
+}
