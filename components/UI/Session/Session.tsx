@@ -37,39 +37,8 @@ type SessionProps = {
     skill: SkillDto;
 };
 
-enum SessionState {
-    IDLE,
-    CONNECTING,
-    CONNECTED,
-    RECONNECTING,
-    RECONNECTED,
-    DISCONNECTED,
-}
-
-enum ConnectionState {
-    IDLE,
-    CREATED,
-    DESTROYED,
-}
-
-enum StreamState {
-    IDLE,
-    CREATED,
-    DESTROYED,
-}
-
-enum ArchiveState {
-    IDLE,
-    STARTED,
-    STOPPED,
-}
-
+// TODO: call onEnd appropriately
 const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skillr, skill }) => {
-    const [sessionState, setSessionState] = useState<SessionState>(SessionState.IDLE);
-    const [connectionState, setConnectionState] = useState<ConnectionState>(ConnectionState.IDLE);
-    const [streamState, setStreamState] = useState<StreamState>(StreamState.IDLE);
-    const [archiveState, setArchiveState] = useState<ArchiveState>(ArchiveState.IDLE);
-
     const [publishVideo, setPublishVideo] = useState(true);
     const [publishAudio, setPublishAudio] = useState(true);
 
@@ -83,6 +52,8 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skil
             return;
         }
         otPublisherRef.current.getPublisher().session?.disconnect();
+        // TODO: POST to /api/app/vonage/pay/:skillrBookId -d { seconds: seconds }
+        onEnd();
     };
 
     return (
@@ -112,19 +83,15 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skil
                 eventHandlers={{
                     sessionConnected: (event: SessionConnectEvent) => {
                         console.log('session connected', event);
-                        setSessionState(SessionState.CONNECTED);
                     },
                     connectionCreated: (event: ConnectionCreatedEvent) => {
                         console.log('connection created', event);
-                        setConnectionState(ConnectionState.CREATED);
                     },
                     archiveStarted: (event: ArchiveEvent) => {
                         console.log('archive started', event);
-                        setArchiveState(ArchiveState.STARTED);
                     },
                     streamCreated: (event: StreamCreatedEvent) => {
                         console.log('stream created', event);
-                        setStreamState(StreamState.CREATED);
                     },
                     streamPropertyChanged: (event: StreamPropertyChangedEvent) => {
                         console.log('stream property changed', event);
@@ -133,28 +100,25 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skil
                         console.log('signal', event);
                     },
                     streamDestroyed: (event: StreamDestroyedEvent) => {
+                        if (event.reason === 'forceDisconnected') {
+                            onEnd();
+                        }
                         console.log('stream destroyed', event);
-                        setStreamState(StreamState.DESTROYED);
                     },
                     archiveStopped: (event: ArchiveEvent) => {
                         console.log('archive stopped', event);
-                        setArchiveState(ArchiveState.STOPPED);
                     },
                     connectionDestroyed: (event: ConnectionDestroyedEvent) => {
                         console.log('connection destroyed', event);
-                        setConnectionState(ConnectionState.DESTROYED);
                     },
                     sessionReconnecting: (event: SessionReconnectingEvent) => {
                         console.log('session reconnecting', event);
-                        setSessionState(SessionState.RECONNECTING);
                     },
                     sessionReconnected: (event: SessionReconnectEvent) => {
                         console.log('session reconnected', event);
-                        setSessionState(SessionState.RECONNECTED);
                     },
                     sessionDisconnected: (event: SessionDisconnectEvent) => {
                         console.log('session disconnected', event);
-                        setSessionState(SessionState.DISCONNECTED);
                     },
                 }}
             >
@@ -186,6 +150,7 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skil
                         publishVideo,
                         publishAudio,
                         insertDefaultUI: false,
+                        name: `caller-${skillr.username}`,
                     }}
                     ref={otPublisherRef}
                     eventHandlers={{
@@ -257,24 +222,6 @@ const Session: React.FC<SessionProps> = ({ apiKey, sessionId, token, onEnd, skil
                     />
                 </OTStreams>
             </OTSession>
-            {/* <div>Session: {SessionState[sessionState]}</div>
-      <div>Connection: {ConnectionState[connectionState]}</div>
-      <div>Stream: {StreamState[streamState]}</div>
-      <div>Archive: {ArchiveState[archiveState]}</div> */}
-            {/* <pre>
-        {JSON.stringify(
-          {
-            session: otPublisherRef.current?.getPublisher().session,
-            // sessionCapabilities:
-            //   otPublisherRef.current?.getPublisher().session?.capabilities,
-            // sessionConnection:
-            //   otPublisherRef.current?.getPublisher().session?.connection,
-            // stream: otPublisherRef.current?.getPublisher().stream.connection,
-          },
-          null,
-          2
-        )}
-      </pre> */}
         </div>
     );
 };

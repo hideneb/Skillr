@@ -13,7 +13,7 @@ export type PostSkillrBook = {
 const { API_HOST } = process.env;
 
 export const createSkillrBookNow = async (jwt: string, postSkillrBook: PostSkillrBook): Promise<SkillrBookDto> => {
-    return fetch(`${API_HOST}/api/app/skillrbooksNow`, {
+    return fetch(`${API_HOST}/api/app/skillrbooksNow?autoJoin=true`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

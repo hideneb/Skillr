@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 
@@ -70,7 +71,11 @@ const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
             } as PostSkillrBook),
         })
             .then((res) => res.json())
-            .then((skillrBook) => setSkillrBook(skillrBook))
+            .then((skillrBook) => {
+                if (skillrBook.id) {
+                    setSkillrBook(skillrBook);
+                }
+            })
             .then(() => setState(BookNowState.PENDING));
     }, [debug, skillr, skill]);
 
@@ -122,10 +127,10 @@ const BookNow: React.FC<BookNowProps> = ({ skillr, skill, vonageApiKey }) => {
                 sessionId={connectionInfo.vonageSessionDetails!.sessionId}
                 token={connectionInfo.vonageSessionDetails!.token}
                 onEnd={() => {
-                    // if (!skillrBook) {
-                    //     return;
-                    // }
-                    // Router.push(`/sessions/${skillrBook.id}`);
+                    if (!skillrBook) {
+                        return;
+                    }
+                    Router.push(`/sessions/${skillrBook.id}`);
                 }}
                 skillr={skillr}
                 skill={skill}
