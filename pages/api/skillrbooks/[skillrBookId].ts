@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
+import { endNotFound, endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
 import { SkillrBookDto } from '../../../lib/types/skillrBook';
 
 const { API_HOST } = process.env;
@@ -19,6 +19,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return endUnauthorized(res);
     }
     const skillrBookId = Array.isArray(query.skillrBookId) ? query.skillrBookId[0] : query.skillrBookId;
+    if (!skillrBookId) {
+        return endNotFound(res);
+    }
+
     switch (method) {
         case 'GET':
             const skillrBook = await getSkillrBookById(auth.jwt, skillrBookId);

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
+import { endNotFound, endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
 import { StatusDto } from '../auth/request-sms';
 
 const { API_HOST } = process.env;
@@ -24,6 +24,9 @@ export const removeFavorite = async (jwt: string, skillrId: string): Promise<Sta
 export default async function handler(req: NextApiRequest, res: NextApiResponse<StatusDto>) {
     const { method, query } = req;
     const skillrId = Array.isArray(query.skillrId) ? query.skillrId[0] : query.skillrId;
+    if (!skillrId) {
+        return endNotFound(res);
+    }
 
     const auth = getAuthToken(req);
     if (!auth) {

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
+import { endNotFound, endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
 import { SkillrSkillDto } from '../../../lib/types/skillr';
 
 const { API_HOST } = process.env;
@@ -14,6 +14,10 @@ export const getSkillrSkills = async (jwt: string): Promise<SkillrSkillDto[]> =>
 export default async function handler(req: NextApiRequest, res: NextApiResponse<SkillrSkillDto[]>) {
     const { query, method } = req;
     const skillrId = Array.isArray(query.id) ? query.id[0] : query.id;
+    if (!skillrId) {
+        return endNotFound(res);
+    }
+
     const auth = getAuthToken(req);
     if (!auth) {
         return endUnauthorized(res);

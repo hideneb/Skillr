@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { endNotFound } from '../../../lib/api-helpers';
 import { PaginatedResponse } from '../../../lib/types/common';
 import { SkillrDto } from '../../../lib/types/skillr';
 
@@ -34,6 +35,10 @@ export const getPageOfSkillrs = async (
 export default async function handler(req: NextApiRequest, res: NextApiResponse<SkillrDto>) {
     const { query, method } = req;
     const skillrId = Array.isArray(query.skillrId) ? query.skillrId[0] : query.skillrId;
+    if (!skillrId) {
+        return endNotFound(res);
+    }
+
     switch (method) {
         case 'GET':
             const skillr = await getSkillrById(skillrId);

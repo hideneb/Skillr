@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { endUnauthorized, getAuthToken } from '../../../../lib/api-helpers';
+import { endNotFound, endUnauthorized, getAuthToken } from '../../../../lib/api-helpers';
 import { SkillrBookRateDto } from '../../../../lib/types/skillrBook';
 
 const { API_HOST } = process.env;
@@ -20,6 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return endUnauthorized(res);
     }
     const userId = Array.isArray(query.userId) ? query.userId[0] : query.userId;
+    if (!userId) {
+        return endNotFound(res);
+    }
+
     switch (method) {
         case 'POST':
             const userResponse = await syncUser(auth.jwt, userId);

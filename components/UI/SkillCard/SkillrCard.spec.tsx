@@ -51,6 +51,9 @@ test('displaying a skillr', async () => {
                 ],
                 rating: 0,
                 localAvailability: undefined,
+                images: [],
+                tiktok: '',
+                twitter: '',
             }}
             isLoggedIn={false}
         />

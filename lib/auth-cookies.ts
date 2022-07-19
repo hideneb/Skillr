@@ -33,7 +33,7 @@ export function parseCookies(
     req: IncomingMessage & {
         cookies: NextApiRequestCookies;
     }
-): Record<string, string> {
+): Record<string, string | undefined> {
     // For API Routes we don't need to parse the cookies.
     if (req.cookies) return req.cookies;
 
@@ -46,7 +46,7 @@ export function getTokenCookie(
     req: IncomingMessage & {
         cookies: NextApiRequestCookies;
     }
-): string {
+): string | undefined {
     const cookies = parseCookies(req);
     return cookies[TOKEN_NAME];
 }

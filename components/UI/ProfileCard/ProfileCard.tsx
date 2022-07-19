@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './ProfileCard.module.css';
 import cx from 'classnames';
-import { SkillrDto } from '../../../lib/types/skillr';
-// import { UserDto } from "../../../lib/types/user";
+import { SkillrDto } from '@/lib/types/skillr';
 import ProfileVideos from '../ProfileVideos';
 
 type ProfileCardProps = {

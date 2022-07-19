@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { SkillrDto } from '../../../lib/types/skillr';
-import { authedFetch } from '../../../lib/authed-fetch';
+import { SkillrDto } from '@/lib/types/skillr';
+import { authedFetch } from '@/lib/authed-fetch';
 
 type SkillrCardProps = {
     skillr: SkillrDto;

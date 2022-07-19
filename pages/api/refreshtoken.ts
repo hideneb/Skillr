@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { endNotFound } from '../../lib/api-helpers';
 import { getTokenCookie, setTokenCookie } from '../../lib/auth-cookies';
 import { VerifySmsCodeResponse } from './auth/verify-sms';
 
@@ -17,7 +18,12 @@ export const refreshToken = async (refreshJwt: string): Promise<RefreshJwtDto> =
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<RefreshJwtDto>) {
     const { method } = req;
-    const auth: VerifySmsCodeResponse = JSON.parse(getTokenCookie(req));
+    const authCookie = getTokenCookie(req);
+    if (!authCookie) {
+        return endNotFound(res);
+    }
+
+    const auth: VerifySmsCodeResponse = JSON.parse(authCookie);
     switch (method) {
         case 'GET':
             const refresh = await refreshToken(auth.refreshJwt);
