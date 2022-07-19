@@ -1,5 +1,5 @@
 import React from 'react';
-import Teams from '../../components/Team';
+import Teams from '@/components/Pages/Team';
 import Head from 'next/head';
 
 export default function TeamPage() {

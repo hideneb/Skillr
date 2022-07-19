@@ -1,11 +1,11 @@
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
-import { SkillrDto } from '../../lib/types/skillr';
+import { SkillrDto } from '@/lib/types/skillr';
 import { getSkillrById } from '../api/skillrs/[skillrId]';
-import SkillrPage from '../../components/SkillrPage';
-import { getUnexpiredToken } from '../../lib/api-helpers';
+import SkillrPage from '@/components/UI/SkillrPage/SkillrPage';
+import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getUserById } from '../api/users/me';
-import { UserDto } from '../../lib/types/user';
+import { UserDto } from '@/lib/types/user';
 
 type ProfileProps = {
     skillr: SkillrDto;

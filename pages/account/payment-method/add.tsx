@@ -2,7 +2,7 @@ import 'papercss';
 import React from 'react';
 import getStripe from '../../../lib/get-stripe';
 import { Elements } from '@stripe/react-stripe-js';
-import PaymentMethod from '../../../components/Profile/PaymentMethod';
+import PaymentMethod from '../../../components/Pages/Profile/PaymentMethod';
 import { UserDto } from '../../../lib/types/user';
 import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '../../../lib/api-helpers';

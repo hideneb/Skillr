@@ -27,7 +27,7 @@
             ],
             "@/components/*": [
                 "components/*"
-            ]
+            ],
         },
         "incremental": true
     },

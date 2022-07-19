@@ -1,0 +1,86 @@
+@value md-up, lg-up from "../../../styles/Breakpoints.module.css";
+
+.header {
+    width: 100%;
+    height: 325px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    padding-top: 36px;
+    padding: 36px 24px 0;
+    margin-top: -145px;
+}
+
+.skillContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.colLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.colRight {
+    width: 100%;
+}
+
+.connectNowButton {
+    width: 100%;
+    background: var(--skillr-pink-1);
+    font-family: 'Poppins';
+    height: 52px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 22px;
+    outline: 0;
+    border: none;
+    border-radius: 8px;
+    white-space: nowrap;
+    margin-top: 26px;
+    margin-bottom: 26px;
+}
+
+@media md-up {
+    .container {
+        max-width: 850px;
+        flex-direction: row;
+        padding: 36px 0 0;
+        margin-top: 0;
+    }
+
+    .header {
+        height: 400px;
+    }
+
+    .skillContainer {
+        flex-wrap: nowrap;
+    }
+
+    .colLeft {
+        width: 60%;
+        margin-right: 50px;
+    }
+
+    .colRight {
+        width: 40%;
+    }
+}
+
+@media lg-up {
+    .container {
+        max-width: 1000px;
+    }
+}

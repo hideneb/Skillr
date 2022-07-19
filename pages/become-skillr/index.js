@@ -1,5 +1,5 @@
 import React from 'react';
-import BecomeSkillr from '../../components/BecomeSkillr';
+import BecomeSkillr from '@/components/Pages/BecomeSkillr';
 import Head from 'next/head';
 
 export default function BecomeSkillrPage() {
