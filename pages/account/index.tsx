@@ -17,6 +17,40 @@ type AccountProps = {
     paymentMethod: Stripe.PaymentMethod | null;
     skillr: SkillrDDto | null;
 };
+
+export const getServerSideProps: GetServerSideProps<AccountProps> = async ({ query, req, res, resolvedUrl }) => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
+    const token = await getUnexpiredToken(req, res);
+    console.log("token",token)
+    if (!token) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: `/login?r=${encodeURIComponent(resolvedUrl)}`,
+            },
+            props: {},
+        };
+    }
+
+    const user = await getUserById(token.jwt, token.id);
+    const skillr = user.skillr ? await getMySkillr(token.jwt) : null;
+
+    const paymentMethod = user.stripePaymentMethod ? await getPaymentMethod(token.jwt).catch(() => null) : null;
+
+    return {
+        props: {
+            user,
+            paymentMethod,
+            skillr,
+        },
+    };
+};
+
 const Account: React.FC<AccountProps> = ({ user, paymentMethod, skillr }) => {
     const logout = () => {
         authedFetch(`/api/auth/logout`, {
@@ -89,38 +123,6 @@ const Account: React.FC<AccountProps> = ({ user, paymentMethod, skillr }) => {
             <pre>{JSON.stringify(user, null, 2)}</pre>
         </>
     );
-};
-
-export const getServerSideProps: GetServerSideProps<AccountProps> = async ({ query, req, res, resolvedUrl }) => {
-    if (isProd()) {
-        return {
-            notFound: true,
-        };
-    }
-
-    const token = await getUnexpiredToken(req, res);
-    if (!token) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: `/login?r=${encodeURIComponent(resolvedUrl)}`,
-            },
-            props: {},
-        };
-    }
-
-    const user = await getUserById(token.jwt, token.id);
-    const skillr = user.skillr ? await getMySkillr(token.jwt) : null;
-
-    const paymentMethod = user.stripePaymentMethod ? await getPaymentMethod(token.jwt).catch(() => null) : null;
-
-    return {
-        props: {
-            user,
-            paymentMethod,
-            skillr,
-        },
-    };
 };
 
 export default Account;

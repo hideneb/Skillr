@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './Teams.module.css';
 import Footer from '@/components/UI/Footer';
 import aboutTeam from '../../../public/about-team.png';
-import DownloadApp from '@/components/UI/DownloadApp';
+import { DownloadApp } from '@/components/UI/DownloadApp/DownloadApp';
 import classNames from 'classnames';
 import Bio from './Bio';
 

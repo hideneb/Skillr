@@ -40,8 +40,10 @@ export type SkillrDDto = {
     about: string;
     avatar: string;
     profileImage: string;
-    instagram: string;
-    linkedin: string;
+    instagram?: string;
+    linkedin?: string;
+    tiktok?: string;
+    twitter?: string;
     featured: boolean;
     influencer: boolean;
     availabilityType: number;

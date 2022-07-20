@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './Bottom.module.css';
-import DownloadApp from '@/components/UI/DownloadApp';
+import { DownloadApp } from '@/components/UI/DownloadApp/DownloadApp';
 
 export default function Section({ title, description }) {
     return (

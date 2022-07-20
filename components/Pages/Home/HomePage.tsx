@@ -1,10 +1,7 @@
-// todo: remove nocheck
-// @ts-nocheck
-
 import { useCallback, useRef } from 'react';
 import Head from 'next/head';
 import classNames from 'classnames';
-import DownloadApp from '@/components/UI/DownloadApp';
+import { DownloadApp } from '@/components/UI/DownloadApp/DownloadApp';
 import Hero from '@/components/UI/Hero';
 import styles from './Home.module.css';
 import discoverImage from '../../../public/screenshot-1.jpg';
@@ -16,7 +13,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export function HomePage() {
-    const inviteRef = useRef(null);
+    const inviteRef = useRef<any>(null);
     const { query } = useRouter();
 
     const handleGetInviteClicked = useCallback(() => {
@@ -69,6 +66,9 @@ export function HomePage() {
                             </button>
                         </>
                     }
+                    style={{}}
+                    flip={false}
+                    imageBorder={false}
                 />
 
                 <Section
@@ -84,6 +84,8 @@ export function HomePage() {
                         </p>
                     }
                     flip
+                    style={{}}
+                    imageBorder={false}
                 />
 
                 <Section
@@ -91,6 +93,8 @@ export function HomePage() {
                     imageBorder
                     altText="Flip it, reverse it and make money sharing what you know"
                     title="Flip it, reverse it and make money sharing what you know"
+                    flip={false}
+                    style={{}}
                     description={
                         <>
                             <p className={styles.noMargin}>

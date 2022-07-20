@@ -8,7 +8,7 @@ import appstoreImage from '../../../public/button-appstore.svg';
 import { useRouter } from 'next/router';
 import SuccessModal from '@/components/UI/SuccessModal';
 
-const DownloadApp = forwardRef(({ description, imgHidden }, ref) => {
+export const DownloadApp = forwardRef<any, { description: string }>(({ description, imgHidden }, ref) => {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [showModal, setShowModal] = useState(false);
@@ -54,5 +54,3 @@ const DownloadApp = forwardRef(({ description, imgHidden }, ref) => {
 });
 
 DownloadApp.displayName = 'DownloadApp';
-
-export default DownloadApp;

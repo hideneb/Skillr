@@ -3,7 +3,7 @@ import InstagramIcon from '../../../public/social-instagram-black-border.svg';
 import LinkedinIcon from '../../../public/linkedin.svg';
 import TwitterIcon from '../../../public/twitter.svg';
 import TikTokIcon from '../../../public/tiktok.svg';
-import AppStore from '../AppStore';
+import { AppStore } from '../AppStore/AppStore';
 import classNames from 'classnames';
 
 type ProfileHeaderProps = {

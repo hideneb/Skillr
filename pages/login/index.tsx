@@ -8,7 +8,19 @@ enum LoginState {
     IDLE,
     VERIFYING,
 }
+
 type LoginProps = {};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    if (isProd()) {
+        return {
+            notFound: true,
+        };
+    }
+
+    return { props: {} };
+};
+
 const Login: React.FC<LoginProps> = () => {
     const router = useRouter();
 
@@ -42,7 +54,7 @@ const Login: React.FC<LoginProps> = () => {
             body: JSON.stringify({ phoneNumber, code }),
         })
             .then((res) => res.json())
-            .then(() => {
+            .then((r) => {
                 const redirect = Array.isArray(router.query.r) ? router.query.r[0] : router.query.r;
                 Router.push(redirect || '/');
             })
@@ -52,7 +64,7 @@ const Login: React.FC<LoginProps> = () => {
     };
 
     return (
-        <div>
+        <div className="mt-8">
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
                 type="text"
@@ -71,16 +83,6 @@ const Login: React.FC<LoginProps> = () => {
             )}
         </div>
     );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-    if (isProd()) {
-        return {
-            notFound: true,
-        };
-    }
-
-    return { props: {} };
 };
 
 export default Login;

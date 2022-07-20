@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import React from 'react';
 import { SkillrDto } from '@/lib/types/skillr';
 import { getSkillrById } from '../api/skillrs/[skillrId]';
@@ -7,14 +7,16 @@ import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getUserById } from '../api/users/me';
 import { UserDto } from '@/lib/types/user';
 import { isProd } from '@/lib/environment';
+import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
 
 type SkillrProps = {
     skillr: SkillrDto;
     user: UserDto | null;
+    backgroundImg: string;
 };
 
 const Skillr: React.FC<SkillrProps> = (props) => {
-    return <SkillrPage {...props} />;
+    return <SkillrPage skillr={props.skillr} user={props.user} backgroundImg={props.backgroundImg} />;
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) => {
@@ -42,6 +44,7 @@ export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) =
         props: {
             skillr,
             user,
+            backgroundImg: getFeatureBackgroundImg(skillr.skills),
         },
     };
 };

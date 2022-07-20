@@ -3,7 +3,7 @@ import React, { useRef, useCallback } from 'react';
 import classNames from 'classnames';
 import styles from './BecomeSkillr.module.css';
 import Hero from './Hero';
-import DownloadApp from '@/components/UI/DownloadApp';
+import { DownloadApp } from '@/components/UI/DownloadApp/DownloadApp';
 import Section from '@/components/UI/Section/Section';
 
 import downtimeImage from '../../../public/become-skillr-hero-1.png';

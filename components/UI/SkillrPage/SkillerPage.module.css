@@ -36,23 +36,6 @@
     width: 100%;
 }
 
-.connectNowButton {
-    width: 100%;
-    background: var(--skillr-pink-1);
-    font-family: 'Poppins';
-    height: 52px;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 8px 22px;
-    outline: 0;
-    border: none;
-    border-radius: 8px;
-    white-space: nowrap;
-    margin-top: 26px;
-    margin-bottom: 26px;
-}
-
 @media md-up {
     .container {
         max-width: 850px;

@@ -6,14 +6,16 @@ import SkillrPage from '@/components/UI/SkillrPage/SkillrPage';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getUserById } from '../api/users/me';
 import { UserDto } from '@/lib/types/user';
+import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
 
 type ProfileProps = {
     skillr: SkillrDto;
     user: UserDto | null;
+    backgroundImg: string;
 };
 
 const Profile: React.FC<ProfileProps> = (props) => {
-    return <SkillrPage {...props} />;
+    return <SkillrPage {...props} backgroundImg={props.backgroundImg} />;
 };
 
 export const getServerSideProps: GetServerSideProps<ProfileProps> = async (ctx) => {
@@ -35,6 +37,7 @@ export const getServerSideProps: GetServerSideProps<ProfileProps> = async (ctx) 
         props: {
             skillr,
             user,
+            backgroundImg: getFeatureBackgroundImg(skillr.skills),
         },
     };
 };
