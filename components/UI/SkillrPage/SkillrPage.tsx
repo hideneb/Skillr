@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './SkillerPage.module.css';
-import ProfileHeader from '../ProfileHeader';
-import ProfileCard from '../ProfileCard';
-import Availability from '../Availability';
+import { ProfileHeader } from '../ProfileHeader/ProfileHeader';
+import { ProfileCard } from '../ProfileCard/ProfileCard';
+import { Availability } from '../Availability/Availability';
 import { SkillrDto } from '../../../lib/types/skillr';
 import { UserDto } from '../../../lib/types/user';
-import Footer from '../Footer';
+import { Footer } from '../Footer/Footer';
 import Head from 'next/head';
 import { ConnectNow } from '../ConnectNow/ConnectNow';
+import { SkillrPageBanner } from './SkillrPageBanner';
 
 type SkillrProfileProps = {
     skillr: SkillrDto;
@@ -49,40 +49,40 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, backgroundImg }) => 
                 <meta property="og:site_name" content="Skillr" />
                 <meta property="og:locale" content="en_US" />
             </Head>
-            <div
-                className={styles.header}
-                style={{
-                    backgroundImage: `url(${backgroundImg})`,
-                }}
-            ></div>
-            <div className={styles.container}>
-                <ProfileHeader
-                    username={username}
-                    displayName={displayName}
-                    profileImage={profileImage}
-                    instagram={instagram}
-                    linkedin={linkedin}
-                    twitter={twitter}
-                    tiktok={tiktok}
-                />
-                <div className={styles.skillContainer}>
-                    <div className={styles.colLeft}>
+            <SkillrPageBanner backgroundImg={backgroundImg}></SkillrPageBanner>
+            <div className="px-6 md:py-8 max-w-[1000px] mx-auto">
+                <section>
+                    <ProfileHeader
+                        username={username}
+                        displayName={displayName}
+                        profileImage={profileImage}
+                        instagram={instagram}
+                        linkedin={linkedin}
+                        twitter={twitter}
+                        tiktok={tiktok}
+                    />
+                </section>
+                <div className="mt-4">
+                    <hr></hr>
+                </div>
+                <div className="mt-4 md:flex justify-between gap-12 w-full ">
+                    <section>
                         <ProfileCard
                             key={name}
                             imgSrc={lightIcon}
                             name={name}
                             description={about}
                             ratePerMinute={ratePerMinute}
-                            skillr={skillr}
+                            skillrImages={skillr.images}
                             featureImage={backgroundImg}
                         />
-                    </div>
-                    <div className={styles.colRight}>
-                        <div className={styles.availability}>
-                            {localAvailability && <Availability availability={localAvailability} />}
+                    </section>
+                    <section className="mt-7 md:mt-0">
+                        <Availability availability={localAvailability}></Availability>
+                        <div className="mt-5">
                             <ConnectNow></ConnectNow>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
             <Footer />

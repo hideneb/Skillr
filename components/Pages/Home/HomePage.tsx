@@ -7,7 +7,7 @@ import styles from './Home.module.css';
 import discoverImage from '../../../public/screenshot-1.jpg';
 import connectImage from '../../../public/screenshot-2.jpg';
 import becomeImage from '../../../public/screenshot-3.jpg';
-import Footer from '@/components/UI/Footer';
+import { Footer } from '@/components/UI/Footer/Footer';
 import Section from '@/components/UI/Section/Section';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

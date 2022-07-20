@@ -9,7 +9,7 @@ import Section from '@/components/UI/Section/Section';
 import downtimeImage from '../../../public/become-skillr-hero-1.png';
 import teachImage from '../../../public/become-skillr-hero-2.png';
 import businessImage from '../../../public/become-skillr-hero-3.png';
-import Footer from '../../UI/Footer';
+import { Footer } from '@/components/UI/Footer/Footer';
 
 export default function BecomeSkillr() {
     const inviteRef = useRef(null);

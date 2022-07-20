@@ -3,7 +3,7 @@ import Hero from './Hero';
 import styles from './About.module.css';
 import Section from '@/components/UI/Section/Section';
 import BottomSection from './BottomSection';
-import Footer from '@/components/UI/Footer';
+import { Footer } from '@/components/UI/Footer/Footer';
 import BannerSection from './BannerSection';
 import fingerImage from '../../../public/screenshot-4.jpeg';
 

@@ -10,10 +10,15 @@ import { PayoutMethod, StripeAccountStatus, StripeLink } from '@/lib/types/strip
 import { findLanguages, LanguageDto } from '../../api/languages';
 import { getSkillrPresence, SkillrPresenceDto } from '../../api/skillrPresence';
 import { AppStore } from '@/components/UI/AppStore/AppStore';
-import Availability from '@/components/UI/Availability';
+import { Availability } from '@/components/UI/Availability/Availability';
 import { ConnectNow } from '@/components/UI/ConnectNow/ConnectNow';
 import { isPageVisible } from '@/lib/is-page-visible';
 import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
+import Head from 'next/head';
+import { SkillrPageBanner } from '@/components/UI/SkillrPage/SkillrPageBanner';
+import { ProfileHeader } from '@/components/UI/ProfileHeader/ProfileHeader';
+import { Footer } from '@/components/UI/Footer/Footer';
+import { ProfileCard } from '@/components/UI/ProfileCard/ProfileCard';
 
 export type SkillrLanguageDto = {
     languageId: number;
@@ -152,90 +157,51 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     //     setPresentUntil(presentUntil ? new Date(presentUntil) : null);
     // };
 
-    // const s = skillrDDto.skills?.[0];
-    // const lightIcon = s?.skill?.lightIcon;
-    // const name = s?.skill?.name;
-    // const ratePerMinute = s?.ratePerMinute;
+    const s = skillrDDto.skills?.[0];
+    const lightIcon = s?.skill?.lightIcon;
+    const name = s?.skill?.name;
+    const ratePerMinute = s?.ratePerMinute;
 
     return (
         <>
-            {/* <div>
-                <img
-                    className="w-full min-h-[310px] max-h-[310px] md:max-h-[400px] object-none md:object-fill"
-                    src="https://images.unsplash.com/photo-1535320404287-416e2c6d2b41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                    alt="Woman training with rubberbands on floor"
-                ></img>
-            </div> */}
-            <div
-                className="w-full h-full min-h-[300px] md:min-h-[400px] bg-cover bg-no-repeat bg-center"
-                style={{
-                    backgroundImage: `url(${backgroundImg})`,
-                }}
-            ></div>
+            <Head>
+                <title>@{skillrDDto.username} - Skillr</title>
+                <meta name="description" content={skillrDDto.about} />
+                <meta property="og:title" content={`@${skillrDDto.username}`} />
+                <meta property="og:description" content={skillrDDto.about} />
+                <meta property="og:image" content={skillrDDto.profileImage} />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:alt" content={`@${skillrDDto.username}`} />
+                <meta property="og:url" content={`https://skillr.co/profile?profileId=${skillrDDto.id}`} />
+                <meta property="og:type" content="profile" />
+                <meta property="og:site_name" content="Skillr" />
+                <meta property="og:locale" content="en_US" />
+            </Head>
+            <SkillrPageBanner backgroundImg={backgroundImg}></SkillrPageBanner>
             <div className="px-6 md:py-8 max-w-[1000px] mx-auto">
-                <section className="md:flex md:justify-between">
-                    <div className="md:flex md:gap-5">
-                        <div className="flex items-center justify-center -mt-16 md:mt-0 ">
-                            <div className="bg-white rounded-full">
-                                <img
-                                    className="rounded-full w-[120px] h-[120px]"
-                                    src={skillrDDto.profileImage ?? '/avatar-placeholder.svg'}
-                                    alt={skillrDDto.user.displayName}
-                                ></img>
-                            </div>
-                        </div>
-                        <div>
-                            {skillrDDto.username && (
-                                <div className="flex items-center justify-center">
-                                    <p className="text-2xl">@{skillrDDto.username}</p>
-                                </div>
-                            )}
-                            <div className="flex items-center justify-center">
-                                <h1 className="font-bold font-redhat text-3xl">{skillrDDto.user.displayName}</h1>
-                            </div>
-                            <div className="flex items-center justify-center gap-5 mt-4">
-                                {skillrDDto.instagram && (
-                                    <a href={skillrDDto.instagram} target="_blank" rel="noreferrer">
-                                        <img className="w-5" src="/social-instagram-black-border.svg" alt="Instagram" />
-                                    </a>
-                                )}
-                                {skillrDDto.linkedin && (
-                                    <a href={skillrDDto.linkedin} target="_blank" rel="noreferrer">
-                                        <img className="w-5" src="/linkedin.svg" alt="LinkedIn" />
-                                    </a>
-                                )}
-                                {skillrDDto.twitter && (
-                                    <a href={skillrDDto.twitter} target="_blank" rel="noreferrer">
-                                        <img className="w-5" src="/twitter.svg" alt="Twitter" />
-                                    </a>
-                                )}
-                                {skillrDDto.tiktok && (
-                                    <a href={skillrDDto.tiktok} target="_blank" rel="noreferrer">
-                                        <img className="w-5" src="/tiktok.svg" alt="Tiktok" />
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-4 md:mt-0">
-                        <AppStore></AppStore>
-                    </div>
-                </section>
+                <ProfileHeader
+                    username={skillrDDto.username}
+                    displayName={skillrDDto.user.displayName}
+                    profileImage={skillrDDto.profileImage}
+                    instagram={skillrDDto.instagram}
+                    linkedin={skillrDDto.linkedin}
+                    twitter={skillrDDto.twitter}
+                    tiktok={skillrDDto.tiktok}
+                />
                 <div className="mt-4">
                     <hr></hr>
                 </div>
                 <div className="mt-4 md:flex justify-between gap-12 w-full ">
                     <section>
-                        <div className="w-full px-5 py-3 shadow-skillr-lg rounded-lg2">
-                            <p className="text-base">
-                                {skillrDDto.about ??
-                                    // @todo: remove placeholder text
-                                    'Passionate yoga teacher with over 3+ years of professional experience in designing and leading flow and vinyasa yoga classes. In June 2018, completed an Advanced 300-Hour Yoga Teacher Training in Bali, Indonesia, and acquired an in-depth knowledge about postures, breathing techniques, and spiritual elements of yoga teaching.Indonesia, and acquired an in-depth knowledge about postures, breathing techniques, and spiritual elements of yoga teaching. '}
-                            </p>
-                        </div>
-
-                        {/* <ProfileCard></ProfileCard> */}
-                        {/* <SkillCard skill={{}}></SkillCard> */}
+                        <ProfileCard
+                            key={name}
+                            imgSrc={lightIcon}
+                            name={name}
+                            description={skillrDDto.about}
+                            ratePerMinute={ratePerMinute}
+                            skillrImages={skillrDDto.images}
+                            featureImage={backgroundImg}
+                        />
                     </section>
                     <section className="mt-7 md:mt-0">
                         <Availability availability={skillrDDto.localAvailability}></Availability>
@@ -245,6 +211,7 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
                     </section>
                 </div>
             </div>
+            <Footer />
             {/* <div>
                 <h3>Active?</h3>
                 <p>

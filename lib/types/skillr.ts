@@ -75,13 +75,13 @@ export type SkillrLocalAvailabilityDto = SkillrAvailabilityDto & {
     timezoneOffset: number;
 };
 
-export type SkillrImageDto = {
+export type SkillrMediaDto = {
     id: string;
-    cover: number;
-    filename: string;
     image: string;
+    video?: string;
+    filename?: string;
     type: number;
-    video: string;
+    cover: number;
 };
 
 export type SkillrDto = {
@@ -100,5 +100,5 @@ export type SkillrDto = {
     about: string;
     isAvailableNow: boolean;
     isFavourite?: boolean;
-    images: SkillrImageDto[];
+    images: SkillrMediaDto[];
 };

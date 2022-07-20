@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './Teams.module.css';
-import Footer from '@/components/UI/Footer';
+import { Footer } from '@/components/UI/Footer/Footer';
 import aboutTeam from '../../../public/about-team.png';
 import { DownloadApp } from '@/components/UI/DownloadApp/DownloadApp';
 import classNames from 'classnames';

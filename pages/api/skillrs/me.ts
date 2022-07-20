@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { endUnauthorized, getAuthToken } from '../../../lib/api-helpers';
-import { SkillrLocalAvailabilityDto, SkillrSkillDto } from '../../../lib/types/skillr';
+import type { SkillrMediaDto, SkillrLocalAvailabilityDto, SkillrSkillDto } from '../../../lib/types/skillr';
 import { UserDto } from '../../../lib/types/user';
 import { SkillrLanguageDto } from '../../skillr/profile';
 
@@ -11,15 +11,6 @@ export type SkillrRejectDto = {
     contacts: boolean;
     about: boolean;
     notes: string;
-};
-
-export type SkillrMediaDto = {
-    id: string;
-    image: string;
-    video?: string;
-    filename?: string;
-    type: number;
-    cover: number;
 };
 
 export type SkillrDDto = {

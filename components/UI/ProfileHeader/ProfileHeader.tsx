@@ -1,10 +1,6 @@
-import styles from './ProfileHeader.module.css';
-import InstagramIcon from '../../../public/social-instagram-black-border.svg';
-import LinkedinIcon from '../../../public/linkedin.svg';
-import TwitterIcon from '../../../public/twitter.svg';
-import TikTokIcon from '../../../public/tiktok.svg';
-import { AppStore } from '../AppStore/AppStore';
 import classNames from 'classnames';
+import { AppStore } from '../AppStore/AppStore';
+import styles from './ProfileHeader.module.css';
 
 type ProfileHeaderProps = {
     profileImage: string;
@@ -16,7 +12,7 @@ type ProfileHeaderProps = {
     tiktok?: string;
 };
 
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({
+export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     profileImage,
     username,
     displayName,
@@ -26,51 +22,63 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     tiktok,
 }) => {
     return (
-        <div className={styles.profileHeader}>
-            <div className={styles.colLeft}>
-                <div className={styles.profileImageContainer}>
-                    {profileImage ? <img height={'100%'} width={'100%'} alt="" src={profileImage} /> : null}
-                </div>
-                <div className={styles.profileInfo}>
-                    <div className={styles.username}>@{username}</div>
-                    <div
-                        className={classNames(styles.displayName, {
-                            [styles.displayNameLong]: displayName.length > 25,
-                        })}
-                    >
-                        {displayName}
+        <div className="md:flex md:justify-between">
+            <div className="md:flex">
+                {profileImage && (
+                    <div className="flex items-center justify-center -mt-16 md:mt-0 md:mr-5">
+                        <div className="bg-white rounded-full">
+                            <img
+                                className="rounded-full w-[120px] h-[120px]"
+                                src={profileImage ?? '/avatar-placeholder.svg'}
+                                alt={displayName}
+                            ></img>
+                        </div>
                     </div>
-                    {(instagram || linkedin || twitter || tiktok) && (
-                        <div className={styles.socialLinksContainer}>
-                            {instagram && (
-                                <a href={instagram} className="d-flex">
-                                    <InstagramIcon className={styles.socialIcon} />
-                                </a>
-                            )}
-                            {linkedin && (
-                                <a href={linkedin} className="d-flex">
-                                    <LinkedinIcon className={styles.socialIcon} />
-                                </a>
-                            )}
-                            {twitter && (
-                                <a href={twitter} className="d-flex">
-                                    <TwitterIcon className={styles.socialIcon} />
-                                </a>
-                            )}
-                            {tiktok && (
-                                <a href={tiktok} className="d-flex">
-                                    <TikTokIcon className={styles.socialIcon} />
-                                </a>
-                            )}
+                )}
+                <div>
+                    {username && (
+                        <div className="flex items-center justify-center">
+                            <p className="text-2xl">@{username}</p>
                         </div>
                     )}
+
+                    <div className="flex items-center justify-center">
+                        <h1
+                            className={classNames('font-bold font-redhat text-3xl', {
+                                [styles.displayNameLong]: displayName.length > 25,
+                            })}
+                        >
+                            {displayName}
+                        </h1>
+                    </div>
+
+                    <div className="flex items-center justify-center gap-5 mt-4">
+                        {instagram && (
+                            <a href={instagram} target="_blank" rel="noreferrer">
+                                <img className="w-5" src="/social-instagram-black-border.svg" alt="Instagram" />
+                            </a>
+                        )}
+                        {linkedin && (
+                            <a href={linkedin} target="_blank" rel="noreferrer">
+                                <img className="w-5" src="/linkedin.svg" alt="LinkedIn" />
+                            </a>
+                        )}
+                        {twitter && (
+                            <a href={twitter} target="_blank" rel="noreferrer">
+                                <img className="w-5" src="/twitter.svg" alt="Twitter" />
+                            </a>
+                        )}
+                        {tiktok && (
+                            <a href={tiktok} target="_blank" rel="noreferrer">
+                                <img className="w-5" src="/tiktok.svg" alt="Tiktok" />
+                            </a>
+                        )}
+                    </div>
                 </div>
             </div>
-            <div className={styles.colRight}>
-                <AppStore />
+            <div className="mt-4 md:mt-0">
+                <AppStore></AppStore>
             </div>
         </div>
     );
 };
-
-export default ProfileHeader;

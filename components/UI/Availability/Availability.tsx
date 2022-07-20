@@ -12,7 +12,7 @@ const formatTime = (t: moment.MomentInput) => moment(t, 'h:mm:ss a').format('h:m
 
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const Availability: React.FC<AvailabilityProps> = (props: AvailabilityProps) => {
+export const Availability: React.FC<AvailabilityProps> = (props: AvailabilityProps) => {
     return (
         <div style={{ minWidth: '300px' }}>
             <div className={styles.title}>Availability</div>
@@ -40,5 +40,3 @@ const Availability: React.FC<AvailabilityProps> = (props: AvailabilityProps) => 
         </div>
     );
 };
-
-export default Availability;

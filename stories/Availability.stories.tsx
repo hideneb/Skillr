@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Availability from '../components/UI/Availability';
+import { Availability } from '../components/UI/Availability/Availability';
 
 export default {
     title: 'Availability',

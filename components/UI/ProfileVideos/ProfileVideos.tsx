@@ -4,7 +4,7 @@ const ModalVideo: any = dynamic(() => import('react-modal-video'), {
     ssr: false,
 });
 import styles from './ProfileVideos.module.css';
-import { SkillrImageDto } from '../../../lib/types/skillr';
+import { SkillrMediaDto } from '../../../lib/types/skillr';
 import classNames from 'classnames';
 import PlayIcon from '../../../public/play.svg';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ import dynamic from 'next/dynamic';
 import { useMediaQuery } from 'react-responsive';
 
 type ProfileVideosProps = {
-    videos: SkillrImageDto[];
+    videos: SkillrMediaDto[];
     featureImage: string;
 };
 
@@ -48,7 +48,11 @@ const ProfileVideos: React.FC<ProfileVideosProps> = ({ videos, featureImage }) =
                     return (
                         <div
                             key={v.id}
-                            onClick={() => openVideo(v.video)}
+                            onClick={() => {
+                                if (v.video) {
+                                    openVideo(v.video);
+                                }
+                            }}
                             className={classNames(styles.result, {
                                 [styles.firstOfSingleRow]: idx === 0 && rowCount === 1,
                                 [styles.lastOfSingleRow]: idx === videos.length - 1 && rowCount === 1,
