@@ -46,6 +46,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 </div>
                 {videos.length > 0 && (
                     <div className={styles.videos}>
+                        <div className={styles.videosTitle}>Videos</div>
                         <ProfileVideos featureImage={featureImage} videos={videos} />
                     </div>
                 )}
