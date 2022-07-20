@@ -12,13 +12,13 @@ import { getSkillrPresence, SkillrPresenceDto } from '../../api/skillrPresence';
 import { AppStore } from '@/components/UI/AppStore/AppStore';
 import { Availability } from '@/components/UI/Availability/Availability';
 import { ConnectNow } from '@/components/UI/ConnectNow/ConnectNow';
-import { isPageVisible } from '@/lib/is-page-visible';
 import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
 import Head from 'next/head';
 import { SkillrPageBanner } from '@/components/UI/SkillrPage/SkillrPageBanner';
 import { ProfileHeader } from '@/components/UI/ProfileHeader/ProfileHeader';
 import { Footer } from '@/components/UI/Footer/Footer';
 import { ProfileCard } from '@/components/UI/ProfileCard/ProfileCard';
+import { isPageVisible } from '@/lib/environment';
 
 export type SkillrLanguageDto = {
     languageId: number;

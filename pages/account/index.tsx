@@ -10,7 +10,7 @@ import { getPaymentMethod } from '../api/userStripe/payment-method';
 import { UserDto } from '../../lib/types/user';
 import { getUserById } from '../api/users/me';
 import { getMySkillr, SkillrDDto } from '../api/skillrs/me';
-import { isProd } from '../../lib/environment';
+import { isPageVisible } from '../../lib/environment';
 
 type AccountProps = {
     user: UserDto;
@@ -19,14 +19,14 @@ type AccountProps = {
 };
 
 export const getServerSideProps: GetServerSideProps<AccountProps> = async ({ query, req, res, resolvedUrl }) => {
-    if (isProd()) {
+    if (!isPageVisible(query)) {
         return {
             notFound: true,
         };
     }
 
     const token = await getUnexpiredToken(req, res);
-    console.log("token",token)
+    console.log('token', token);
     if (!token) {
         return {
             redirect: {

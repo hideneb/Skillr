@@ -6,7 +6,7 @@ import SkillrPage from '@/components/UI/SkillrPage/SkillrPage';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getUserById } from '../api/users/me';
 import { UserDto } from '@/lib/types/user';
-import { isProd } from '@/lib/environment';
+import { isPageVisible, isProd } from '@/lib/environment';
 import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
 
 type SkillrProps = {
@@ -20,7 +20,7 @@ const Skillr: React.FC<SkillrProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) => {
-    if (isProd()) {
+    if (!isPageVisible(ctx.query)) {
         return {
             notFound: true,
         };

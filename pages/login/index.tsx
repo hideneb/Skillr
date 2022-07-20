@@ -2,7 +2,7 @@ import 'papercss';
 import Router, { useRouter } from 'next/router';
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { isProd } from '../../lib/environment';
+import { isPageVisible, isProd } from '../../lib/environment';
 
 enum LoginState {
     IDLE,
@@ -11,8 +11,8 @@ enum LoginState {
 
 type LoginProps = {};
 
-export const getServerSideProps: GetServerSideProps = async () => {
-    if (isProd()) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    if (!isPageVisible(context.query)) {
         return {
             notFound: true,
         };
