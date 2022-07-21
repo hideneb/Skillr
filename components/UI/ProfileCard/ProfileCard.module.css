@@ -65,6 +65,22 @@
     color: var(--rich-blue-7);
 }
 
+.saveButton {
+    background: var(--skillr-pink-1);
+    height: 40px;
+    width: 100px;
+    color: white;
+    border-radius: 8px;
+}
+
+.cancelButton {
+    border: 1px solid lightgray;
+    height: 40px;
+    color: gray;
+    width: 100px;
+    border-radius: 8px;
+}
+
 .videos {
     margin-top: 16px;
 }

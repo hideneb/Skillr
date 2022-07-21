@@ -9,8 +9,8 @@ import Switch from 'react-switch';
 
 type AvailabilityProps = {
     isEditable?: boolean;
-    initialAvailability?: Partial<SkillrLocalAvailabilityDto>;
-    handleSaveChanges?: (value: Partial<SkillrLocalAvailabilityDto>) => void;
+    initialAvailability?: SkillrLocalAvailabilityDto;
+    handleSaveChanges?: (value: SkillrLocalAvailabilityDto) => void;
 };
 
 const formatTime = (t: moment.MomentInput) => moment(t, 'h:mm:ss a').format('h:mm a');
@@ -18,13 +18,13 @@ const formatTime = (t: moment.MomentInput) => moment(t, 'h:mm:ss a').format('h:m
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export const Availability: React.FC<AvailabilityProps> = (props: AvailabilityProps) => {
-    const [availability, setAvailability] = useState<Partial<SkillrLocalAvailabilityDto>>(
-        props.initialAvailability || {}
+    const [availability, setAvailability] = useState<SkillrLocalAvailabilityDto>(
+        props.initialAvailability || ({} as SkillrLocalAvailabilityDto)
     );
     const [isEditing, setIsEditing] = useState(false);
 
     const toggleDayAvailablility = (checked: boolean, dayIndex: number) => {
-        setAvailability((prev: Partial<SkillrLocalAvailabilityDto>) => ({
+        setAvailability((prev: SkillrLocalAvailabilityDto) => ({
             ...prev,
             [`day${dayIndex}Begin`]: checked ? '00:00:00' : null,
             [`day${dayIndex}End`]: checked ? '11:59:00' : null,
@@ -32,7 +32,7 @@ export const Availability: React.FC<AvailabilityProps> = (props: AvailabilityPro
     };
 
     const handleTimeChange = (value: string, name: string) => {
-        setAvailability((prev: Partial<SkillrLocalAvailabilityDto>) => ({
+        setAvailability((prev: SkillrLocalAvailabilityDto) => ({
             ...prev,
             [name]: value,
         }));

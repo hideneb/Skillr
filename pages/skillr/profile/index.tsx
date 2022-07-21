@@ -159,28 +159,32 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     //     setPresentUntil(presentUntil ? new Date(presentUntil) : null);
     // };
 
-    const handleSaveChanges = async (availability: Partial<SkillrLocalAvailabilityDto>) => {
-        const skillrLocalAvailability: Partial<SkillrLocalAvailabilityDto> = {
-            ...availability,
-            timezoneOffset: skillrDDto.localAvailability?.timezoneOffset || 0, // TODO: use actual timezoneOffset
-            type: skillrDDto.availabilityType,
-        };
-
+    const handleUpdateSkillr = async (values: Partial<SkillrDDto>) => {
         await authedFetch('/api/skillrs', {
             method: 'PUT',
-            body: JSON.stringify({
-                localAvailability: skillrLocalAvailability,
-            }),
+            body: JSON.stringify(values),
             headers: {
                 'Content-Type': 'application/json',
             },
         }).then((res) => res.json());
     };
 
+    const handleSaveAvailabilityChanges = async (availability: SkillrLocalAvailabilityDto) => {
+        const skillrLocalAvailability: SkillrLocalAvailabilityDto = {
+            ...availability,
+            timezoneOffset: skillrDDto.localAvailability?.timezoneOffset || 0, // TODO: use actual timezoneOffset
+            type: skillrDDto.availabilityType,
+        };
+
+        await handleUpdateSkillr({ localAvailability: skillrLocalAvailability });
+    };
+
     const s = skillrDDto.skills?.[0];
     const lightIcon = s?.skill?.lightIcon;
     const name = s?.skill?.name;
     const ratePerMinute = s?.ratePerMinute;
+
+    console.log(skillrDDto);
 
     return (
         <>
@@ -212,22 +216,24 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
                     <hr></hr>
                 </div>
                 <div className="mt-4 md:flex justify-between gap-12 w-full ">
-                    <section>
+                    <section className="w-full">
                         <ProfileCard
                             key={name}
+                            isEditable
                             imgSrc={lightIcon}
                             name={name}
                             description={skillrDDto.about}
                             ratePerMinute={ratePerMinute}
                             skillrImages={skillrDDto.images}
                             featureImage={backgroundImg}
+                            handleSaveChanges={handleUpdateSkillr}
                         />
                     </section>
                     <section className="mt-7 md:mt-0">
                         <Availability
                             isEditable
                             initialAvailability={skillrDDto.localAvailability}
-                            handleSaveChanges={handleSaveChanges}
+                            handleSaveChanges={handleSaveAvailabilityChanges}
                         />
                         <div className="mt-5">
                             <ConnectNow></ConnectNow>
