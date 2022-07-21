@@ -18,6 +18,8 @@ import { SkillrPageBanner } from '@/components/UI/SkillrPage/SkillrPageBanner';
 import { ProfileHeader } from '@/components/UI/ProfileHeader/ProfileHeader';
 import { Footer } from '@/components/UI/Footer/Footer';
 import { ProfileCard } from '@/components/UI/ProfileCard/ProfileCard';
+import { SkillrLocalAvailabilityDto } from '@/lib/types/skillr';
+import { authedFetch } from '@/lib/authed-fetch';
 import { isPageVisible } from '@/lib/environment';
 
 export type SkillrLanguageDto = {
@@ -157,6 +159,24 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     //     setPresentUntil(presentUntil ? new Date(presentUntil) : null);
     // };
 
+    const handleSaveChanges = async (availability: Partial<SkillrLocalAvailabilityDto>) => {
+        const skillrLocalAvailability: Partial<SkillrLocalAvailabilityDto> = {
+            ...availability,
+            timezoneOffset: skillrDDto.localAvailability?.timezoneOffset || 0, // TODO: use actual timezoneOffset
+            type: skillrDDto.availabilityType,
+        };
+
+        await authedFetch('/api/skillrs', {
+            method: 'PUT',
+            body: JSON.stringify({
+                localAvailability: skillrLocalAvailability,
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then((res) => res.json());
+    };
+
     const s = skillrDDto.skills?.[0];
     const lightIcon = s?.skill?.lightIcon;
     const name = s?.skill?.name;
@@ -204,7 +224,11 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
                         />
                     </section>
                     <section className="mt-7 md:mt-0">
-                        <Availability availability={skillrDDto.localAvailability}></Availability>
+                        <Availability
+                            isEditable
+                            initialAvailability={skillrDDto.localAvailability}
+                            handleSaveChanges={handleSaveChanges}
+                        />
                         <div className="mt-5">
                             <ConnectNow></ConnectNow>
                         </div>

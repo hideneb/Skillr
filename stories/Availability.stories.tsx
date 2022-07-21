@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Availability> = (args) => <Availability {.
 export const Primary = Template.bind({});
 
 Primary.args = {
-    availability: {
+    initialAvailability: {
         day0Begin: '09:00:00',
         day0End: '18:00:00',
         day1Begin: '09:00:00',

@@ -78,7 +78,7 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, backgroundImg }) => 
                         />
                     </section>
                     <section className="mt-7 md:mt-0">
-                        <Availability availability={localAvailability}></Availability>
+                        <Availability initialAvailability={localAvailability}></Availability>
                         <div className="mt-5">
                             <ConnectNow></ConnectNow>
                         </div>

@@ -31,6 +31,7 @@
 .dayContainer {
     display: flex;
     height: 58px;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--rich-blue-3);
 }
@@ -56,6 +57,35 @@
     font-size: 17px;
     font-weight: 600;
     color: var(--rich-blue-8);
+}
+
+.saveButton {
+    width: 50%;
+    background: var(--skillr-pink-1);
+    font-family: 'Poppins', sans-serif;
+    height: 48px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 22px;
+    outline: 0;
+    border: none;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.cancelButton {
+    width: 50%;
+    border: 1px solid lightgray;
+    font-family: 'Poppins', sans-serif;
+    height: 48px;
+    color: gray;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 22px;
+    outline: 0;
+    border-radius: 8px;
+    white-space: nowrap;
 }
 
 @media md-up {
