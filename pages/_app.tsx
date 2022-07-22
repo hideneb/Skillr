@@ -3,7 +3,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { polyfill } from 'smoothscroll-polyfill';
-import Navbar from '@/components/UI/Navbar';
+import { Navbar } from '@/components/UI/Navbar/Navbar';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { SWRConfig } from 'swr';

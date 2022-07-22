@@ -184,8 +184,6 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     const name = s?.skill?.name;
     const ratePerMinute = s?.ratePerMinute;
 
-    console.log(skillrDDto);
-
     return (
         <>
             <Head>

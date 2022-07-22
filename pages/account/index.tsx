@@ -26,7 +26,6 @@ export const getServerSideProps: GetServerSideProps<AccountProps> = async ({ que
     }
 
     const token = await getUnexpiredToken(req, res);
-    console.log('token', token);
     if (!token) {
         return {
             redirect: {
