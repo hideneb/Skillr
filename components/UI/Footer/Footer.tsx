@@ -2,8 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Footer.module.css';
+import Image from 'next/image';
 
-import logoTextBlackIcon from '../../../public/logo-black-text.svg';
+const logoTextBlackIcon = '/logo-black-text.svg';
 
 export const Footer = () => {
     const { query } = useRouter();
@@ -11,7 +12,7 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <div>
                 <div className={styles.logo}>
-                    <img src={logoTextBlackIcon.src} alt="" />
+                    <Image width={73} height={102} src={logoTextBlackIcon} alt="" />
                     <p className={styles.copyright}>© 2022 Skillr, Inc.</p>
                 </div>
 

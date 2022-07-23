@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Bio.module.css';
 import classNames from 'classnames';
+import Image from 'next/image';
 
 export default function Bio({ size, hoverImg, isHover, img, name, skill, body }) {
     return (
@@ -17,9 +18,13 @@ export default function Bio({ size, hoverImg, isHover, img, name, skill, body })
         >
             <div>
                 <div className={classNames(styles.relative, styles.bioImg)}>
-                    <img src={img} alt={name} className={styles.originImg} />
-                    {hoverImg !== '' && (
-                        <img src={hoverImg} alt={name} className={classNames(hoverImg !== '' && styles.hoverImg)} />
+                    <div className={styles.originImg}>
+                        <Image width={216} height={323} src={img} alt={name} />
+                    </div>
+                    {!!hoverImg && hoverImg !== '' && (
+                        <div className={classNames(hoverImg !== '' && styles.hoverImg)}>
+                            <Image width={216} height={323} src={hoverImg} alt={name} />
+                        </div>
                     )}
 
                     <div className={classNames(styles.absolute, styles.bioDetail)}>

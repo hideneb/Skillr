@@ -4,6 +4,7 @@ import screenImage from '../../../../public/about-us-screen1.png';
 import styles from './Hero.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function Hero() {
     const { query } = useRouter();
@@ -11,9 +12,11 @@ export default function Hero() {
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <div className={styles.left}>
-                    <Link href={{ pathname: '/', query }} passHref>
-                        <img src="/logo.svg" alt="Skillr Logo" />
-                    </Link>
+                    <div className="text-left block">
+                        <Link href={{ pathname: '/', query }} passHref>
+                            <Image width={86} height={118} src="/logo.svg" alt="Skillr Logo" />
+                        </Link>
+                    </div>
                     <h1>Meet Skillr</h1>
                     <p className={styles.fontBold}>
                         We&apos;re your connect for one-on-one live video chatting with experts anytime for whatever
@@ -33,7 +36,7 @@ export default function Hero() {
                 </div>
                 <div className={styles.right}>
                     <div className={classNames('mobileFrame', styles.frame)}>
-                        <img src={screenImage.src} alt="Screen" />
+                        <Image width={280} height={581} src={screenImage.src} alt="Screen" />
                     </div>
                     <p className={classNames('tablet', styles.fontBold)}>
                         That&apos;s right, we&apos;re your one-stop shop with SKILL ON TAP

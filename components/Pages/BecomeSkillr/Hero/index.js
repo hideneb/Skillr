@@ -6,21 +6,32 @@ import styles from './Hero.module.css';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function Hero() {
     const { query } = useRouter();
     return (
         <div className={styles.container}>
             <Link href={{ pathname: '/', query }} passHref>
-                <img src="/logo.svg" alt="Skillr Logo" className={styles.curPointer} />
+                <div className="text-left">
+                    <Image width={86} height={118} src="/logo.svg" alt="Skillr Logo" className={styles.curPointer} />
+                </div>
             </Link>
             <div className={styles.contentWrapper}>
                 <div className={classNames('desktop', styles.screens)}>
                     <div className={styles.screensDesktop}>
-                        <img src={becomeSkillr.src} layout="fixed" alt="Screen" />
+                        <Image
+                            width={1046}
+                            height={395}
+                            src={becomeSkillr.src}
+                            layout="intrinsic"
+                            objectFit="cover"
+                            objectPosition="center"
+                            alt="Screen"
+                        />
                     </div>
                     <div className={styles.screensMobile}>
-                        <img src={becomeSkillrMobile.src} layout="fixed" alt="Screen" />
+                        <Image width={355} height={412} src={becomeSkillrMobile.src} layout="intrinsic" alt="Screen" />
                     </div>
                 </div>
                 <div>
@@ -31,10 +42,10 @@ export default function Hero() {
                 </div>
                 <div className={classNames('tablet', styles.screens)}>
                     <div className={styles.screensDesktop}>
-                        <img src={becomeSkillr.src} layout="fixed" alt="Screen" />
+                        <Image width={1046} height={395} src={becomeSkillr.src} layout="fixed" alt="Screen" />
                     </div>
                     <div className={styles.screensMobile}>
-                        <img src={becomeSkillrMobile.src} layout="fixed" alt="Screen" />
+                        <Image width={355} height={412} src={becomeSkillrMobile.src} layout="fixed" alt="Screen" />
                     </div>
                 </div>
             </div>

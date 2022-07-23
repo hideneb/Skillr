@@ -4,9 +4,10 @@
 import React, { useState, forwardRef } from 'react';
 import styles from './DownloadApp.module.css';
 
-import appstoreImage from '../../../public/button-appstore.svg';
+const appstoreImage = '/button-appstore.svg';
 import { useRouter } from 'next/router';
 import SuccessModal from '@/components/UI/SuccessModal';
+import Image from 'next/image';
 
 export const DownloadApp = forwardRef<any, { description: string }>(({ description, imgHidden }, ref) => {
     const router = useRouter();
@@ -32,7 +33,13 @@ export const DownloadApp = forwardRef<any, { description: string }>(({ descripti
 
     return (
         <div className={styles.container}>
-            <img src={appstoreImage.src} className={`${!imgHidden ? '' : 'desktop'}`} alt="App Store Coming Soon" />
+            <Image
+                width={160}
+                height={54}
+                src={appstoreImage}
+                className={`${!imgHidden ? '' : 'desktop'}`}
+                alt="App Store Coming Soon"
+            />
             <p className={styles.description}>{description}</p>
 
             <form className={styles.inviteContainer} onSubmit={handleSubmit}>

@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './Section.module.css';
+import Image from 'next/image';
 
 export default function Section({ image, altText, title, description, flip, style, imageBorder }) {
     return (
@@ -16,7 +17,7 @@ export default function Section({ image, altText, title, description, flip, styl
                         className={classNames('mobileFrame', styles.frame)}
                         style={{ border: imageBorder ? '1px solid #e5e8e9' : '' }}
                     >
-                        <img src={image} alt={altText} />
+                        <Image width={280} height={580} objectFit="cover" src={image} alt={altText} />
                     </div>
                     <div className="tablet">{description}</div>
                 </div>

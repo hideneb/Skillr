@@ -6,6 +6,7 @@ import { getUnexpiredToken } from '../../../lib/api-helpers';
 import { getMySkillr, SkillrDDto } from '../../api/skillrs/me';
 import { authedFetch } from '../../../lib/authed-fetch';
 import { isProd } from '../../../lib/environment';
+import NextImage from 'next/image';
 
 type SkillrMediaProps = {
     skillrDDto: SkillrDDto;
@@ -92,7 +93,9 @@ const SkillrMedia: React.FC<SkillrMediaProps> = ({ skillrDDto }) => {
                 {skillrDDto.images.map((image) => (
                     <>
                         <span>type: {SkillrMediaTypes[image.type]}</span>
-                        <img key={image.id} src={image.image} style={{ maxWidth: '100px' }} alt={'Skillr image'} />
+                        <div className="max-w-[100px] w-full" style={{ maxWidth: '100px' }}>
+                            <NextImage layout="fill" key={image.id} src={image.image} alt={'Skillr image'} />
+                        </div>
                         {image.cover ? (
                             <div>
                                 <span>Cover</span>

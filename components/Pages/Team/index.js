@@ -15,6 +15,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import { dt_crew2, dt_advisors, dt_directors, dt_crew } from './BioData';
+import Image from 'next/image';
 
 const NextArrow = ({ className, onClick, currentSlide, ctStyle, slideCount }) => {
     return (
@@ -57,8 +58,8 @@ export default function Teams() {
     return (
         <div className={styles.teams}>
             <main className={styles.main}>
-                <div className={classNames(styles.aboutTeam, 'desktop')}>
-                    <img src={aboutTeam.src} alt="About Team" />
+                <div className={classNames(styles.aboutTeam, 'desktop w-screen relative h-[585px]')}>
+                    <Image layout="fill" objectFit="cover" src={aboutTeam.src} alt="About Team" />
                 </div>
 
                 <div className={styles.container}>

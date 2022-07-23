@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import styles from './AppStore.module.css';
 
@@ -10,7 +11,15 @@ export const AppStore = () => {
             className={styles.appStore}
         >
             <div className={`${styles.text} text-center`}>Get the full experience on the Skillr app</div>
-            <img className={styles.badge} src="/app-store-badge.svg" alt="Download on the App Store" />
+            <div className="mb-1">
+                <Image
+                    width={148}
+                    height={48}
+                    className={styles.badge}
+                    src="/app-store-badge.svg"
+                    alt="Download on the App Store"
+                />
+            </div>
         </a>
     );
 };
