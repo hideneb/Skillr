@@ -69,12 +69,13 @@
     color: #f2f3f4;
     max-width: 850px;
     padding: 0 14px;
-    margin: 47px auto 46px;
+    margin: 46px auto 46px;
 }
 
 @media only screen and (max-width: 768px) {
     .title {
         font-size: 42px;
+        margin-top: 64px;
     }
 }
 

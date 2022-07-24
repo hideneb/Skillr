@@ -8,9 +8,6 @@ import classNames from 'classnames';
 const Hero = () => (
     <div className={styles.container}>
         <div>
-            <div className={classNames('text-left', styles.curPointer)}>
-                <Image width={86} height={118} src="/logo.svg" alt="Skillr Logo" />
-            </div>
             <h1 className={styles.title}>Whatever You Want to Learn, Whenever You Want to Learn It</h1>
             <p className={styles.description}>
                 Speak to real people, real quick with{' '}
