@@ -105,6 +105,7 @@ export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async 
 
 const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     const { skillrDDto, accountLink, stripeLoginLink, payoutMethod, languages, backgroundImg } = props;
+    const [profileImage, setProfileImage] = useState<string>(skillrDDto.profileImage);
     // const [tagline, setTagline] = useState<string>(skillrDDto.tagline);
     // const [about, setAbout] = useState<string>(skillrDDto.about);
     // const [username, setUsername] = useState<string>(skillrDDto.username);
@@ -159,6 +160,25 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
     //     setPresentUntil(presentUntil ? new Date(presentUntil) : null);
     // };
 
+    const handleProfileImageSubmit = async (imageFile: File) => {
+        if (!imageFile) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', imageFile);
+        formData.append('target', 'profileImage');
+
+        await authedFetch('/api/skillrs/media', {
+            method: 'POST',
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                setProfileImage(res.profileImage);
+            });
+    };
+
     const handleUpdateSkillr = async (values: Partial<SkillrDDto>) => {
         await authedFetch('/api/skillrs', {
             method: 'PUT',
@@ -202,9 +222,11 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
             <SkillrPageBanner backgroundImg={backgroundImg}></SkillrPageBanner>
             <div className="px-6 md:py-8 max-w-[1000px] mx-auto">
                 <ProfileHeader
+                    isEditable
+                    handleProfileImageSubmit={handleProfileImageSubmit}
                     username={skillrDDto.username}
                     displayName={skillrDDto.user.displayName}
-                    profileImage={skillrDDto.profileImage}
+                    profileImage={profileImage}
                     instagram={skillrDDto.instagram}
                     linkedin={skillrDDto.linkedin}
                     twitter={skillrDDto.twitter}

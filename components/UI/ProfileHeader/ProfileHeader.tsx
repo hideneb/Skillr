@@ -1,8 +1,12 @@
 import classNames from 'classnames';
+import { ChangeEvent } from 'react';
 import { AppStore } from '../AppStore/AppStore';
+import SkillrEditIcon from '../SkillrPage/SkillrEditIcon';
 import styles from './ProfileHeader.module.css';
 
 type ProfileHeaderProps = {
+    isEditable?: boolean;
+    handleProfileImageSubmit?: (imageFile: File) => void;
     profileImage: string;
     username: string;
     displayName: string;
@@ -13,7 +17,9 @@ type ProfileHeaderProps = {
 };
 
 export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
+    isEditable,
     profileImage,
+    handleProfileImageSubmit,
     username,
     displayName,
     linkedin,
@@ -21,20 +27,38 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     twitter,
     tiktok,
 }) => {
+    const uploadImageFile = (e: ChangeEvent<HTMLInputElement>) => {
+        if (handleProfileImageSubmit && e.target.files?.[0]) {
+            handleProfileImageSubmit(e.target.files[0]);
+        }
+        e.target.value = '';
+    };
+
     return (
         <div className="md:flex md:justify-between">
             <div className="md:flex">
-                {profileImage && (
-                    <div className="flex items-center justify-center -mt-16 md:mt-0 md:mr-5">
-                        <div className="bg-white rounded-full">
-                            <img
-                                className="rounded-full w-[120px] h-[120px]"
-                                src={profileImage ?? '/avatar-placeholder.svg'}
-                                alt={displayName}
-                            ></img>
-                        </div>
+                <div className="flex relative items-center justify-center -mt-16 md:mt-0 md:mr-5">
+                    <div className="bg-white rounded-full">
+                        <img
+                            className="rounded-full object-cover w-[120px] h-[120px]"
+                            src={profileImage ?? '/avatar-placeholder.svg'}
+                            alt={displayName}
+                        ></img>
                     </div>
-                )}
+                    {isEditable && (
+                        <div className="absolute z-10 bottom-0 right-0">
+                            <div className="relative">
+                                <input
+                                    className="top-0 absolute w-full cursor-pointer opacity-0 h-full"
+                                    type="file"
+                                    onChange={uploadImageFile}
+                                    accept="image/jpeg, image/png"
+                                />
+                                <SkillrEditIcon />
+                            </div>
+                        </div>
+                    )}
+                </div>
                 <div>
                     {username && (
                         <div className="flex items-center justify-center">
