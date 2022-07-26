@@ -29,7 +29,7 @@ export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
                         </div>
                         <hr className="mt-3 md:mt-6 mb-6 md:mb-10" />
 
-                        <div className="rounded-xl shadow-skillr-lg p-10">{children}</div>
+                        <div className="rounded-xl shadow-skillr-lg">{children}</div>
                     </div>
                 </div>
 

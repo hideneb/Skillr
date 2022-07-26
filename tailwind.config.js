@@ -13,6 +13,10 @@ module.exports = {
             borderRadius: {
                 lg2: 10,
             },
+            colors: {
+                'skillr-pink': '#ff165f',
+                'rich-blue-8': '#0c1f3f',
+            },
         },
     },
     plugins: [],

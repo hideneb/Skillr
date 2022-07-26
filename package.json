@@ -39,6 +39,7 @@
     "react-instantsearch-hooks-server": "6.26.0",
     "react-instantsearch-hooks-web": "6.26.0",
     "react-modal-video": "1.2.8",
+    "react-phone-input-2": "^2.15.1",
     "react-responsive": "9.0.0-beta.10",
     "react-slick": "0.28.1",
     "react-switch": "^7.0.0",
