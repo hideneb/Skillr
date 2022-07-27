@@ -5,19 +5,43 @@ import TextField from '@/components/UI/TextField/TextField';
 import Router from 'next/router';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import { authedFetch } from '@/lib/authed-fetch';
+import OtpInput from 'react-otp-input';
+import axios from 'redaxios';
 
+enum RegisterState {
+    IDLE,
+    REQUEST_SMS,
+}
+
+// Initialize registration details
 const initialRegisterDetails = {
     firstName: '',
     lastName: '',
     email: '',
-    mobileNumber: '',
+    phoneNumber: '',
+    code: '',
     hasAcceptedTerms: false,
+};
+
+const inputStyles = {
+    border: 'none',
+    outline: 0,
+    width: '100%',
+    height: '100%',
+    fontSize: 16,
+    borderBottom: '2px solid lightgray',
 };
 
 const Register: React.FC = () => {
     const [registerDetails, setRegisterDetails] = useState(initialRegisterDetails);
     const [isLoading, setIsLoading] = useState(false);
+    const [stage, setStage] = React.useState(RegisterState.IDLE);
+    const [phoneError, setPhoneError] = useState('');
 
+    const { firstName, lastName, email, phoneNumber, hasAcceptedTerms, code } = registerDetails;
+
+    // onChange handler for input fields
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setRegisterDetails({
@@ -26,34 +50,75 @@ const Register: React.FC = () => {
         });
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const requestSms = async () => {
+        // We're adding this + sign here because the library saves the values without the + sign,
+        // and the api requires the sign to validate a phone number
+        const { data } = await axios.post(`/api/auth/request-sms`, { phoneNumber: `+${phoneNumber}` });
 
+        if (data.status) {
+            setStage(RegisterState.REQUEST_SMS);
+        } else {
+            setPhoneError(data.errors?.[0]?.messages?.[0]);
+            throw new Error(data.errors);
+        }
+    };
+
+    const verifyCode = async () => {
+        const { data } = await axios.post(`/api/auth/verify-sms`, {
+            phoneNumber: `+${phoneNumber}`,
+            code,
+        });
+
+        if (data.id) {
+            return data;
+        } else {
+            setPhoneError(data.errors?.[0]?.messages?.[0]);
+            throw new Error(data.errors);
+        }
+    };
+
+    const saveUserDetails = async () => {
         const payload = {
             firstName,
             lastName,
             email,
-            mobileNumber,
-            skillr: true,
+            mobileNumber: `+${phoneNumber}`,
+            notification: true,
         };
 
-        setIsLoading(true);
-        const skillrDDto = await fetch(`/api/skillrs`, {
-            method: 'POST',
-            body: JSON.stringify(payload),
+        const data = await authedFetch(`/api/users`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify(payload),
         }).then((res) => res.json());
 
-        if (skillrDDto.id) {
+        if (data.id) {
             Router.push('/onboarding/skillr/steps/basic');
+        } else {
+            throw new Error(data.errors);
         }
-
-        setIsLoading(false);
     };
 
-    const { firstName, lastName, email, mobileNumber, hasAcceptedTerms } = registerDetails;
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setIsLoading(true);
+        setPhoneError('');
+
+        try {
+            if (stage === RegisterState.IDLE) {
+                await requestSms();
+                setIsLoading(false);
+            }
+            if (stage === RegisterState.REQUEST_SMS) {
+                const data = await verifyCode();
+                if (data) await saveUserDetails();
+            }
+        } catch (error) {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <OnboardingLayout>
@@ -98,35 +163,49 @@ const Register: React.FC = () => {
                                     required
                                 />
                             </div>
-
                             <div className="space-y-2 w-full">
-                                <p className="text-xl font-bold">Phone number</p>
-                                <div className="flex w-full space-x-6">
-                                    <div className="h-[45px] md:h-[50px]">
-                                        <PhoneInput
-                                            country="us"
-                                            placeholder="+1 212 555 1234"
-                                            value={mobileNumber}
-                                            inputProps={{ required: true }}
-                                            containerStyle={{
-                                                height: '100%',
-                                            }}
-                                            buttonStyle={{
-                                                border: 'none',
-                                                backgroundColor: 'white',
-                                            }}
-                                            inputStyle={{
-                                                border: 'none',
-                                                height: '100%',
-                                                fontSize: 16,
-                                                borderBottom: '2px solid lightgray',
-                                            }}
-                                            onChange={(phone) =>
-                                                setRegisterDetails((prev) => ({ ...prev, mobileNumber: phone }))
+                                {stage === RegisterState.IDLE && (
+                                    <div className="space-y-2 w-full">
+                                        <p className="text-xl font-bold">Phone number</p>
+                                        <div className="flex w-full space-x-6">
+                                            <div className="h-[45px] w-full md:h-[50px]">
+                                                <PhoneInput
+                                                    country="us"
+                                                    placeholder="+1 212 555 1234"
+                                                    value={phoneNumber}
+                                                    inputProps={{ required: true }}
+                                                    containerClass="h-full"
+                                                    buttonStyle={{
+                                                        border: 'none',
+                                                        backgroundColor: 'white',
+                                                    }}
+                                                    inputStyle={inputStyles}
+                                                    onChange={(phone) =>
+                                                        setRegisterDetails((prev) => ({ ...prev, phoneNumber: phone }))
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {stage === RegisterState.REQUEST_SMS && (
+                                    <div className="space-y-2 w-full">
+                                        <p className="text-xl font-bold">Confirm your number</p>
+                                        <OtpInput
+                                            inputStyle={inputStyles}
+                                            className="h-[45px] md:h-[50px] w-16 pr-4"
+                                            shouldAutoFocus
+                                            isInputNum
+                                            value={code}
+                                            onChange={(otp: string) =>
+                                                setRegisterDetails((prev) => ({ ...prev, code: otp }))
                                             }
                                         />
                                     </div>
-                                </div>
+                                )}
+
+                                {!!phoneError && <p className="text-skillr-pink text-xs text-right">{phoneError}</p>}
                             </div>
                         </div>
 
@@ -178,7 +257,8 @@ const Register: React.FC = () => {
                                 disabled={!hasAcceptedTerms || isLoading}
                                 className="w-full md:w-[300px] font-semibold h-[52px] transition-all bg-skillr-pink disabled:bg-gray-200 text-white rounded-lg"
                             >
-                                Let&apos;s go!
+                                {stage === RegisterState.IDLE && "Let's go!"}
+                                {stage === RegisterState.REQUEST_SMS && 'Verify Phone number'}
                             </button>
                         </div>
                     </div>

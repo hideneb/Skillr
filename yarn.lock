@@ -11343,7 +11343,12 @@ react-modal-video@1.2.8:
   dependencies:
     react-transition-group "^2.2.1"
 
-react-phone-input-2@^2.15.1:
+react-otp-input@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-2.4.0.tgz#0f0a3de1d8c8d564e2e4fbe5d6b7b56e29e3a6e6"
+  integrity sha512-AIgl7u4sS9BTNCxX1xlaS5fPWay/Zml8Ho5LszXZKXrH1C/TiFsTQGmtl13UecQYO3mSF3HUzG2rrDf0sjEFmg==
+
+react-phone-input-2@2.15.1:
   version "2.15.1"
   resolved "https://registry.yarnpkg.com/react-phone-input-2/-/react-phone-input-2-2.15.1.tgz#31edf2adb03cbc990b5432e0567d8a5303f3de49"
   integrity sha512-W03abwhXcwUoq+vUFvC6ch2+LJYMN8qSOiO889UH6S7SyMCQvox/LF3QWt+cZagZrRdi5z2ON3omnjoCUmlaYw==
@@ -11392,7 +11397,7 @@ react-slick@0.28.1:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react-switch@^7.0.0:
+react-switch@7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-7.0.0.tgz#400990bb9822864938e343ed24f13276a617bdc0"
   integrity sha512-KkDeW+cozZXI6knDPyUt3KBN1rmhoVYgAdCJqAh7st7tk8YE6N0iR89zjCWO8T8dUTeJGTR0KU+5CHCRMRffiA==
@@ -11524,6 +11529,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+redaxios@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/redaxios/-/redaxios-0.5.0.tgz#321aca81880b14da2fd83be82731876a1513e83b"
+  integrity sha512-qmEJjQF0igI+H9SDKlQdWz6XskJ5zm2s6KPY0AvtlbQtRNe1OcuJIfxGmySDCpoU18/UtC7zWEFIWpkHMZ1/Ow==
 
 redent@^1.0.0:
   version "1.0.0"
