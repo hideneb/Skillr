@@ -1,5 +1,5 @@
 import React from 'react';
-import OnboardingLayout from '@/components/UI/OnboardingLayout/OnboardingLayout';
+import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 
 type SetupPayoutProps = {};
 

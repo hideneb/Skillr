@@ -102,3 +102,13 @@ export type SkillrDto = {
     isFavourite?: boolean;
     images: SkillrMediaDto[];
 };
+
+export enum SkillrOnboardingSteps {
+    BASIC_INFO = '/basic',
+    SOCIAL_MEDIA = '/social',
+    PROFILE_IMAGE = '/image',
+    PROFILE_CONTENT = '/content',
+    CHOOSE_SKILL = '/skill',
+    SET_AVAILABILITY = '/availability',
+    SETUP_PAYOUT = '/payout',
+}

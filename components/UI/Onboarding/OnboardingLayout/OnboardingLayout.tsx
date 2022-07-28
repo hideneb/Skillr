@@ -33,7 +33,7 @@ export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
                     </div>
                 </div>
 
-                <div className="flex mt-28 mb-10 justify-center">
+                <div className="flex mt-16 md:mt-28 mb-10 justify-center">
                     <p className="text-sm">© {new Date().getFullYear()} Skillr, Inc.</p>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import OnboardingLayout from '@/components/UI/OnboardingLayout/OnboardingLayout';
+import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 import Image from 'next/image';
 import TextField from '@/components/UI/TextField/TextField';
 import Router from 'next/router';

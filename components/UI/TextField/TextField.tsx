@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
-interface TextFieldProps extends React.HTMLProps<HTMLInputElement> {
+interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
     hasError?: boolean;
 }
 
