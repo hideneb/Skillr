@@ -16,6 +16,7 @@ module.exports = {
             colors: {
                 'skillr-pink': '#ff165f',
                 'rich-blue-8': '#0c1f3f',
+                'rich-blue-7': '#374761',
             },
         },
     },

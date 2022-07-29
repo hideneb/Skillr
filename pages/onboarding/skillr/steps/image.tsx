@@ -62,7 +62,7 @@ const UploadImage: React.FC<UploadImageProps> = ({ skillrDDto }) => {
     }, [croppedAreaPixels, rotation, imageToCrop]);
 
     const uploadCroppedImage = async () => {
-        // If there is no new image file upload, skip upload and navigate to next step
+        // If there is no new image file to upload, skip upload and navigate to next step
         if (!croppedImageFile) {
             Router.push(`/onboarding/skillr/steps/content`);
             return;
