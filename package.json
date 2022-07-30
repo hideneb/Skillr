@@ -22,7 +22,7 @@
     "@sentry/nextjs": "7.7.0",
     "@stripe/react-stripe-js": "1.8.0-0",
     "@stripe/stripe-js": "1.29.0",
-    "@szhsin/react-menu": "^3.1.1",
+    "@szhsin/react-menu": "3.1.1",
     "algoliasearch": "4.14.0",
     "classnames": "2.3.1",
     "jsonwebtoken": "8.5.1",

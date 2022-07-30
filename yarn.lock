@@ -3225,7 +3225,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@szhsin/react-menu@^3.1.1":
+"@szhsin/react-menu@3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@szhsin/react-menu/-/react-menu-3.1.1.tgz#8218fdb4bb2f55cc066392ccd31613125357af8d"
   integrity sha512-IdHLyH61M+KqjTrvqglKo7JnbC0GIkg4OCtlXBxQPEjx/ecR5g0Iycqm+SG3rObEoniLZEz32iJkefve/LAHMA==
