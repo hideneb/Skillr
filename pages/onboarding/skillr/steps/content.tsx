@@ -59,12 +59,12 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) =
         e.target.value = ''; // Then, reset file input
     };
 
-    const goToNextStep = () => Router.push('/onboarding/skillr/steps/availability');
+    const goToNextStep = () => Router.push('/onboarding/skillr/steps/skills');
     const closeVideo = () => setVideoOpen(false);
 
     return (
         <OnboardingLayout>
-            <div className="pt-5 md:pt-12 pb-12 rounded-xl flex justify-center items-center bg-rich-blue-7">
+            <div className="pt-5 md:pt-12 pb-12 md:px-4 rounded-xl flex justify-center items-center bg-rich-blue-7">
                 <div className="w-full flex flex-col md:flex-row md:space-x-16 items-center max-w-[760px]">
                     <div className="w-full text-white">
                         <div className="flex px-4 flex-col items-center">
