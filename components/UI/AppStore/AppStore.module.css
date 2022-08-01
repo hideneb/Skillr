@@ -7,7 +7,6 @@
     justify-content: center;
     background-color: #f2f3f4;
     width: 100%;
-    min-height: 120px;
     padding: 12px;
     border-radius: 8px;
     cursor: pointer;
@@ -22,7 +21,6 @@
     font-size: 14px;
     margin-right: 16px;
     line-height: 21px;
-    font-weight: bold;
 }
 
 .badge {
@@ -34,6 +32,7 @@
     .appStore {
         align-items: center;
         flex-direction: column-reverse;
+        min-height: 120px;
     }
 
     .text {
