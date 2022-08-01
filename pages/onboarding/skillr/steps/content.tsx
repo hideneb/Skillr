@@ -59,7 +59,7 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) =
         e.target.value = ''; // Then, reset file input
     };
 
-    const goToNextStep = () => Router.push('/onboarding/skillr/steps/skills');
+    const goToNextStep = () => Router.push('/onboarding/skillr/steps/skill');
     const closeVideo = () => setVideoOpen(false);
 
     return (

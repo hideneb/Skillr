@@ -23,7 +23,7 @@ export const AvailabilityDates: React.FC<AvailabilityProps> = (props: Availabili
         setAvailability?.({
             ...availability,
             [`day${dayIndex}Begin`]: checked ? '00:00:00' : null,
-            [`day${dayIndex}End`]: checked ? '11:59:00' : null,
+            [`day${dayIndex}End`]: checked ? '23:59:00' : null,
         });
     };
 

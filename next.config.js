@@ -8,7 +8,11 @@
 const moduleExports = {
     // reactStrictMode: true,
     images: {
-        domains: ['skillr-optimizer.mo.cloudinary.net', 'skillr-uploads-development.s3.amazonaws.com'],
+        domains: [
+            'skillr-optimizer.mo.cloudinary.net',
+            'skillr-uploads-development.s3.amazonaws.com',
+            'skillr-uploads-staging.s3.amazonaws.com',
+        ],
     },
     webpack(config) {
         const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'));
