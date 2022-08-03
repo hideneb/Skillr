@@ -56,10 +56,10 @@ const SetupPayout: React.FC<SetupPayoutProps> = ({ accountLink, payoutMethod, st
                                     <p className="text-base font-bold">For Skillr to work you&apos;ll need to:</p>
                                     <ul className="text-rich-blue-7 list-disc list-outside pl-6 mt-3">
                                         <li>
-                                            On <b>BUSINESS TYPE</b>, select &apos;individual&apos;
+                                            On <b>BUSINESS TYPE</b>, select &quot;individual&quot;
                                         </li>
                                         <li>
-                                            When you get to the <b>INDUSTRY</b> field, click &apos;consulting&apos;
+                                            When you get to the <b>INDUSTRY</b> field, click &quot;consulting&quot;
                                         </li>
                                         <li>
                                             Under the <b>WEBSITE</b> field, you can enter www.skillr.com (if you

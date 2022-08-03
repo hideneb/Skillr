@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 import { SkillrDDto } from 'pages/api/skillrs/me';
 import Router from 'next/router';
+import { CircleSpinner } from 'react-spinners-kit';
 import { authedFetch } from '@/lib/authed-fetch';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import { SkillrMediaDto, SkillrOnboardingSteps } from '@/lib/types/skillr';
@@ -113,11 +114,13 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) =
                                     <input
                                         className="top-0 absolute w-full cursor-pointer opacity-0 h-full"
                                         type="file"
+                                        disabled={isLoading}
                                         onChange={uploadContentVideo}
                                         accept="video/mp4"
                                     />
                                     <button className="rounded-full bg-white cursor-pointer shadow-skillr-lg w-14 h-14 justify-center items-center flex">
-                                        <img className="w-8" src="/icons/camera.svg" alt="Edit" />
+                                        {!isLoading && <img className="w-8" src="/icons/camera.svg" alt="Edit" />}
+                                        <CircleSpinner size={20} color="#374761" loading={isLoading} />
                                     </button>
                                 </div>
                             </div>

@@ -87,10 +87,10 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto }) => {
 
                             <p
                                 className={classNames('text-xs text-right', {
-                                    'text-skillr-pink': about?.length > 1000,
+                                    'text-skillr-pink': about?.length >= 1000,
                                 })}
                             >
-                                {about?.length}/1000
+                                {about?.length || 0}/1000
                             </p>
                         </div>
 

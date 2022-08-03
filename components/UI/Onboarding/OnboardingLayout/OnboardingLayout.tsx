@@ -3,10 +3,11 @@ import React, { ReactNode } from 'react';
 import styles from './OnboardingLayout.module.css';
 
 interface OnboardingLayoutProps {
+    showHeaderText?: boolean;
     children: ReactNode;
 }
 
-export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
+export default function OnboardingLayout({ showHeaderText = true, children }: OnboardingLayoutProps) {
     return (
         <>
             <Head>
@@ -19,17 +20,20 @@ export default function OnboardingLayout({ children }: OnboardingLayoutProps) {
 
                 <div className="flex justify-center px-6">
                     <div className="w-full max-w-[963px]">
-                        <div className="mt-4 md:mt-12 flex flex-col items-center justify-center">
-                            <h2 className="text-xl md:text-4xl mb-2 md:mb-5 text-center font-semibold">
-                                Setup your Skillr profile in just a few easy steps
-                            </h2>
-                            <p className="text-sm text-center">
-                                Listing your profile is simple and usually takes about 10 minutes.
-                            </p>
-                        </div>
-                        <hr className="mt-3 md:mt-6 mb-6 md:mb-10" />
-
-                        <div className="rounded-xl shadow-skillr-lg">{children}</div>
+                        {showHeaderText && (
+                            <div>
+                                <div className="mt-4 md:mt-12 flex flex-col items-center justify-center">
+                                    <h2 className="text-xl md:text-4xl mb-2 md:mb-5 text-center font-semibold">
+                                        Setup your Skillr profile in just a few easy steps
+                                    </h2>
+                                    <p className="text-sm text-center">
+                                        Listing your profile is simple and usually takes about 10 minutes.
+                                    </p>
+                                </div>
+                                <hr className="mt-3 md:mt-6" />
+                            </div>
+                        )}
+                        <div className="rounded-xl mt-6 md:mt-10 shadow-skillr-lg">{children}</div>
                     </div>
                 </div>
 

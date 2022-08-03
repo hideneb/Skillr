@@ -52,6 +52,10 @@ const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto }) => {
         setIsLoading(false);
     };
 
+    const isAnyDateAvailable = Object.keys(availability).some(
+        (key) => key.startsWith('day') && !!availability[key as keyof SkillrLocalAvailabilityDto]
+    );
+
     return (
         <OnboardingLayout>
             <div className="pt-5 pb-9">
@@ -84,7 +88,7 @@ const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto }) => {
                                 <div className="mt-12">
                                     <StepsController
                                         current={SkillrOnboardingSteps.SET_AVAILABILITY}
-                                        isNextDisabled={isLoading}
+                                        isNextDisabled={!isAnyDateAvailable || isLoading}
                                         onNextClick={saveAvailabilityChanges}
                                     />
                                 </div>

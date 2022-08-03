@@ -10,7 +10,7 @@ type OnboardingSuccessProps = {};
 
 const OnboardingSuccess: React.FC<OnboardingSuccessProps> = () => {
     return (
-        <OnboardingLayout>
+        <OnboardingLayout showHeaderText={false}>
             <div className="pt-5 pb-9 px-5 md:px-9">
                 <h2 className="md:hidden font-semibold mb-1 text-lg text-center">
                     Congrats, you&apos;re a Skillr now! <br />
