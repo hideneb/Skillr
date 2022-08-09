@@ -50,12 +50,12 @@
 }
 
 .contentWrapper {
-    margin-top: 3rem;
+    margin-top: 8rem;
 }
 
 @media (max-width: 768px) {
     .contentWrapper {
-        margin-top: 2rem;
+        margin-top: 6rem;
     }
 }
 

@@ -4,19 +4,11 @@ import becomeSkillr from '../../../../public/become-skillr-screens.png';
 import becomeSkillrMobile from '../../../../public/become-skillr-mobile.png';
 import styles from './Hero.module.css';
 import classNames from 'classnames';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 export default function Hero() {
-    const { query } = useRouter();
     return (
         <div className={styles.container}>
-            <Link href={{ pathname: '/', query }} passHref>
-                <div className="text-left">
-                    <Image width={86} height={118} src="/logo.svg" alt="Skillr Logo" className={styles.curPointer} />
-                </div>
-            </Link>
             <div className={styles.contentWrapper}>
                 <div className={classNames('desktop', styles.screens)}>
                     <div className={styles.screensDesktop}>

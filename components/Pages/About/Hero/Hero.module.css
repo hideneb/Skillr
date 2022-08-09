@@ -1,5 +1,5 @@
 .wrapper {
-    padding: 76px 24px;
+    padding: 88px 24px;
     background: linear-gradient(
         4.82deg,
         #ee1f5f -15.05%,
@@ -18,11 +18,13 @@
 
 .container {
     display: flex;
+    margin-top: 2rem;
     align-items: center;
 }
 
 @media (max-width: 768px) {
     .container {
+        margin-top: 3rem;
         display: block;
     }
 }
