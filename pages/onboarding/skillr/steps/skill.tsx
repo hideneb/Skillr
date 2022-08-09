@@ -11,7 +11,7 @@ import Router from 'next/router';
 import { authedFetch } from '@/lib/authed-fetch';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import TextField from '@/components/UI/TextField/TextField';
-import { Menu, MenuItem, MenuDivider, FocusableItem, MenuGroup } from '@szhsin/react-menu';
+import { Menu, MenuItem, MenuDivider, FocusableItem, MenuGroup, MenuHeader } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 
@@ -70,8 +70,14 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
     // Filter and display skills that match the searchValue
     const filteredSkills = skills.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase()));
 
-    /** Takes in the parent skillId as a parameter and returns the nam of the parent skill  */
+    // Get parent skills of skills that match the searchValue
+    const filteredParents = filteredSkills.filter(({ parentId }) => !parentId);
+
+    /** Takes in the parent skillId as a parameter and returns the name of the parent skill  */
     const getParentNameById = (parentId: SkillDto['parentId']) => skills.find(({ id }) => id === parentId)?.name;
+
+    /** Takes in the parent skillId as a parameter and returns the children of the parent skill  */
+    const getChildSkills = (parentId: SkillDto['parentId']) => skills.filter((skill) => skill.parentId === parentId);
 
     return (
         <OnboardingLayout>
@@ -136,27 +142,38 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
                                                     )}
                                                 </FocusableItem>
                                                 <MenuGroup takeOverflow>
-                                                    {filteredSkills.map((eachSkill) => (
-                                                        <div key={eachSkill.id}>
-                                                            <MenuDivider style={{ margin: 0 }} />
-                                                            <MenuItem
-                                                                onClick={() => setSkill(eachSkill)}
-                                                                style={menuItemStyles}
-                                                            >
-                                                                <div className="flex py-1 space-x-2 items-center">
-                                                                    <img
-                                                                        className="w-6 h-6 rounded-full"
-                                                                        src={eachSkill.lightIcon}
-                                                                        alt={eachSkill.lightIconFilename}
-                                                                    />
-                                                                    <div className="space-y-0.5">
-                                                                        <p className="text-xs text-gray-400">
-                                                                            {getParentNameById(eachSkill.parentId)}
-                                                                        </p>
-                                                                        <p className="text-sm">{eachSkill.name}</p>
-                                                                    </div>
+                                                    {filteredParents.map((eachParent) => (
+                                                        <div key={eachParent.id}>
+                                                            <MenuHeader style={menuItemStyles}>
+                                                                {eachParent.name}
+                                                            </MenuHeader>
+                                                            {getChildSkills(eachParent.id).map((childSkill) => (
+                                                                <div key={childSkill.id}>
+                                                                    <MenuDivider style={{ margin: 0 }} />
+                                                                    <MenuItem
+                                                                        onClick={() => setSkill(childSkill)}
+                                                                        style={menuItemStyles}
+                                                                    >
+                                                                        <div className="flex py-1 space-x-2 items-center">
+                                                                            <img
+                                                                                className="w-6 h-6 rounded-full"
+                                                                                src={childSkill.lightIcon}
+                                                                                alt={childSkill.lightIconFilename}
+                                                                            />
+                                                                            <div className="space-y-0.5">
+                                                                                <p className="text-xs text-gray-400">
+                                                                                    {getParentNameById(
+                                                                                        childSkill.parentId
+                                                                                    )}
+                                                                                </p>
+                                                                                <p className="text-sm">
+                                                                                    {childSkill.name}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </MenuItem>
                                                                 </div>
-                                                            </MenuItem>
+                                                            ))}
                                                         </div>
                                                     ))}
                                                 </MenuGroup>
