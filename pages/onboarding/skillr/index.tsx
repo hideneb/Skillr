@@ -53,6 +53,7 @@ const Register: React.FC = () => {
     const requestSms = async () => {
         // We're adding this + sign here because the library saves the values without the + sign,
         // and the api requires the sign to validate a phone number
+        setIsLoading(true);
         const { data } = await axios.post(`/api/auth/request-sms`, { phoneNumber: `+${phoneNumber}` });
 
         if (data.status) {
@@ -61,6 +62,7 @@ const Register: React.FC = () => {
             setPhoneError(data.errors?.[0]?.messages?.[0]);
             throw new Error(data.errors);
         }
+        setIsLoading(false);
     };
 
     const verifyCode = async () => {
@@ -202,6 +204,11 @@ const Register: React.FC = () => {
                                                 setRegisterDetails((prev) => ({ ...prev, code: otp }))
                                             }
                                         />
+
+                                        <div className="flex cursor-pointer text-xs">
+                                            <a onClick={() => setStage(RegisterState.IDLE)}>Change number</a>
+                                            &nbsp;&nbsp;|&nbsp;&nbsp;<a onClick={requestSms}>Resend OTP</a>
+                                        </div>
                                     </div>
                                 )}
 

@@ -25,7 +25,7 @@ const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto }) => {
         const payload: { localAvailability: SkillrLocalAvailabilityDto } = {
             localAvailability: {
                 ...availability,
-                timezoneOffset: skillrDDto.localAvailability?.timezoneOffset || 0,
+                timezoneOffset: new Date().getTimezoneOffset(),
                 type: skillrDDto.availabilityType,
             },
         };
