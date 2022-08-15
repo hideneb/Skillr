@@ -181,7 +181,8 @@ const UploadImage: React.FC<UploadImageProps> = ({ skillrDDto }) => {
                                 <div className="mt-12">
                                     <StepsController
                                         current={SkillrOnboardingSteps.PROFILE_IMAGE}
-                                        isNextDisabled={!image || isLoading}
+                                        isNextDisabled={!image}
+                                        isNextLoading={isLoading}
                                         onNextClick={uploadCroppedImage}
                                     />
                                 </div>

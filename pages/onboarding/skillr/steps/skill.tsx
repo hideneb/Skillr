@@ -219,7 +219,8 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
                                 <div className="mt-12">
                                     <StepsController
                                         current={SkillrOnboardingSteps.CHOOSE_SKILL}
-                                        isNextDisabled={!skill || isLoading}
+                                        isNextDisabled={!skill}
+                                        isNextLoading={isLoading}
                                     />
                                 </div>
                             </form>

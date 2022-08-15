@@ -8,6 +8,7 @@ import 'react-phone-input-2/lib/style.css';
 import { authedFetch } from '@/lib/authed-fetch';
 import OtpInput from 'react-otp-input';
 import axios from 'redaxios';
+import { CircleSpinner } from 'react-spinners-kit';
 
 enum RegisterState {
     IDLE,
@@ -62,7 +63,18 @@ const Register: React.FC = () => {
             setPhoneError(data.errors?.[0]?.messages?.[0]);
             throw new Error(data.errors);
         }
-        setIsLoading(false);
+    };
+
+    const resendOTP = async () => {
+        setIsLoading(true);
+        setPhoneError('');
+
+        try {
+            await requestSms();
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+        }
     };
 
     const verifyCode = async () => {
@@ -207,7 +219,7 @@ const Register: React.FC = () => {
 
                                         <div className="flex cursor-pointer text-xs">
                                             <a onClick={() => setStage(RegisterState.IDLE)}>Change number</a>
-                                            &nbsp;&nbsp;|&nbsp;&nbsp;<a onClick={requestSms}>Resend OTP</a>
+                                            &nbsp;&nbsp;|&nbsp;&nbsp;<a onClick={resendOTP}>Resend OTP</a>
                                         </div>
                                     </div>
                                 )}
@@ -262,10 +274,13 @@ const Register: React.FC = () => {
                             <button
                                 type="submit"
                                 disabled={!hasAcceptedTerms || isLoading}
-                                className="w-full md:w-[300px] font-semibold h-[52px] transition-all bg-skillr-pink disabled:bg-gray-200 text-white rounded-lg"
+                                className="w-full md:w-[300px] space-x-3 flex justify-center items-center font-semibold h-[52px] transition-all bg-skillr-pink disabled:bg-gray-200 text-white rounded-lg"
                             >
-                                {stage === RegisterState.IDLE && "Let's go!"}
-                                {stage === RegisterState.REQUEST_SMS && 'Verify Phone number'}
+                                <CircleSpinner size={20} color="lightgray" loading={!!isLoading} />
+                                <span>
+                                    {stage === RegisterState.IDLE && "Let's go!"}
+                                    {stage === RegisterState.REQUEST_SMS && 'Verify Phone number'}
+                                </span>
                             </button>
                         </div>
                     </div>

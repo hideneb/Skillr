@@ -88,7 +88,8 @@ const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto }) => {
                                 <div className="mt-12">
                                     <StepsController
                                         current={SkillrOnboardingSteps.SET_AVAILABILITY}
-                                        isNextDisabled={!isAnyDateAvailable || isLoading}
+                                        isNextDisabled={!isAnyDateAvailable}
+                                        isNextLoading={isLoading}
                                         onNextClick={saveAvailabilityChanges}
                                     />
                                 </div>

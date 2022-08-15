@@ -45,6 +45,7 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) =
         try {
             const data = await authedFetch('/api/skillrs/media', {
                 method: 'POST',
+                keepalive: true,
                 body: formData,
             }).then((res) => res.json());
 

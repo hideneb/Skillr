@@ -94,7 +94,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto }) => {
                             </p>
                         </div>
 
-                        <StepsController current={SkillrOnboardingSteps.BASIC_INFO} isNextDisabled={isLoading} />
+                        <StepsController current={SkillrOnboardingSteps.BASIC_INFO} isNextLoading={isLoading} />
                     </div>
                 </form>
             </div>

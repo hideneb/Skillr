@@ -132,7 +132,7 @@ const AddSocialInfo: React.FC<AddSocialInfoProps> = ({ skillrDDto }) => {
                                 <div className="mt-12">
                                     <StepsController
                                         current={SkillrOnboardingSteps.SOCIAL_MEDIA}
-                                        isNextDisabled={isLoading}
+                                        isNextLoading={isLoading}
                                     />
                                 </div>
                             </form>
