@@ -29,21 +29,31 @@ const menuItemStyles: CSSProperties = {
 const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
     const skillrSkill = skillrSkills[0];
     const [ratePerMinute, setRatePerMinute] = useState<string | number>(skillrSkill?.ratePerMinute);
-    const [tags, setTags] = useState<string>('');
+    const [tags, setTags] = useState<string[]>([]);
+    const [newTag, setNewTag] = useState<string>('');
     const [skill, setSkill] = useState<SkillDto | SkillrSkillDetailsDto | null>(skillrSkill?.skill);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [skillError, setSkillError] = useState<string>('');
     const [searchValue, setSearchValue] = useState('');
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const addNewTag = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setTags((prev) => [...prev, newTag]);
+        setNewTag('');
+    };
+
+    const removeTag = (tag: string) => {
+        setTags((prev) => prev.filter((tagItem) => tagItem !== tag));
+    };
+
+    const handleSubmit = async () => {
         // We don't want to let default form submission happen here,
         // which would refresh the page.
-        event.preventDefault();
         setIsLoading(true);
 
         const payload = {
             skillId: skill?.id,
-            tags: tags.split(', '), // We need to pass tags as an array of strings
+            tags,
             ratePerMinute: Number(ratePerMinute),
         };
 
@@ -93,7 +103,7 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
                     <div className="px-4 md:px-10">
                         <div className="w-full max-w-[690px] mx-auto flex flex-col space-y-5 md:space-y-5">
                             <h3 className="text-center font-bold text-xl">What is your skill?</h3>
-                            <form onSubmit={handleSubmit} className="w-full">
+                            <div className="w-full">
                                 <div className="space-y-5 md:space-y-9">
                                     <div className="flex flex-col items-center space-y-5">
                                         <div className="max-w-[327px] w-full">
@@ -201,14 +211,44 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
                                                 What are your areas of expertise in this skill? <br /> (Add up to 5
                                                 tags)
                                             </p>
-                                            <div className="max-w-[327px] w-full">
+                                            <form onSubmit={addNewTag} className="max-w-[327px] relative w-full">
                                                 <TextField
-                                                    value={tags}
-                                                    onChange={(event) => setTags(event.target.value)}
+                                                    value={newTag}
+                                                    maxLength={20}
+                                                    onChange={(event) => setNewTag(event.target.value)}
                                                     placeholder="Add tag, e.g. Manage stress"
                                                 />
+                                                {!!newTag && (
+                                                    <button
+                                                        type="submit"
+                                                        className="text-white w-6 absolute right-3 top-3 h-6 bg-skillr-pink rounded-full"
+                                                    >
+                                                        +
+                                                    </button>
+                                                )}
+
+                                                <div className="flex w-full mt-1 justify-between">
+                                                    <p className="text-sm text-gray-500">Optional</p>
+                                                    <p className="text-sm text-gray-500">{newTag.length}/20</p>
+                                                </div>
+                                            </form>
+
+                                            <div className="flex flex-wrap">
+                                                {tags.map((tag) => (
+                                                    <div
+                                                        key={tag}
+                                                        onClick={() => removeTag(tag)}
+                                                        className="rounded-full text-sm bg-gray-300 py-1 px-3 flex items-center space-x-4 mx-1 my-1 cursor-pointer"
+                                                    >
+                                                        <span>{tag}</span>
+                                                        <img
+                                                            className="w-2 h-2"
+                                                            src="/icons/icon-close.svg"
+                                                            alt="Modal Close"
+                                                        />
+                                                    </div>
+                                                ))}
                                             </div>
-                                            <p className="text-sm text-gray-500">Optional</p>
                                         </div>
                                     </div>
 
@@ -221,9 +261,10 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
                                         current={SkillrOnboardingSteps.CHOOSE_SKILL}
                                         isNextDisabled={!skill}
                                         isNextLoading={isLoading}
+                                        onNextClick={handleSubmit}
                                     />
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default function StepsController({ current, onNextClick, isNextDisabled, 
     const previousStep = Object.values(SkillrOnboardingSteps)[currentStepNo - 2];
 
     return (
-        <div className="flex space-x-6 items-center fixed bottom-0 w-full z-40 left-0 p-4 md:p-0 bg-white md:bg-transparent md:static shadow-skillr-lg md:shadow-none pt-4 justify-center">
+        <div className="flex space-x-2 md:space-x-6 items-center fixed bottom-0 w-full z-10 left-0 p-4 md:p-0 bg-white md:bg-transparent md:static shadow-skillr-lg md:shadow-none pt-4 justify-between md:justify-center">
             <button
                 disabled={current === SkillrOnboardingSteps.BASIC_INFO}
                 onClick={() => Router.push(`/onboarding/skillr/steps/${previousStep}`)}
