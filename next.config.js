@@ -12,6 +12,7 @@ const moduleExports = {
             'skillr-optimizer.mo.cloudinary.net',
             'skillr-uploads-development.s3.amazonaws.com',
             'skillr-uploads-staging.s3.amazonaws.com',
+            'res.cloudinary.com',
         ],
     },
     webpack(config) {
