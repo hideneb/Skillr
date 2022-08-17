@@ -60,7 +60,7 @@ const Register: React.FC = () => {
         if (data.status) {
             setStage(RegisterState.REQUEST_SMS);
         } else {
-            setPhoneError(data.errors?.[0]?.messages?.[0]);
+            setPhoneError(data.errors?.[0]);
             throw new Error(data.errors);
         }
     };
@@ -224,7 +224,7 @@ const Register: React.FC = () => {
                                     </div>
                                 )}
 
-                                {!!phoneError && <p className="text-skillr-pink text-xs text-right">{phoneError}</p>}
+                                {!!phoneError && <p className="text-skillr-pink text-xs">{phoneError}</p>}
                             </div>
                         </div>
 
