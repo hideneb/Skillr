@@ -10,8 +10,10 @@ export const AppStore = () => {
             rel="noreferrer"
             className={styles.appStore}
         >
-            <div className={`${styles.text} text-center`}>Get the full experience on the Skillr app</div>
-            <div className="mb-1">
+            <div className={`${styles.text} font-semibold text-gray-600 text-center`}>
+                Get the full experience on the Skillr app
+            </div>
+            <div className="md:mb-1">
                 <Image
                     width={148}
                     height={48}

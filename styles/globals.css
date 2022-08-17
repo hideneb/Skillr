@@ -152,6 +152,14 @@ body {
     color: #0c1f3f;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: RedHatDisplay, sans-serif;
+}
+
 input {
     font-family: Poppins, sans-serif;
 }
@@ -168,7 +176,7 @@ a:hover {
 }
 
 button {
-    font-family: Poppins, sans-serif;
+    font-family: RedHatDisplay, sans-serif;
     cursor: pointer;
 }
 

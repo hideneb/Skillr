@@ -7,15 +7,20 @@ import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getUserById } from '../api/users/me';
 import { UserDto } from '@/lib/types/user';
 import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
+import { getSkillById } from 'pages/api/skills/[skillId]';
+import { SkillDto } from 'pages/api/skills';
 
 type ProfileProps = {
     skillr: SkillrDto;
     user: UserDto | null;
     backgroundImg: string;
+    skillrSkillCategory: SkillDto | null;
 };
 
 const Profile: React.FC<ProfileProps> = (props) => {
-    return <SkillrPage {...props} backgroundImg={props.backgroundImg} />;
+    return (
+        <SkillrPage {...props} backgroundImg={props.backgroundImg} skillrSkillCategory={props.skillrSkillCategory} />
+    );
 };
 
 export const getServerSideProps: GetServerSideProps<ProfileProps> = async (ctx) => {
@@ -33,11 +38,15 @@ export const getServerSideProps: GetServerSideProps<ProfileProps> = async (ctx) 
         return { notFound: true };
     }
 
+    const skillrSkill = skillr.skills?.[0];
+    const skillrSkillCategory = skillrSkill ? await getSkillById(skillrSkill?.skill.parentId) : null;
+
     return {
         props: {
             skillr,
             user,
             backgroundImg: getFeatureBackgroundImg(skillr.skills),
+            skillrSkillCategory,
         },
     };
 };

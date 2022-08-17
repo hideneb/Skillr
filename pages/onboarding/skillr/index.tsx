@@ -144,7 +144,7 @@ const Register: React.FC = () => {
                     <div className="space-y-5 md:space-y-9">
                         <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-9">
                             <div className="space-y-2 w-full">
-                                <p className="text-xl font-bold">First name</p>
+                                <p className="text-xl font-bold font-redhat">First name</p>
                                 <TextField
                                     name="firstName"
                                     value={firstName}
@@ -155,7 +155,7 @@ const Register: React.FC = () => {
                             </div>
 
                             <div className="space-y-2 w-full">
-                                <p className="text-xl font-bold">Last name</p>
+                                <p className="text-xl font-bold font-redhat">Last name</p>
                                 <TextField
                                     name="lastName"
                                     value={lastName}
@@ -167,7 +167,7 @@ const Register: React.FC = () => {
                         </div>
                         <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-9">
                             <div className="space-y-2 w-full">
-                                <p className="text-xl font-bold">Email address</p>
+                                <p className="text-xl font-bold font-redhat">Email address</p>
                                 <TextField
                                     name="email"
                                     type="email"
@@ -180,7 +180,7 @@ const Register: React.FC = () => {
                             <div className="space-y-2 w-full">
                                 {stage === RegisterState.IDLE && (
                                     <div className="space-y-2 w-full">
-                                        <p className="text-xl font-bold">Phone number</p>
+                                        <p className="text-xl font-bold font-redhat">Phone number</p>
                                         <div className="flex w-full space-x-6">
                                             <div className="h-[45px] w-full md:h-[50px]">
                                                 <PhoneInput
@@ -205,7 +205,7 @@ const Register: React.FC = () => {
 
                                 {stage === RegisterState.REQUEST_SMS && (
                                     <div className="space-y-2 w-full">
-                                        <p className="text-xl font-bold">Confirm your number</p>
+                                        <p className="text-xl font-bold font-redhat">Confirm your number</p>
                                         <OtpInput
                                             inputStyle={inputStyles}
                                             className="h-[45px] md:h-[50px] w-16 pr-4"

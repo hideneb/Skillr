@@ -37,38 +37,41 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     return (
         <div className="md:flex md:justify-between">
             <div className="md:flex">
-                <div className="flex relative items-center justify-center -mt-16 md:mt-0 md:mr-5">
-                    <div className="bg-white rounded-full">
-                        <img
-                            className="rounded-full object-cover w-[120px] h-[120px]"
-                            src={profileImage ?? '/avatar-placeholder.svg'}
-                            alt={displayName}
-                        ></img>
-                    </div>
-                    {isEditable && (
-                        <div className="absolute z-10 bottom-0 right-0">
-                            <div className="relative">
-                                <input
-                                    className="top-0 absolute w-full cursor-pointer opacity-0 h-full"
-                                    type="file"
-                                    onChange={uploadImageFile}
-                                    accept="image/jpeg, image/png"
-                                />
-                                <SkillrEditIcon />
-                            </div>
+                <div className="flex justify-center">
+                    <div className="flex relative items-center justify-center -mt-16 md:mt-0 md:mr-5">
+                        <div className="bg-white p-1 md:p-0 rounded-full">
+                            <img
+                                className="rounded-full object-cover w-[120px] h-[120px]"
+                                src={profileImage ?? '/avatar-placeholder.svg'}
+                                alt={displayName}
+                            ></img>
                         </div>
-                    )}
+                        {isEditable && (
+                            <div className="absolute z-10 bottom-0 right-0">
+                                <div className="relative">
+                                    <input
+                                        className="top-0 absolute w-full cursor-pointer opacity-0 h-full"
+                                        type="file"
+                                        onChange={uploadImageFile}
+                                        accept="image/jpeg, image/png"
+                                    />
+                                    <SkillrEditIcon />
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
+
                 <div>
                     {username && (
-                        <div className="flex items-center justify-center">
+                        <div className="flex mt-3 text-gray-500 md:mt-0 items-center justify-center">
                             <p className="text-2xl">@{username}</p>
                         </div>
                     )}
 
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center md:justify-start">
                         <h1
-                            className={classNames('font-bold font-redhat text-3xl', {
+                            className={classNames('font-bold font-redhat text-[2rem]', {
                                 [styles.displayNameLong]: displayName.length > 25,
                             })}
                         >
@@ -76,7 +79,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                         </h1>
                     </div>
 
-                    <div className="flex items-center justify-center gap-5 mt-4">
+                    <div className="flex items-center md:justify-start justify-center gap-5 mt-4">
                         {instagram && (
                             <a href={instagram} target="_blank" rel="noreferrer">
                                 <img className="w-5" src="/social-instagram-black-border.svg" alt="Instagram" />

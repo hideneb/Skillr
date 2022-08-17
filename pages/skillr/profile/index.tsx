@@ -21,6 +21,8 @@ import { ProfileCard } from '@/components/UI/ProfileCard/ProfileCard';
 import { SkillrLocalAvailabilityDto } from '@/lib/types/skillr';
 import { authedFetch } from '@/lib/authed-fetch';
 import { isPageVisible } from '@/lib/environment';
+import { getSkillById } from 'pages/api/skills/[skillId]';
+import { SkillDto } from 'pages/api/skills';
 
 export type SkillrLanguageDto = {
     languageId: number;
@@ -50,6 +52,7 @@ type SkillrProfileProps = {
     languages: LanguageDto[];
     presentUntil: string | null;
     backgroundImg: string;
+    skillrSkillCategory: SkillDto | null;
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async (context) => {
@@ -90,6 +93,9 @@ export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async 
         ({ presentUntil }) => presentUntil?.toString() || null
     );
 
+    const skillrSkill = skillr.skills?.[0];
+    const skillrSkillCategory = skillrSkill ? await getSkillById(skillrSkill?.skill.parentId) : null;
+
     return {
         props: {
             skillrDDto: skillr,
@@ -99,12 +105,14 @@ export const getServerSideProps: GetServerSideProps<SkillrProfileProps> = async 
             languages,
             presentUntil,
             backgroundImg: getFeatureBackgroundImg(skillr.skills),
+            skillrSkillCategory,
         },
     };
 };
 
 const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
-    const { skillrDDto, accountLink, stripeLoginLink, payoutMethod, languages, backgroundImg } = props;
+    const { skillrDDto/*, accountLink, stripeLoginLink, payoutMethod, languages*/, backgroundImg, skillrSkillCategory } =
+        props;
     const [profileImage, setProfileImage] = useState<string>(skillrDDto.profileImage);
     // const [tagline, setTagline] = useState<string>(skillrDDto.tagline);
     // const [about, setAbout] = useState<string>(skillrDDto.about);
@@ -219,7 +227,7 @@ const SkillrProfile: React.FC<SkillrProfileProps> = (props) => {
                 <meta property="og:site_name" content="Skillr" />
                 <meta property="og:locale" content="en_US" />
             </Head>
-            <SkillrPageBanner backgroundImg={backgroundImg}></SkillrPageBanner>
+            <SkillrPageBanner backgroundImg={backgroundImg} categoryName={skillrSkillCategory?.name}></SkillrPageBanner>
             <div className="px-6 md:py-8 max-w-[1000px] mx-auto">
                 <ProfileHeader
                     isEditable

@@ -23,7 +23,7 @@ type AddFeaturedContentProps = {
 };
 
 const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) => {
-    const initialFeaturedVideo = skillrDDto.images.find(({ video, cover }) => !!video && !!cover);
+    const initialFeaturedVideo = skillrDDto.images?.find(({ video, cover }) => !!video && !!cover);
     const [content, setContent] = useState<SkillrMediaDto | undefined>(initialFeaturedVideo);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [uploadError, setUploadError] = useState<string>('');

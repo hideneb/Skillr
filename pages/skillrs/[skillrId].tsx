@@ -8,15 +8,25 @@ import { getUserById } from '../api/users/me';
 import { UserDto } from '@/lib/types/user';
 import { isPageVisible, isProd } from '@/lib/environment';
 import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
+import { getSkillById } from 'pages/api/skills/[skillId]';
+import { SkillDto } from 'pages/api/skills';
 
 type SkillrProps = {
     skillr: SkillrDto;
     user: UserDto | null;
     backgroundImg: string;
+    skillrSkillCategory: SkillDto | null;
 };
 
 const Skillr: React.FC<SkillrProps> = (props) => {
-    return <SkillrPage skillr={props.skillr} user={props.user} backgroundImg={props.backgroundImg} />;
+    return (
+        <SkillrPage
+            skillr={props.skillr}
+            user={props.user}
+            backgroundImg={props.backgroundImg}
+            skillrSkillCategory={props.skillrSkillCategory}
+        />
+    );
 };
 
 export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) => {
@@ -40,11 +50,15 @@ export const getServerSideProps: GetServerSideProps<SkillrProps> = async (ctx) =
         return { notFound: true };
     }
 
+    const skillrSkill = skillr.skills?.[0];
+    const skillrSkillCategory = skillrSkill ? await getSkillById(skillrSkill?.skill.parentId) : null;
+
     return {
         props: {
             skillr,
             user,
             backgroundImg: getFeatureBackgroundImg(skillr.skills),
+            skillrSkillCategory,
         },
     };
 };

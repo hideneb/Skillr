@@ -59,6 +59,6 @@ const profileBanners = new Map([
 ]);
 
 export function getFeatureBackgroundImg(skills: SkillrSkillDto[]) {
-    const defaultSkill = skills[0];
+    const defaultSkill = skills?.[0];
     return `/category-banners/${profileBanners.get(defaultSkill?.skill?.name) || 'default'}.jpg`;
 }

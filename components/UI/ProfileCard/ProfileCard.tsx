@@ -70,7 +70,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ isEditable, handleSave
                     </div>
                 )}
                 <div className="mt-3">
-                    <div className="d-flex">
+                    <div className="d-flex space-x-4 md:space-x-8">
                         <div className={styles.profileDetailsCardImgContainer}>
                             {imgSrc ? <img height={'100%'} width={'100%'} alt="" src={imgSrc} /> : null}
                         </div>

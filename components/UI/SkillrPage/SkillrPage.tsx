@@ -8,14 +8,16 @@ import { Footer } from '../Footer/Footer';
 import Head from 'next/head';
 import { ConnectNow } from '../ConnectNow/ConnectNow';
 import { SkillrPageBanner } from './SkillrPageBanner';
+import { SkillDto } from 'pages/api/skills';
 
 type SkillrProfileProps = {
     skillr: SkillrDto;
     user: UserDto | null;
     backgroundImg: string;
+    skillrSkillCategory: SkillDto | null;
 };
 
-const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, backgroundImg }) => {
+const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, backgroundImg, skillrSkillCategory }) => {
     const {
         username,
         about,
@@ -49,7 +51,7 @@ const SkillrPage: React.FC<SkillrProfileProps> = ({ skillr, backgroundImg }) => 
                 <meta property="og:site_name" content="Skillr" />
                 <meta property="og:locale" content="en_US" />
             </Head>
-            <SkillrPageBanner backgroundImg={backgroundImg}></SkillrPageBanner>
+            <SkillrPageBanner backgroundImg={backgroundImg} categoryName={skillrSkillCategory?.name}></SkillrPageBanner>
             <div className="px-6 md:py-8 max-w-[1000px] mx-auto">
                 <section>
                     <ProfileHeader
