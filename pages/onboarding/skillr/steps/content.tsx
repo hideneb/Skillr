@@ -3,7 +3,7 @@ import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/Onboar
 import { SkillrDDto } from 'pages/api/skillrs/me';
 import Router from 'next/router';
 import { CircleSpinner } from 'react-spinners-kit';
-import { authedFetch } from '@/lib/authed-fetch';
+import { apiHostFetch } from '@/lib/api-fetch';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import { SkillrMediaDto, SkillrOnboardingSteps } from '@/lib/types/skillr';
 import { GetServerSideProps } from 'next';
@@ -13,6 +13,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import classNames from 'classnames';
 import 'react-modal-video/css/modal-video.min.css';
+import { UserToken } from '@/lib/types/user';
 
 const ModalVideo: any = dynamic(() => import('react-modal-video'), {
     ssr: false,
@@ -20,9 +21,10 @@ const ModalVideo: any = dynamic(() => import('react-modal-video'), {
 
 type AddFeaturedContentProps = {
     skillrDDto: SkillrDDto;
+    token: UserToken;
 };
 
-const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) => {
+const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto, token }) => {
     const initialFeaturedVideo = skillrDDto.images?.find(({ video, cover }) => !!video && !!cover);
     const [content, setContent] = useState<SkillrMediaDto | undefined>(initialFeaturedVideo);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -43,9 +45,12 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto }) =
 
         setIsLoading(true);
         try {
-            const data = await authedFetch('/api/skillrs/media', {
+            const data = await apiHostFetch('/api/app/skillrMedia', {
                 method: 'POST',
                 body: formData,
+                headers: {
+                    Authorization: `Bearer ${token.jwt}`,
+                },
             }).then((res) => res.json());
 
             if (data.video) {
@@ -161,6 +166,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const skillr = await getSkillrById(token.id);
 
     return {
-        props: { skillrDDto: skillr },
+        props: { skillrDDto: skillr, token },
     };
 };

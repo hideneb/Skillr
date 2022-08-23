@@ -2,7 +2,7 @@ import React, { ChangeEvent, useCallback, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 import { SkillrDDto } from 'pages/api/skillrs/me';
-import { authedFetch } from '@/lib/authed-fetch';
+import { apiHostFetch } from '@/lib/api-fetch';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getSkillrById } from 'pages/api/skillrs/[skillrId]';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
@@ -12,12 +12,14 @@ import 'react-responsive-modal/styles.css';
 import Cropper, { Area } from 'react-easy-crop';
 import getCroppedImg from '@/lib/crop-image';
 import Router from 'next/router';
+import { UserToken } from '@/lib/types/user';
 
 type UploadImageProps = {
     skillrDDto: SkillrDDto;
+    token: UserToken;
 };
 
-const UploadImage: React.FC<UploadImageProps> = ({ skillrDDto }) => {
+const UploadImage: React.FC<UploadImageProps> = ({ skillrDDto, token }) => {
     const [image, setImage] = useState<string | null>(skillrDDto.profileImage);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [uploadError, setUploadError] = useState<string>('');
@@ -74,9 +76,13 @@ const UploadImage: React.FC<UploadImageProps> = ({ skillrDDto }) => {
 
         setIsLoading(true);
         try {
-            const data = await authedFetch('/api/skillrs/media', {
+            const data = await apiHostFetch('/api/app/skillrMedia', {
                 method: 'POST',
                 body: formData,
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token.jwt}`,
+                },
             }).then((res) => res.json());
 
             if (data.profileImage) {
@@ -212,6 +218,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const skillr = await getSkillrById(token.id);
 
     return {
-        props: { skillrDDto: skillr },
+        props: { skillrDDto: skillr, token },
     };
 };

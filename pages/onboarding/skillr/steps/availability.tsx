@@ -4,17 +4,19 @@ import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getSkillrById } from 'pages/api/skillrs/[skillrId]';
 import { SkillrDDto } from 'pages/api/skillrs/me';
-import { authedFetch } from '@/lib/authed-fetch';
+import { apiHostFetch } from '@/lib/api-fetch';
 import { SkillrLocalAvailabilityDto, SkillrOnboardingSteps } from '@/lib/types/skillr';
 import Router from 'next/router';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import { AvailabilityDates } from '@/components/UI/Availability/AvailabilityDates';
+import { UserToken } from '@/lib/types/user';
 
 type SetAvailabilityProps = {
     skillrDDto: SkillrDDto;
+    token: UserToken;
 };
 
-const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto }) => {
+const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto, token }) => {
     const [availability, setAvailability] = useState<SkillrLocalAvailabilityDto>(
         skillrDDto.localAvailability || ({} as SkillrLocalAvailabilityDto)
     );
@@ -33,11 +35,12 @@ const SetAvailability: React.FC<SetAvailabilityProps> = ({ skillrDDto }) => {
         setIsLoading(true);
 
         try {
-            const data = await authedFetch('/api/skillrs', {
+            const data = await apiHostFetch('/api/app/skillrs', {
                 method: 'PUT',
                 body: JSON.stringify(payload),
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token.jwt}`,
                 },
             }).then((res) => res.json());
 
@@ -117,6 +120,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
     const skillr = await getSkillrById(token.id);
     return {
-        props: { skillrDDto: skillr },
+        props: { skillrDDto: skillr, token },
     };
 };

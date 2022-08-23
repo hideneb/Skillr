@@ -8,17 +8,19 @@ import { findSkills, SkillDto } from 'pages/api/skills';
 import { getSkillrSkills } from 'pages/api/skillr-skills';
 import { SkillrOnboardingSteps, SkillrSkillDetailsDto, SkillrSkillDto } from '@/lib/types/skillr';
 import Router from 'next/router';
-import { authedFetch } from '@/lib/authed-fetch';
+import { apiHostFetch } from '@/lib/api-fetch';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import TextField from '@/components/UI/TextField/TextField';
 import { Menu, MenuItem, MenuDivider, FocusableItem, MenuGroup, MenuHeader } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
+import { UserToken } from '@/lib/types/user';
 
 type ChooseSkillProps = {
     skillrDDto: SkillrDDto;
     skills: SkillDto[];
     skillrSkills: SkillrSkillDto[];
+    token: UserToken;
 };
 
 const menuItemStyles: CSSProperties = {
@@ -26,7 +28,7 @@ const menuItemStyles: CSSProperties = {
     paddingRight: 16,
 };
 
-const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
+const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }) => {
     const skillrSkill = skillrSkills[0];
     const [ratePerMinute, setRatePerMinute] = useState<string | number>(skillrSkill?.ratePerMinute);
     const [tags, setTags] = useState<string[]>([]);
@@ -58,11 +60,12 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills }) => {
         };
 
         try {
-            const data = await authedFetch(`/api/skillr-skills`, {
+            const data = await apiHostFetch(`/api/app/skillrSkills`, {
                 method: 'POST',
                 body: JSON.stringify(payload),
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token.jwt}`,
                 },
             }).then((res) => res.json());
 
@@ -292,6 +295,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const skillrSkills = await getSkillrSkills(token.jwt);
 
     return {
-        props: { skillrDDto: skillr, skills, skillrSkills },
+        props: { skillrDDto: skillr, skills, skillrSkills, token },
     };
 };

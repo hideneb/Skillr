@@ -16,6 +16,9 @@ const moduleExports = {
             'res.cloudinary.com',
         ],
     },
+    env: {
+        API_HOST: process.env.API_HOST,
+    },
     webpack(config) {
         const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'));
         if (fileLoaderRule) {

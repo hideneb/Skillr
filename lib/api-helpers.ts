@@ -2,11 +2,11 @@ import { IncomingMessage, ServerResponse } from 'http';
 import Jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { NextApiRequestCookies } from 'next/dist/server/api-utils';
-import { VerifySmsCodeResponse } from '../pages/api/auth/verify-sms';
 import { refreshToken } from '../pages/api/refreshtoken';
 import { getTokenCookie, setTokenCookie } from './auth-cookies';
+import { UserToken } from './types/user';
 
-export const getAuthToken = (req: NextApiRequest): VerifySmsCodeResponse | undefined => {
+export const getAuthToken = (req: NextApiRequest): UserToken | undefined => {
     const authStr = getTokenCookie(req);
     if (!authStr) {
         return;
@@ -27,12 +27,12 @@ export const getUnexpiredToken = async (
         cookies: NextApiRequestCookies;
     },
     res: ServerResponse
-): Promise<VerifySmsCodeResponse | undefined> => {
+): Promise<UserToken | undefined> => {
     const authStr = getTokenCookie(req);
     if (!authStr) {
         return;
     }
-    const auth: VerifySmsCodeResponse = JSON.parse(authStr);
+    const auth: UserToken = JSON.parse(authStr);
     if (!auth.jwt) {
         return;
     }

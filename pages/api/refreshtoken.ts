@@ -1,7 +1,7 @@
+import { UserToken } from '@/lib/types/user';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { endNotFound } from '../../lib/api-helpers';
 import { getTokenCookie, setTokenCookie } from '../../lib/auth-cookies';
-import { VerifySmsCodeResponse } from './auth/verify-sms';
 
 export type RefreshJwtDto = {
     jwt: string;
@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         return endNotFound(res);
     }
 
-    const auth: VerifySmsCodeResponse = JSON.parse(authCookie);
+    const auth: UserToken = JSON.parse(authCookie);
     switch (method) {
         case 'GET':
             const refresh = await refreshToken(auth.refreshJwt);

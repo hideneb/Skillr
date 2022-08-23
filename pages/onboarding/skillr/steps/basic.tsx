@@ -1,7 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 import { GetServerSideProps } from 'next';
-import axios from 'redaxios';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getSkillrById } from 'pages/api/skillrs/[skillrId]';
 import Router from 'next/router';
@@ -10,12 +9,15 @@ import classNames from 'classnames';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import { SkillrOnboardingSteps } from '@/lib/types/skillr';
 import { SkillrDDto } from 'pages/api/skillrs/me';
+import { apiHostFetch } from '@/lib/api-fetch';
+import { UserToken } from '@/lib/types/user';
 
 type BasicInfoProps = {
     skillrDDto: SkillrDDto;
+    token: UserToken;
 };
 
-const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto }) => {
+const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto, token }) => {
     const [username, setUsername] = React.useState(skillrDDto.username);
     const [about, setAbout] = React.useState(skillrDDto.about);
     const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +35,14 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto }) => {
         };
 
         try {
-            const { data } = await axios.post(`/api/skillrs`, payload);
+            const data = await apiHostFetch(`/api/app/skillrs`, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token.jwt}`,
+                },
+            }).then((res) => res.json());
 
             if (data.id) {
                 Router.push(`/onboarding/skillr/steps/social`);
@@ -121,6 +130,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
         props: {
             skillrDDto: skillr,
+            token,
         },
     };
 };

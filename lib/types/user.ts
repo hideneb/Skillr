@@ -17,3 +17,9 @@ export type UserDto = {
     displayName: string;
     dob: Date;
 };
+
+export type UserToken = {
+    id: string;
+    refreshJwt: string;
+    jwt: string;
+};

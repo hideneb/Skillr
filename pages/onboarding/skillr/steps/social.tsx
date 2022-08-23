@@ -4,17 +4,19 @@ import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getSkillrById } from 'pages/api/skillrs/[skillrId]';
 import { SkillrDDto } from 'pages/api/skillrs/me';
-import axios from 'redaxios';
 import Router from 'next/router';
 import TextField from '@/components/UI/TextField/TextField';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import { SkillrOnboardingSteps } from '@/lib/types/skillr';
+import { UserToken } from '@/lib/types/user';
+import { apiHostFetch } from '@/lib/api-fetch';
 
 type AddSocialInfoProps = {
     skillrDDto: SkillrDDto;
+    token: UserToken;
 };
 
-const AddSocialInfo: React.FC<AddSocialInfoProps> = ({ skillrDDto }) => {
+const AddSocialInfo: React.FC<AddSocialInfoProps> = ({ skillrDDto, token }) => {
     const [socialDetails, setSocialDetails] = useState({
         instagram: skillrDDto.instagram,
         linkedin: skillrDDto.linkedin,
@@ -42,7 +44,14 @@ const AddSocialInfo: React.FC<AddSocialInfoProps> = ({ skillrDDto }) => {
         setIsLoading(true);
 
         try {
-            const { data } = await axios.put(`/api/skillrs`, socialDetails);
+            const data = await apiHostFetch(`/api/app/skillrs`, {
+                method: 'PUT',
+                body: JSON.stringify(socialDetails),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token.jwt}`,
+                },
+            }).then((res) => res.json());
 
             if (data.id) {
                 Router.push(`/onboarding/skillr/steps/image`);
@@ -161,6 +170,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const skillr = await getSkillrById(token.id);
 
     return {
-        props: { skillrDDto: skillr },
+        props: { skillrDDto: skillr, token },
     };
 };

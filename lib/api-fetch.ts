@@ -1,11 +1,10 @@
 import Router from 'next/router';
+import { refreshToken } from './authed-fetch';
 
-export const refreshToken = () => {
-    return fetch('/api/refreshtoken').then((res) => res.json());
-};
+const { API_HOST } = process.env;
 
-export const authedFetch = async (url: string, options: RequestInit = {}, redirect = true) => {
-    const res = await fetch(url, options);
+export const apiHostFetch = async (url: string, options: RequestInit = {}, redirect = true) => {
+    const res = await fetch(API_HOST + url, options);
 
     try {
         const resJson = await res.clone().json();
@@ -13,7 +12,7 @@ export const authedFetch = async (url: string, options: RequestInit = {}, redire
             switch (resJson.errorcode) {
                 case '10001':
                     await refreshToken();
-                    return fetch(url, options);
+                    return fetch(API_HOST + url, options);
                 case '10002': {
                     if (redirect) {
                         const redirect = document.location.pathname + document.location.search + document.location.hash;
