@@ -81,7 +81,7 @@ const Register: React.FC = () => {
     };
 
     const verifyCode = async () => {
-        const { data } = await axios.post(`${API_HOST}/api/app/auth/verify-sms`, {
+        const { data } = await axios.post(`/api/auth/verify-sms`, {
             phoneNumber: `+${phoneNumber}`,
             code,
         });
@@ -89,7 +89,7 @@ const Register: React.FC = () => {
         if (data.id) {
             return data;
         } else {
-            setPhoneError(data.errors?.[0]?.messages?.[0]);
+            setPhoneError(data.errorcode);
             throw new Error(data.errors);
         }
     };

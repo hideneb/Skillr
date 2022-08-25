@@ -11,8 +11,14 @@ export const apiHostFetch = async (url: string, options: RequestInit = {}, redir
         if (resJson.errorcode) {
             switch (resJson.errorcode) {
                 case '10001':
-                    await refreshToken();
-                    return fetch(API_HOST + url, options);
+                    const data = await refreshToken();
+                    return fetch(API_HOST + url, {
+                        ...options,
+                        headers: {
+                            ...(options?.headers || {}),
+                            Authorization: `Bearer ${data.jwt}`,
+                        },
+                    });
                 case '10002': {
                     if (redirect) {
                         const redirect = document.location.pathname + document.location.search + document.location.hash;
