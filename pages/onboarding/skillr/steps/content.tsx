@@ -40,6 +40,13 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto, tok
             return;
         }
 
+        const videoSizeInMB = videoFile.size / 1024 / 1024;
+
+        if (videoSizeInMB > 100) {
+            alert('Please upload a video file that a file size is less than 100MB');
+            return;
+        }
+
         const formData = new FormData();
         formData.append('file', videoFile);
         formData.append('target', 'profileVideo');
