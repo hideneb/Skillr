@@ -8,7 +8,7 @@ import { Footer } from '../Footer/Footer';
 import Head from 'next/head';
 import { ConnectNow } from '../ConnectNow/ConnectNow';
 import { SkillrPageBanner } from './SkillrPageBanner';
-import { SkillDto } from 'pages/api/skills';
+import { SkillDto } from '@/lib/types/skill';
 
 type SkillrProfileProps = {
     skillr: SkillrDto;

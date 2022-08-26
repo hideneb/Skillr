@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { SkillDto } from '.';
+import { SkillDto } from '@/lib/types/skill';
 
 const { API_HOST } = process.env;
 export const getMostPopularSkill = async (): Promise<SkillDto> => {

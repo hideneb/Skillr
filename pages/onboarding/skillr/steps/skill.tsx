@@ -1,23 +1,33 @@
-import React, { CSSProperties, FormEvent, useState } from 'react';
+import React, { FormEvent, useState, CSSProperties, ChangeEvent } from 'react';
 import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 import { SkillrDDto } from 'pages/api/skillrs/me';
 import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getSkillrById } from 'pages/api/skillrs/[skillrId]';
-import { findSkills, SkillDto } from 'pages/api/skills';
+import { findSkills } from 'pages/api/skills';
 import { getSkillrSkills } from 'pages/api/skillr-skills';
 import { SkillrOnboardingSteps, SkillrSkillDetailsDto, SkillrSkillDto } from '@/lib/types/skillr';
 import Router from 'next/router';
 import { apiHostFetch } from '@/lib/api-fetch';
 import StepsController from '@/components/UI/Onboarding/StepsController/StepsController';
 import TextField from '@/components/UI/TextField/TextField';
-import { Menu, MenuItem, MenuDivider, FocusableItem, MenuGroup, MenuHeader } from '@szhsin/react-menu';
+import { Menu, FocusableItem, MenuGroup, MenuHeader } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import { UserToken } from '@/lib/types/user';
+import SkillMenuItem from '@/components/UI/Onboarding/SkillMenuItem'
+import { SkillDto } from '@/lib/types/skill';
+
+type Tag = {
+    tag: string;
+}
+
+interface Skillr extends SkillDto {
+    tags: Tag[];
+} 
 
 type ChooseSkillProps = {
-    skillrDDto: SkillrDDto;
+    skilltags: string[];
     skills: SkillDto[];
     skillrSkills: SkillrSkillDto[];
     token: UserToken;
@@ -28,10 +38,23 @@ const menuItemStyles: CSSProperties = {
     paddingRight: 16,
 };
 
-const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }) => {
+const CATEGORIES = [
+    'Chefs',
+    'Live Music',
+    'Dance',
+    'Quit Coach',
+    'Yoga Instructors',
+    'Math HW Help',
+    'Science HW Help',
+    'Gardeners',
+    'Music',
+];
+
+const ChooseSkill: React.FC<ChooseSkillProps> = ({skilltags, skills, skillrSkills, token }) => {
     const skillrSkill = skillrSkills[0];
-    const [ratePerMinute, setRatePerMinute] = useState<string | number>(skillrSkill?.ratePerMinute);
-    const [tags, setTags] = useState<string[]>([]);
+    const initialRate = skillrSkill?.ratePerMinute && Number.parseFloat(skillrSkill.ratePerMinute as unknown as string).toFixed(2) ;
+    const [ratePerMinute, setRatePerMinute] = useState<string | number>(initialRate);
+    const [tags, setTags] = useState<string[]>(skilltags);
     const [newTag, setNewTag] = useState<string>('');
     const [skill, setSkill] = useState<SkillDto | SkillrSkillDetailsDto | null>(skillrSkill?.skill);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -60,14 +83,26 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }
         };
 
         try {
-            const data = await apiHostFetch(`/api/app/skillrSkills`, {
-                method: 'POST',
-                body: JSON.stringify(payload),
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token.jwt}`,
-                },
-            }).then((res) => res.json());
+            let data;
+            if (!skillrSkill) {
+                data = await apiHostFetch(`/api/app/skillrSkills`, {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token.jwt}`,
+                    },
+                }).then((res) => res.json());
+            } else {
+                data = await apiHostFetch(`/api/app/skillrSkills/${skillrSkill.skillrSkillId}`, {
+                    method: 'PUT',
+                    body: JSON.stringify(payload),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token.jwt}`,
+                    },
+                }).then((res) => res.json());
+            }
 
             if (data.skillId) {
                 Router.push(`/onboarding/skillr/steps/availability`);
@@ -80,6 +115,10 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }
         setIsLoading(false);
     };
 
+    const handleOnRateChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setRatePerMinute(event.target.value);
+    }
+
     // Filter and display skills that match the searchValue
     const filteredSkills = skills.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase()));
 
@@ -90,7 +129,7 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }
     const getParentNameById = (parentId: SkillDto['parentId']) => skills.find(({ id }) => id === parentId)?.name;
 
     /** Takes in the parent skillId as a parameter and returns the children of the parent skill  */
-    const getChildSkills = (parentId: SkillDto['parentId']) => skills.filter((skill) => skill.parentId === parentId);
+    const getChildSkills = (parentId: SkillDto['parentId']) => skills.filter((skill) => skill.parentId === parentId).sort((a, b) => a.name.localeCompare(b.name));
 
     return (
         <OnboardingLayout>
@@ -160,33 +199,29 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }
                                                             <MenuHeader style={menuItemStyles}>
                                                                 {eachParent.name}
                                                             </MenuHeader>
-                                                            {getChildSkills(eachParent.id).map((childSkill) => (
-                                                                <div key={childSkill.id}>
-                                                                    <MenuDivider style={{ margin: 0 }} />
-                                                                    <MenuItem
-                                                                        onClick={() => setSkill(childSkill)}
-                                                                        style={menuItemStyles}
-                                                                    >
-                                                                        <div className="flex py-1 space-x-2 items-center">
-                                                                            <img
-                                                                                className="w-6 h-6 rounded-full"
-                                                                                src={childSkill.lightIcon}
-                                                                                alt={childSkill.lightIconFilename}
+                                                            {getChildSkills(eachParent.id).map((childSkill) => {
+                                                                if (CATEGORIES.includes(childSkill.name)) {
+                                                                    return getChildSkills(childSkill.id).map(
+                                                                        (skill) => (
+                                                                            <SkillMenuItem
+                                                                                key={skill.id}
+                                                                                skill={skill}
+                                                                                setSkill={setSkill}
+                                                                                category={getParentNameById(
+                                                                                    skill.parentId
+                                                                                )}
                                                                             />
-                                                                            <div className="space-y-0.5">
-                                                                                <p className="text-xs text-gray-400">
-                                                                                    {getParentNameById(
-                                                                                        childSkill.parentId
-                                                                                    )}
-                                                                                </p>
-                                                                                <p className="text-sm">
-                                                                                    {childSkill.name}
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </MenuItem>
-                                                                </div>
-                                                            ))}
+                                                                        )
+                                                                    );
+                                                                }
+                                                                return (
+                                                                    <SkillMenuItem
+                                                                        key={childSkill.id}
+                                                                        skill={childSkill}
+                                                                        setSkill={setSkill}
+                                                                    />
+                                                                );
+                                                            })}
                                                         </div>
                                                     ))}
                                                 </MenuGroup>
@@ -201,9 +236,16 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({ skills, skillrSkills, token }
                                                 <TextField
                                                     type="number"
                                                     step={0.01}
+                                                    prefix="$"
                                                     value={ratePerMinute}
-                                                    onChange={(event) => setRatePerMinute(event.target.value)}
-                                                    placeholder="$0.00"
+                                                    onChange={handleOnRateChange}
+                                                    placeholder="0.00"
+                                                    onBlur={() =>
+                                                        ratePerMinute &&
+                                                        setRatePerMinute(
+                                                            Number.parseFloat(ratePerMinute as string).toFixed(2)
+                                                        )
+                                                    }
                                                 />
                                             </div>
                                             <p className="text-sm text-gray-500">Optional</p>
@@ -294,7 +336,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const skills = await findSkills(false);
     const skillrSkills = await getSkillrSkills(token.jwt);
 
+    const skilltags = (skillr.skills[0] as unknown as Skillr).tags?.map((tag) => tag.tag) || [];
+
     return {
-        props: { skillrDDto: skillr, skills, skillrSkills, token },
+        props: { skilltags, skills, skillrSkills, token },
     };
 };

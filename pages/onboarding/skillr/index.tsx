@@ -5,12 +5,11 @@ import TextField from '@/components/UI/TextField/TextField';
 import Router from 'next/router';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import { apiHostFetch } from '@/lib/api-fetch';
+import { authedFetch } from '@/lib/authed-fetch';
 import OtpInput from 'react-otp-input';
 import axios from 'redaxios';
 import { CircleSpinner } from 'react-spinners-kit';
 import { UserToken } from '@/lib/types/user';
-
 enum RegisterState {
     IDLE,
     REQUEST_SMS,
@@ -35,8 +34,6 @@ const inputStyles = {
     borderBottom: '2px solid lightgray',
 };
 
-const { API_HOST } = process.env;
-
 const Register: React.FC = () => {
     const [registerDetails, setRegisterDetails] = useState(initialRegisterDetails);
     const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +55,7 @@ const Register: React.FC = () => {
         // We're adding this + sign here because the library saves the values without the + sign,
         // and the api requires the sign to validate a phone number
         setIsLoading(true);
-        const { data } = await axios.post(`${API_HOST}/api/app/auth/request-sms`, { phoneNumber: `+${phoneNumber}` });
+        const { data } = await axios.post(`/api/auth/request-sms`, { phoneNumber: `+${phoneNumber}` });
 
         if (data.status) {
             setStage(RegisterState.REQUEST_SMS);
@@ -94,7 +91,7 @@ const Register: React.FC = () => {
         }
     };
 
-    const saveUserDetails = async (token: UserToken) => {
+    const saveUserDetails = async () => {
         const payload = {
             firstName,
             lastName,
@@ -103,13 +100,12 @@ const Register: React.FC = () => {
             notification: true,
         };
 
-        const data = await apiHostFetch(`/api/app/users`, {
+        const data = await authedFetch(`/api/users`, {
             method: 'PUT',
-            body: JSON.stringify(payload),
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token.jwt}`,
             },
+            body: JSON.stringify(payload),
         }).then((res) => res.json());
 
         if (data.id) {
@@ -131,7 +127,7 @@ const Register: React.FC = () => {
             }
             if (stage === RegisterState.REQUEST_SMS) {
                 const data = await verifyCode();
-                if (data) await saveUserDetails(data);
+                if (data) await saveUserDetails();
             }
         } catch (error) {
             setIsLoading(false);

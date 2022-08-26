@@ -49,8 +49,8 @@ const SetupPayout: React.FC<SetupPayoutProps> = ({ accountLink, payoutMethod, st
                     <div className="px-4 md:px-10">
                         <div className="w-full max-w-3xl mx-auto flex flex-col items-center space-y-5 md:space-y-5">
                             <div className="flex flex-col items-center md:items-start md:flex-row pt-1 w-full justify-between md:space-x-14 space-y-5 md:space-y-0">
-                                <div className="w-full md:w-[391px] mt-5 flex-shrink-0 relative h-[154px] md:h-[212px]">
-                                    <Image src="/skillr-bucks.png" alt="skillr-bucks" objectFit="cover" layout="fill" />
+                                <div className="md:w-full mt-5">
+                                    <Image src="/skillr-bucks.png" alt="skillr-bucks" objectFit="cover" width={391} height={212} />
                                 </div>
                                 <div className="flex flex-col items-center md:items-start">
                                     <p className="text-base font-bold">For Skillr to work you&apos;ll need to:</p>

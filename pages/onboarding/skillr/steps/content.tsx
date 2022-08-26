@@ -31,6 +31,8 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto, tok
     const [uploadError, setUploadError] = useState<string>('');
     const [videoOpen, setVideoOpen] = useState(false);
 
+    const { API_HOST } = process.env;
+
     const uploadContentVideo = async (e: ChangeEvent<HTMLInputElement>) => {
         // If there is no new video file to upload, skip upload and navigate to next step
         const videoFile = e.target.files?.[0];
@@ -109,6 +111,7 @@ const AddFeaturedContent: React.FC<AddFeaturedContentProps> = ({ skillrDDto, tok
                         />
                         <div className="flex w-60 h-[440px] relative items-center justify-center">
                             <Image
+                                className='rounded-lg'
                                 objectFit="cover"
                                 layout="fill"
                                 src={content?.image || '/profile-content-placeholder.png'}

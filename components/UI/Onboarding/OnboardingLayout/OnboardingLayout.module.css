@@ -1,7 +1,7 @@
 @value md-up, lg-up from "../../../../styles/Breakpoints.module.css";
 
 .hero {
-    background-image: url(../../../../public/onboarding-hero-mobile.png);
+    background-image: url(../../../../public/onboarding-hero-mobile.jpg);
     background-size: cover;
     background-position: center;
     height: 318px;
@@ -10,7 +10,7 @@
 
 @media md-up {
     .hero {
-        background-image: url(../../../../public/onboarding-hero.png);
+        background-image: url(../../../../public/onboarding-hero.jpg);
         height: 402px;
     }
 }

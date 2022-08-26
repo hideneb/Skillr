@@ -2,7 +2,7 @@ import styles from './Session.module.css';
 import moment, { duration } from 'moment';
 
 import { SkillrDto } from '../../../lib/types/skillr';
-import { SkillDto } from '../../../pages/api/skills';
+import { SkillDto } from '@/lib/types/skill';
 
 import { OTPublisher, OTPublisherRef, OTSession, OTStreams, OTSubscriber, OTSubscriberRef } from 'opentok-react';
 

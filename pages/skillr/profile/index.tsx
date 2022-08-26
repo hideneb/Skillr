@@ -22,7 +22,7 @@ import { SkillrLocalAvailabilityDto } from '@/lib/types/skillr';
 import { authedFetch } from '@/lib/authed-fetch';
 import { isPageVisible } from '@/lib/environment';
 import { getSkillById } from 'pages/api/skills/[skillId]';
-import { SkillDto } from 'pages/api/skills';
+import { SkillDto } from '@/lib/types/skill';
 
 export type SkillrLanguageDto = {
     languageId: number;

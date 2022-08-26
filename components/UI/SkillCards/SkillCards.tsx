@@ -1,5 +1,5 @@
 import React from 'react';
-import { SkillDto } from '../../../pages/api/skills';
+import { SkillDto } from '@/lib/types/skill';
 import SkillCard from '../SkillCard/SkillCard';
 
 type SkillCardsProps = {

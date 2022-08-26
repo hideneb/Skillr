@@ -9,7 +9,7 @@ import { UserDto } from '@/lib/types/user';
 import { isPageVisible, isProd } from '@/lib/environment';
 import { getFeatureBackgroundImg } from '@/lib/get-feature-background-img';
 import { getSkillById } from 'pages/api/skills/[skillId]';
-import { SkillDto } from 'pages/api/skills';
+import { SkillDto } from '@/lib/types/skill';
 
 type SkillrProps = {
     skillr: SkillrDto;

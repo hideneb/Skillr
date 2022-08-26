@@ -6,7 +6,7 @@ import { getUnexpiredToken } from '../../lib/api-helpers';
 import { getPageOfSkillrBooksForUser, QueryParamsSkillrBookTypes } from '../api/skillrbooks/user';
 import { SkillrBookDto } from '../../lib/types/skillrBook';
 import { getSkillById } from '../api/skills/[skillId]';
-import { SkillDto } from '../api/skills';
+import { SkillDto } from '@/lib/types/skill';
 import { isProd } from '../../lib/environment';
 
 type SessionsProps = {

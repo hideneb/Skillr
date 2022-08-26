@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { SkillDto } from '../../../pages/api/skills';
+import { SkillDto } from '@/lib/types/skill';
 
 type SkillCardSmallProps = {
     skill: SkillDto;

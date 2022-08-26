@@ -1,7 +1,7 @@
 import 'papercss';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { SkillDto } from '../api/skills';
+import { SkillDto } from '@/lib/types/skill';
 import { getSkillById } from '../api/skills/[skillId]';
 import { getUnexpiredToken } from '../../lib/api-helpers';
 import { SkillrBookDto, SkillrBookRateDto } from '../../lib/types/skillrBook';

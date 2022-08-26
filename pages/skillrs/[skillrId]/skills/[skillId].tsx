@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { SkillrDto } from '../../../../lib/types/skillr';
 import { ConnectNowDto } from '../../../../lib/types/skillrBook';
 import { getSkillrById } from '../../../api/skillrs/[skillrId]';
-import { SkillDto } from '../../../api/skills';
+import { SkillDto } from '@/lib/types/skill';
 import { getSkillById } from '../../../api/skills/[skillId]';
 import { isProd } from '../../../../lib/environment';
 import { authedFetch } from '../../../../lib/authed-fetch';
