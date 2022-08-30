@@ -85,10 +85,9 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto, token }) => {
                             </p>
                             <textarea
                                 name="about"
-                                rows={4}
                                 value={about}
                                 onChange={(event) => setAbout(event.target.value)}
-                                className="w-full px-4 py-2 overflow-visible outline-0 border-b-2 focus:border-slate-900 bg-gray-100"
+                                className="w-full px-4 py-1 overflow-visible outline-0 border-b-2 focus:border-slate-900 bg-gray-100 h-8 focus:h-24 transition-[height] duration-300 ease-in-out resize-none"
                                 placeholder="Enter about info"
                                 required
                             />
