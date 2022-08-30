@@ -87,7 +87,6 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto, token }) => {
                                 name="about"
                                 rows={4}
                                 value={about}
-                                maxLength={1000}
                                 onChange={(event) => setAbout(event.target.value)}
                                 className="w-full px-4 py-2 overflow-visible outline-0 border-b-2 focus:border-slate-900 bg-gray-100"
                                 placeholder="Enter about info"
@@ -95,15 +94,20 @@ const BasicInfo: React.FC<BasicInfoProps> = ({ skillrDDto, token }) => {
                             />
 
                             <p
-                                className={classNames('text-xs text-right', {
-                                    'text-skillr-pink': about?.length >= 1000,
+                                className={classNames('text-xs flex justify-between', {
+                                    'text-skillr-pink': about?.length > 1000,
                                 })}
                             >
-                                {about?.length || 0}/1000
+                                <span>
+                                    {about?.length > 1000 && "Your bio should contain 1000 characters or less"}
+                                </span>
+                                <span>
+                                    {about?.length || 0}/1000
+                                </span>
                             </p>
                         </div>
 
-                        <StepsController current={SkillrOnboardingSteps.BASIC_INFO} isNextLoading={isLoading} />
+                        <StepsController current={SkillrOnboardingSteps.BASIC_INFO} isNextLoading={isLoading} isNextDisabled={about?.length > 1000} />
                     </div>
                 </form>
             </div>
