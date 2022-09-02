@@ -336,7 +336,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const skills = await findSkills(false);
     const skillrSkills = await getSkillrSkills(token.jwt);
 
-    const skilltags = (skillr.skills[0] as unknown as Skillr).tags?.map((tag) => tag.tag) || [];
+    const skilltags = (skillr.skills[0] as unknown as Skillr)?.tags?.map((tag) => tag.tag) || [];
 
     return {
         props: { skilltags, skills, skillrSkills, token },
