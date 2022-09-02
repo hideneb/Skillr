@@ -1,6 +1,5 @@
 import React, { FormEvent, useState, CSSProperties, ChangeEvent } from 'react';
 import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
-import { SkillrDDto } from 'pages/api/skillrs/me';
 import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '@/lib/api-helpers';
 import { getSkillrById } from 'pages/api/skillrs/[skillrId]';
@@ -52,7 +51,7 @@ const CATEGORIES = [
 
 const ChooseSkill: React.FC<ChooseSkillProps> = ({skilltags, skills, skillrSkills, token }) => {
     const skillrSkill = skillrSkills[0];
-    const initialRate = skillrSkill?.ratePerMinute && Number.parseFloat(skillrSkill.ratePerMinute as unknown as string).toFixed(2) ;
+    const initialRate = skillrSkill?.ratePerMinute && (Number.parseFloat(skillrSkill.ratePerMinute as unknown as string) / 100.0).toFixed(2) ;
     const [ratePerMinute, setRatePerMinute] = useState<string | number>(initialRate);
     const [tags, setTags] = useState<string[]>(skilltags);
     const [newTag, setNewTag] = useState<string>('');
@@ -79,7 +78,7 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({skilltags, skills, skillrSkill
         const payload = {
             skillId: skill?.id,
             tags,
-            ratePerMinute: Number(ratePerMinute),
+            ratePerMinute: Math.ceil(Number(ratePerMinute) * 100),
         };
 
         try {

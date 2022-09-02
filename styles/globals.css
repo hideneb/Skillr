@@ -128,6 +128,14 @@
     font-display: swap;
 }
 
+@layer utilities {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
 :root {
     --rich-blue-3: #c4cad0;
     --rich-blue-5: #838e9d;
