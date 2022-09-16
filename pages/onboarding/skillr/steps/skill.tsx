@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, CSSProperties, ChangeEvent } from 'react';
+import React, { FormEvent, useState, CSSProperties, ChangeEvent, useMemo, useCallback } from 'react';
 import OnboardingLayout from '@/components/UI/Onboarding/OnboardingLayout/OnboardingLayout';
 import { GetServerSideProps } from 'next';
 import { getUnexpiredToken } from '@/lib/api-helpers';
@@ -14,16 +14,16 @@ import { Menu, FocusableItem, MenuGroup, MenuHeader } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import { UserToken } from '@/lib/types/user';
-import SkillMenuItem from '@/components/UI/Onboarding/SkillMenuItem'
+import SkillMenuItem from '@/components/UI/Onboarding/SkillMenuItem';
 import { SkillDto } from '@/lib/types/skill';
 
 type Tag = {
     tag: string;
-}
+};
 
 interface Skillr extends SkillDto {
     tags: Tag[];
-} 
+}
 
 type ChooseSkillProps = {
     skilltags: string[];
@@ -49,9 +49,11 @@ const CATEGORIES = [
     'Music',
 ];
 
-const ChooseSkill: React.FC<ChooseSkillProps> = ({skilltags, skills, skillrSkills, token }) => {
+const ChooseSkill: React.FC<ChooseSkillProps> = ({ skilltags, skills, skillrSkills, token }) => {
     const skillrSkill = skillrSkills[0];
-    const initialRate = skillrSkill?.ratePerMinute && (Number.parseFloat(skillrSkill.ratePerMinute as unknown as string) / 100.0).toFixed(2) ;
+    const initialRate =
+        skillrSkill?.ratePerMinute &&
+        (Number.parseFloat(skillrSkill.ratePerMinute as unknown as string) / 100.0).toFixed(2);
     const [ratePerMinute, setRatePerMinute] = useState<string | number>(initialRate);
     const [tags, setTags] = useState<string[]>(skilltags);
     const [newTag, setNewTag] = useState<string>('');
@@ -116,19 +118,63 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({skilltags, skills, skillrSkill
 
     const handleOnRateChange = (event: ChangeEvent<HTMLInputElement>) => {
         setRatePerMinute(event.target.value);
-    }
-
-    // Filter and display skills that match the searchValue
-    const filteredSkills = skills.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    };
 
     // Get parent skills of skills that match the searchValue
-    const filteredParents = filteredSkills.filter(({ parentId }) => !parentId);
 
     /** Takes in the parent skillId as a parameter and returns the name of the parent skill  */
-    const getParentNameById = (parentId: SkillDto['parentId']) => skills.find(({ id }) => id === parentId)?.name;
+    const getParentNameById = useCallback((parentId: SkillDto['parentId']) => {
+        return skills.find(({ id }) => id === parentId)?.name
+    }, [skills]);
 
     /** Takes in the parent skillId as a parameter and returns the children of the parent skill  */
-    const getChildSkills = (parentId: SkillDto['parentId']) => skills.filter((skill) => skill.parentId === parentId).sort((a, b) => a.name.localeCompare(b.name));
+    const getChildSkills = useCallback((parentId: SkillDto['parentId']) => {
+        return skills
+        .filter((skill) => skill.parentId === parentId)
+        .sort((a, b) => a.name.localeCompare(b.name))
+    }, [skills]);
+
+    const isIncludesSearchKeyword = useCallback((searchKeyword: string) => {
+        return searchKeyword.toLowerCase().includes(searchValue.toLowerCase())
+    }, [searchValue]);
+
+    const filteredParents = useMemo(() => {
+        return skills.filter(
+        ({ parentId, id }) =>
+            !parentId &&
+            getChildSkills(id)
+                .map((childSkill) => {
+                    if (CATEGORIES.includes(childSkill.name)) {
+                        return getChildSkills(childSkill.id).filter(({ name }) => isIncludesSearchKeyword(name));
+                    }
+
+                    if (isIncludesSearchKeyword(childSkill.name)) {
+                        return childSkill;
+                    }
+                })
+                .flat()
+                .filter((item) => item).length
+    )}, [getChildSkills, isIncludesSearchKeyword, skills]);
+
+    const getSkills = useCallback((id: number) => {
+            return getChildSkills(id).map((childSkill) => {
+            if (CATEGORIES.includes(childSkill.name)) {
+                return getChildSkills(childSkill.id)
+                    .filter(({ name }) => isIncludesSearchKeyword(name))
+                    .map((skill) => (
+                        <SkillMenuItem
+                            key={skill.id}
+                            skill={skill}
+                            setSkill={setSkill}
+                            category={getParentNameById(skill.parentId)}
+                        />
+                    ));
+            }
+
+            if (isIncludesSearchKeyword(childSkill.name)) {
+                return <SkillMenuItem key={childSkill.id} skill={childSkill} setSkill={setSkill} />;
+            }
+        })}, [getChildSkills, getParentNameById, isIncludesSearchKeyword ]);
 
     return (
         <OnboardingLayout>
@@ -198,29 +244,7 @@ const ChooseSkill: React.FC<ChooseSkillProps> = ({skilltags, skills, skillrSkill
                                                             <MenuHeader style={menuItemStyles}>
                                                                 {eachParent.name}
                                                             </MenuHeader>
-                                                            {getChildSkills(eachParent.id).map((childSkill) => {
-                                                                if (CATEGORIES.includes(childSkill.name)) {
-                                                                    return getChildSkills(childSkill.id).map(
-                                                                        (skill) => (
-                                                                            <SkillMenuItem
-                                                                                key={skill.id}
-                                                                                skill={skill}
-                                                                                setSkill={setSkill}
-                                                                                category={getParentNameById(
-                                                                                    skill.parentId
-                                                                                )}
-                                                                            />
-                                                                        )
-                                                                    );
-                                                                }
-                                                                return (
-                                                                    <SkillMenuItem
-                                                                        key={childSkill.id}
-                                                                        skill={childSkill}
-                                                                        setSkill={setSkill}
-                                                                    />
-                                                                );
-                                                            })}
+                                                            {getSkills(eachParent.id)}
                                                         </div>
                                                     ))}
                                                 </MenuGroup>
